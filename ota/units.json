@@ -1,9 +1,9 @@
 {
-  "version": 10 ,
+  "version": 11 ,
   "units": [
     {
       "id": "unit_01",
-      "title": "Unit 1: Cyber Security Fundamentals ",
+      "title": "Unit 1: Cyber Security Introduction ",
       "description": "The bedrock of digital safety. Understand the 'Why' and 'How' of cybersecurity.",
       "modules": [
         {
