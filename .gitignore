@@ -1,0 +1,14 @@
+# CyberShield CDN .gitignore
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.log
