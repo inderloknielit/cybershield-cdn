@@ -1,5 +1,5 @@
 {
-  "version": 11 ,
+  "version": 12,
   "units": [
     {
       "id": "unit_01",
@@ -1409,7 +1409,7 @@
                 {
                   "id": "u3_m1_l1_c2",
                   "title": "Real-world Example",
-                  "body": "A hospital employee looking up a celebrity\u2019s medical records without authorization is a direct breach of confidentiality, even if they don't change anything."
+                  "body": "A hospital employee looking up a celebrity’s medical records without authorization is a direct breach of confidentiality, even if they don't change anything."
                 }
               ],
               "quiz": {
@@ -1569,7 +1569,7 @@
                   "To speed up the internet"
                 ],
                 "correct_index": 1,
-                "explanation": "Integrity is about the trustworthiness of the data\u2014making sure it hasn't been changed maliciously or accidentally."
+                "explanation": "Integrity is about the trustworthiness of the data—making sure it hasn't been changed maliciously or accidentally."
               }
             },
             {
@@ -1744,7 +1744,7 @@
                   "Something you do"
                 ],
                 "correct_index": 2,
-                "explanation": "Biometrics like fingerprints are physical characteristics\u2014something you inherently ARE."
+                "explanation": "Biometrics like fingerprints are physical characteristics—something you inherently ARE."
               }
             },
             {
@@ -1978,7 +1978,7 @@
                 {
                   "id": "u3_m4_l4_c1",
                   "title": "The Paperless Trail",
-                  "body": "High-security systems record every single action in an 'Audit Log'. These logs must be 'Immutable'\u2014meaning even an admin cannot delete or change them."
+                  "body": "High-security systems record every single action in an 'Audit Log'. These logs must be 'Immutable'—meaning even an admin cannot delete or change them."
                 },
                 {
                   "id": "u3_m4_l4_c2",
@@ -2232,7 +2232,7 @@
                 {
                   "id": "u4_m2_l1_c1",
                   "title": "What is Reconnaissance?",
-                  "body": "Reconnaissance is the very first phase of ethical hacking. It is the systematic process of gathering information about a target (system, network, organization) before attempting any attack. Attackers use this to identify weaknesses, services, and entry points.\n\nAlso known as:\n\u2022 Information Gathering\n\u2022 Footprinting\n\u2022 Intelligence Gathering"
+                  "body": "Reconnaissance is the very first phase of ethical hacking. It is the systematic process of gathering information about a target (system, network, organization) before attempting any attack. Attackers use this to identify weaknesses, services, and entry points.\n\nAlso known as:\n• Information Gathering\n• Footprinting\n• Intelligence Gathering"
                 },
                 {
                   "id": "u4_m2_l1_c2",
@@ -2247,7 +2247,7 @@
                 {
                   "id": "u4_m2_l1_c4",
                   "title": "Objectives",
-                  "body": "\u2022 Understand the target environment\n\u2022 Map the attack surface\n\u2022 Discover network infrastructure\n\u2022 Find active systems and exposed services\n\u2022 Search for possible vulnerabilities"
+                  "body": "• Understand the target environment\n• Map the attack surface\n• Discover network infrastructure\n• Find active systems and exposed services\n• Search for possible vulnerabilities"
                 },
                 {
                   "id": "u4_m2_l1_c5",
@@ -2285,7 +2285,7 @@
                 {
                   "id": "u4_m2_l2_c3",
                   "title": "Sources of Passive Recon",
-                  "body": "\u2022 Search Engines (Google, Bing)\n\u2022 Social Media (LinkedIn, Twitter)\n\u2022 Job Portals (reveals tech stack)\n\u2022 Public DNS records\n\u2022 GitHub (leaked code/keys)\n\u2022 Data breach databases"
+                  "body": "• Search Engines (Google, Bing)\n• Social Media (LinkedIn, Twitter)\n• Job Portals (reveals tech stack)\n• Public DNS records\n• GitHub (leaked code/keys)\n• Data breach databases"
                 },
                 {
                   "id": "u4_m2_l2_c4",
@@ -2296,7 +2296,7 @@
                 {
                   "id": "u4_m2_l2_c5",
                   "title": "Examples of Active Recon",
-                  "body": "\u2022 Connecting directly to HTTP, FTP, or SMTP mail servers\n\u2022 Calling the company (Social Engineering)\n\u2022 Physically entering premises as a 'repairman'\n\u2022 Port scanning (Nmap)"
+                  "body": "• Connecting directly to HTTP, FTP, or SMTP mail servers\n• Calling the company (Social Engineering)\n• Physically entering premises as a 'repairman'\n• Port scanning (Nmap)"
                 }
               ],
               "quiz": {
@@ -2323,7 +2323,7 @@
                 {
                   "id": "u4_m2_l3_c2",
                   "title": "Core Operators",
-                  "body": "\u2022 site: Restricts results to one domain (site:nasa.gov)\n\u2022 filetype: Searches for specific extensions (filetype:pdf)\n\u2022 intitle: Finds keywords in the page title (intitle:\"index of\")"
+                  "body": "• site: Restricts results to one domain (site:nasa.gov)\n• filetype: Searches for specific extensions (filetype:pdf)\n• intitle: Finds keywords in the page title (intitle:\"index of\")"
                 },
                 {
                   "id": "u4_m2_l3_c3",
@@ -2340,17 +2340,17 @@
                 {
                   "id": "u4_m2_l4_c4",
                   "title": "Advanced Operators",
-                  "body": "\u2022 inurl: Finds keywords in the URL (inurl:admin)\n\u2022 intext: Searches body text (intext:\"password\")\n\u2022 cache: Shows Google's saved version of a page"
+                  "body": "• inurl: Finds keywords in the URL (inurl:admin)\n• intext: Searches body text (intext:\"password\")\n• cache: Shows Google's saved version of a page"
                 },
                 {
                   "id": "u4_m2_l3_c5",
                   "title": "Logical Operators",
-                  "body": "\u2022 OR (|): term A or term B\n\u2022 AND (&): both terms\n\u2022 \"\": exact phrase\n\u2022 *: wildcard for unknown parts (site:*.com)\n\u2022 -: exclude a term"
+                  "body": "• OR (|): term A or term B\n• AND (&): both terms\n• \"\": exact phrase\n• *: wildcard for unknown parts (site:*.com)\n• -: exclude a term"
                 },
                 {
                   "id": "u4_m2_l3_c6",
                   "title": "Defensive Controls",
-                  "body": "\u2022 Robots.txt: Tell Google what NOT to index\n\u2022 Disable Directory Indexing: Hide raw folder lists\n\u2022 WAF: Web Application Firewall\n\u2022 MFA: Multi-Factor Authentication"
+                  "body": "• Robots.txt: Tell Google what NOT to index\n• Disable Directory Indexing: Hide raw folder lists\n• WAF: Web Application Firewall\n• MFA: Multi-Factor Authentication"
                 }
               ],
               "quiz": {
@@ -2378,18 +2378,18 @@
                 {
                   "id": "u4_m2_l4_c2",
                   "title": "GHDB Categories",
-                  "body": "Queries are organized by what they find:\n\u2022 Files containing passwords\n\u2022 Sensitive directories (backups/logs)\n\u2022 Vulnerable servers/IoT devices\n\u2022 Login portals\n\u2022 Database files"
+                  "body": "Queries are organized by what they find:\n• Files containing passwords\n• Sensitive directories (backups/logs)\n• Vulnerable servers/IoT devices\n• Login portals\n• Database files"
                 },
                 {
                   "id": "u4_m2_l4_c3",
                   "title": "Real Examples",
-                  "body": "\u2022 DB Dumps: `filetype:sql \"dump\"` \n\u2022 Webcams: `intitle:\"webcamXP 5\"` \n\u2022 Admin: `inurl:admin login` ",
+                  "body": "• DB Dumps: `filetype:sql \"dump\"` \n• Webcams: `intitle:\"webcamXP 5\"` \n• Admin: `inurl:admin login` ",
                   "image_name": "u4_l4_ghdb_table_examples"
                 },
                 {
                   "id": "u4_m2_l4_c4",
                   "title": "Automation Tools",
-                  "body": "Manual dorking is slow. Pros use tools like:\n\u2022 DorkScanner: Automates result parsing\n\u2022 GoogD0rker: Finds API keys & password docs\n\u2022 SQLmap: Can use dorks to find vulnerable DBs"
+                  "body": "Manual dorking is slow. Pros use tools like:\n• DorkScanner: Automates result parsing\n• GoogD0rker: Finds API keys & password docs\n• SQLmap: Can use dorks to find vulnerable DBs"
                 }
               ],
               "quiz": {
@@ -2416,7 +2416,7 @@
                 {
                   "id": "u4_m2_l5_c2",
                   "title": "DNS Record Types",
-                  "body": "\u2022 A: Domain to IPv4\n\u2022 AAAA: Domain to IPv6\n\u2022 MX: Mail Servers (target for phishing)\n\u2022 NS: Name Servers\n\u2022 TXT: Verification/Config data"
+                  "body": "• A: Domain to IPv4\n• AAAA: Domain to IPv6\n• MX: Mail Servers (target for phishing)\n• NS: Name Servers\n• TXT: Verification/Config data"
                 },
                 {
                   "id": "u4_m2_l5_c3",
@@ -2510,7 +2510,7 @@
                 {
                   "id": "u4_m3_l1_c1",
                   "title": "Finding the Doors",
-                  "body": "Scanning identifies 'Open Ports'\u2014services listening for connections. Nmap is the industry standard. It can detect the OS, service versions, and even run scripts to find common bugs."
+                  "body": "Scanning identifies 'Open Ports'—services listening for connections. Nmap is the industry standard. It can detect the OS, service versions, and even run scripts to find common bugs."
                 },
                 {
                   "id": "u4_m3_l1_c2",
@@ -2562,7 +2562,7 @@
         {
           "id": "u4_m4",
           "title": "Phase 3: Gaining Access (Exploitation)",
-          "description": "The 'Break-In'\u2014using vulnerabilities to enter a system.",
+          "description": "The 'Break-In'—using vulnerabilities to enter a system.",
           "is_pro": false,
           "lessons": [
             {
@@ -2639,7 +2639,7 @@
                 {
                   "id": "u4_m5_l2_c2",
                   "title": "Remediation Steps",
-                  "body": "A good report doesn't just say 'You are hacked'. It provides 'Remediation'\u2014clear instructions for developers on how to patch the bugs and strengthen the system."
+                  "body": "A good report doesn't just say 'You are hacked'. It provides 'Remediation'—clear instructions for developers on how to patch the bugs and strengthen the system."
                 }
               ],
               "quiz": {
@@ -2652,6 +2652,423 @@
                 ],
                 "correct_index": 2,
                 "explanation": "The ultimate goal of ethical hacking is to improve security, which can only happen through clear, actionable reporting."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unit_05",
+      "title": "Unit 5: Ethical Hacking - Nmap Commands",
+      "description": "Master the industry-standard scanning tool: from host discovery to service fingerprinting and scripting.",
+      "modules": [
+        {
+          "id": "u5_m1",
+          "title": "Nmap Fundamentals",
+          "description": "Understanding what Nmap is, its syntax, and how to read its output.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u5_m1_l1",
+              "title": "What is Nmap?",
+              "cards": [
+                {
+                  "id": "u5_m1_l1_c1",
+                  "title": "The Network Mapper",
+                  "body": "Nmap (Network Mapper) is a free, open-source tool used for network discovery and security auditing. It sends specially crafted packets to a target and analyzes the responses to determine what's running."
+                },
+                {
+                  "id": "u5_m1_l1_c2",
+                  "title": "Why Every Pentester Uses It",
+                  "body": "From simple host discovery to full vulnerability scanning, Nmap is the first tool opened in almost every engagement. It runs on Linux, Windows, and macOS, and comes pre-installed on Kali Linux."
+                }
+              ],
+              "quiz": {
+                "question": "What does Nmap primarily do?",
+                "options": [
+                  "Encrypts network traffic",
+                  "Discovers hosts and services on a network",
+                  "Removes viruses",
+                  "Creates websites"
+                ],
+                "correct_index": 1,
+                "explanation": "Nmap's core purpose is network discovery: finding live hosts, open ports, and the services running on them."
+              }
+            },
+            {
+              "id": "u5_m1_l2",
+              "title": "Basic Nmap Syntax",
+              "cards": [
+                {
+                  "id": "u5_m1_l2_c1",
+                  "title": "The Command Structure",
+                  "body": "Every Nmap command follows a pattern: `nmap [Scan Type] [Options] [Target]`. Example: `nmap -sS -p 80 192.168.1.1` runs a stealth scan on port 80 of that IP."
+                },
+                {
+                  "id": "u5_m1_l2_c2",
+                  "title": "Specifying Targets",
+                  "body": "You can scan a single IP (`nmap 10.0.0.5`), a domain (`nmap example.com`), a range (`nmap 10.0.0.1-50`), or an entire subnet (`nmap 10.0.0.0/24`)."
+                }
+              ],
+              "quiz": {
+                "question": "Which command scans an entire /24 subnet?",
+                "options": [
+                  "nmap 10.0.0.5",
+                  "nmap 10.0.0.0/24",
+                  "nmap -p 80",
+                  "nmap --help"
+                ],
+                "correct_index": 1,
+                "explanation": "CIDR notation like /24 tells Nmap to scan every address in that subnet range (256 addresses)."
+              }
+            },
+            {
+              "id": "u5_m1_l3",
+              "title": "Reading Scan Output",
+              "cards": [
+                {
+                  "id": "u5_m1_l3_c1",
+                  "title": "Port States",
+                  "body": "Nmap reports three main states: Open (a service is listening), Closed (reachable but nothing listening), and Filtered (a firewall is blocking Nmap from telling)."
+                },
+                {
+                  "id": "u5_m1_l3_c2",
+                  "title": "Sample Output",
+                  "body": "A typical line reads `22/tcp open ssh`. This tells you the port number, protocol, state, and the likely service name at a glance."
+                }
+              ],
+              "quiz": {
+                "question": "What does a 'Filtered' port state usually indicate?",
+                "options": [
+                  "The service crashed",
+                  "A firewall is blocking the probe",
+                  "The port is definitely open",
+                  "The host is offline"
+                ],
+                "correct_index": 1,
+                "explanation": "Filtered means Nmap couldn't determine the state because a firewall or packet filter is dropping the probes."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u5_m2",
+          "title": "Host Discovery Commands",
+          "description": "Finding which machines are actually alive before you scan their ports.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u5_m2_l1",
+              "title": "Ping Sweep (-sn)",
+              "cards": [
+                {
+                  "id": "u5_m2_l1_c1",
+                  "title": "Finding Live Hosts",
+                  "body": "`nmap -sn 192.168.1.0/24` performs a 'Ping Scan' that only checks which hosts are alive, without scanning any ports. It's the fastest way to map a live network."
+                },
+                {
+                  "id": "u5_m2_l1_c2",
+                  "title": "Why Skip Ports First?",
+                  "body": "On a large network, scanning ports on every possible IP wastes time. Discovering live hosts first lets later, more detailed scans focus only on real targets."
+                }
+              ],
+              "quiz": {
+                "question": "What does the `-sn` flag disable in Nmap?",
+                "options": [
+                  "DNS resolution",
+                  "Port scanning",
+                  "Output coloring",
+                  "IPv6 support"
+                ],
+                "correct_index": 1,
+                "explanation": "`-sn` (formerly `-sP`) tells Nmap to only check for live hosts and skip the port-scanning phase entirely."
+              }
+            },
+            {
+              "id": "u5_m2_l2",
+              "title": "Skipping Host Discovery (-Pn)",
+              "cards": [
+                {
+                  "id": "u5_m2_l2_c1",
+                  "title": "When Ping is Blocked",
+                  "body": "Many firewalls block ICMP ping requests. `nmap -Pn 192.168.1.10` tells Nmap to treat the host as online and scan it anyway, skipping the discovery step entirely."
+                },
+                {
+                  "id": "u5_m2_l2_c2",
+                  "title": "Trade-offs",
+                  "body": "`-Pn` is slower on large ranges since Nmap can't skip dead hosts, but it's essential when a target's firewall silently drops ping packets."
+                }
+              ],
+              "quiz": {
+                "question": "Why would a pentester use the `-Pn` flag?",
+                "options": [
+                  "To speed up scans",
+                  "To scan hosts that block ICMP ping",
+                  "To hide their IP address",
+                  "To scan only UDP ports"
+                ],
+                "correct_index": 1,
+                "explanation": "`-Pn` forces Nmap to scan a host even when it can't be pinged, which is common behind firewalls."
+              }
+            },
+            {
+              "id": "u5_m2_l3",
+              "title": "ARP Scanning on Local Networks",
+              "cards": [
+                {
+                  "id": "u5_m2_l3_c1",
+                  "title": "Layer 2 Discovery",
+                  "body": "On a local LAN, `nmap -PR 192.168.1.0/24` uses ARP requests instead of ICMP. ARP scans are extremely fast and reliable because firewalls rarely block local ARP traffic."
+                },
+                {
+                  "id": "u5_m2_l3_c2",
+                  "title": "List Scan (-sL)",
+                  "body": "`nmap -sL 192.168.1.0/24` simply lists the targets to be scanned (via reverse DNS) without sending any packets to them at all — a purely passive prep step."
+                }
+              ],
+              "quiz": {
+                "question": "Why is ARP scanning so effective on a local network?",
+                "options": [
+                  "It bypasses encryption",
+                  "Firewalls rarely block Layer 2 ARP traffic",
+                  "It uses less bandwidth than ping",
+                  "It works over the internet"
+                ],
+                "correct_index": 1,
+                "explanation": "ARP operates at Layer 2 and is required for basic local networking, so it's almost never blocked on a LAN."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u5_m3",
+          "title": "Port Scanning Techniques",
+          "description": "The core scan types every pentester relies on: TCP, SYN, UDP, and custom port ranges.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u5_m3_l1",
+              "title": "TCP Connect Scan (-sT)",
+              "cards": [
+                {
+                  "id": "u5_m3_l1_c1",
+                  "title": "The Full Handshake",
+                  "body": "`nmap -sT target` completes the full TCP three-way handshake (SYN, SYN-ACK, ACK). It's reliable and doesn't need root privileges, but it's easily logged by the target."
+                },
+                {
+                  "id": "u5_m3_l1_c2",
+                  "title": "When to Use It",
+                  "body": "Use `-sT` when you don't have raw socket (root/admin) access, since it relies on the operating system's normal networking calls instead of crafting packets directly."
+                }
+              ],
+              "quiz": {
+                "question": "Why is a TCP Connect scan easier to detect than a SYN scan?",
+                "options": [
+                  "It uses UDP instead of TCP",
+                  "It completes the full handshake, which gets logged",
+                  "It scans slower",
+                  "It requires a VPN"
+                ],
+                "correct_index": 1,
+                "explanation": "A completed connection is recorded by the target's applications and logs, unlike a half-open SYN scan."
+              }
+            },
+            {
+              "id": "u5_m3_l2",
+              "title": "SYN Stealth Scan (-sS)",
+              "cards": [
+                {
+                  "id": "u5_m3_l2_c1",
+                  "title": "The Half-Open Scan",
+                  "body": "`sudo nmap -sS target` sends a SYN packet but never completes the handshake with a final ACK. This is the default and most popular scan — fast and less likely to appear in application logs."
+                },
+                {
+                  "id": "u5_m3_l2_c2",
+                  "title": "Root Required",
+                  "body": "Because `-sS` crafts raw packets directly, it requires administrator or root privileges on the scanning machine to run."
+                }
+              ],
+              "quiz": {
+                "question": "What makes the SYN scan (-sS) 'stealthy'?",
+                "options": [
+                  "It encrypts the packets",
+                  "It never completes the full TCP handshake",
+                  "It only scans at night",
+                  "It changes the source IP"
+                ],
+                "correct_index": 1,
+                "explanation": "Leaving the connection half-open means many applications never log the attempt, unlike a full connect scan."
+              }
+            },
+            {
+              "id": "u5_m3_l3",
+              "title": "UDP Scanning (-sU)",
+              "cards": [
+                {
+                  "id": "u5_m3_l3_c1",
+                  "title": "The Silent Protocol",
+                  "body": "`sudo nmap -sU target` scans UDP ports, used by services like DNS (53) and SNMP (161). UDP scanning is much slower since it must wait for timeouts when there's no response."
+                },
+                {
+                  "id": "u5_m3_l3_c2",
+                  "title": "Combining TCP and UDP",
+                  "body": "Use `sudo nmap -sS -sU -p T:80,U:53 target` to scan a specific TCP port and a specific UDP port in a single combined command."
+                }
+              ],
+              "quiz": {
+                "question": "Why is UDP scanning generally slower than TCP scanning?",
+                "options": [
+                  "UDP uses larger packets",
+                  "Lack of a response often requires waiting for a timeout",
+                  "UDP ports are always encrypted",
+                  "Nmap scans UDP twice by default"
+                ],
+                "correct_index": 1,
+                "explanation": "Since UDP is connectionless, Nmap must wait out timeouts to distinguish open|filtered ports, which slows things down."
+              }
+            },
+            {
+              "id": "u5_m3_l4",
+              "title": "Targeting Specific Ports (-p)",
+              "cards": [
+                {
+                  "id": "u5_m3_l4_c1",
+                  "title": "Custom Port Ranges",
+                  "body": "`nmap -p 1-1000 target` scans only the first 1000 ports. `nmap -p 22,80,443 target` scans just those three specific ports for a fast, focused check."
+                },
+                {
+                  "id": "u5_m3_l4_c2",
+                  "title": "Scanning All Ports",
+                  "body": "`nmap -p- target` scans the entire range of 65,535 ports. It's thorough but takes far longer than the default top-1000-port scan."
+                }
+              ],
+              "quiz": {
+                "question": "Which flag scans every single port from 1 to 65535?",
+                "options": [
+                  "-p 100",
+                  "-p-",
+                  "-sA",
+                  "-F"
+                ],
+                "correct_index": 1,
+                "explanation": "`-p-` is shorthand for `-p 1-65535`, telling Nmap to check every possible port."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u5_m4",
+          "title": "Service Detection, OS Fingerprinting & NSE",
+          "description": "Going beyond open ports to identify software, operating systems, and vulnerabilities.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u5_m4_l1",
+              "title": "Service Version Detection (-sV)",
+              "cards": [
+                {
+                  "id": "u5_m4_l1_c1",
+                  "title": "Beyond Open/Closed",
+                  "body": "`nmap -sV target` doesn't just find open ports; it probes them to identify exact software and version numbers, like `Apache httpd 2.4.41`."
+                },
+                {
+                  "id": "u5_m4_l1_c2",
+                  "title": "Intensity Levels",
+                  "body": "Add `--version-intensity 9` for the most thorough (but slowest and noisiest) probing, or lower the number for a faster, lighter scan."
+                }
+              ],
+              "quiz": {
+                "question": "What extra information does the `-sV` flag reveal?",
+                "options": [
+                  "The target's physical location",
+                  "Software names and version numbers",
+                  "The Wi-Fi password",
+                  "The website's HTML"
+                ],
+                "correct_index": 1,
+                "explanation": "Version detection probes each open port to identify the exact application and version running there."
+              }
+            },
+            {
+              "id": "u5_m4_l2",
+              "title": "OS Fingerprinting (-O)",
+              "cards": [
+                {
+                  "id": "u5_m4_l2_c1",
+                  "title": "Guessing the Operating System",
+                  "body": "`sudo nmap -O target` analyzes subtle differences in how a device's TCP/IP stack responds to determine if it's running Windows, Linux, or another OS."
+                },
+                {
+                  "id": "u5_m4_l2_c2",
+                  "title": "Combining Everything",
+                  "body": "`sudo nmap -A target` is a shortcut that enables OS detection, version detection, script scanning, and traceroute all in one aggressive command."
+                }
+              ],
+              "quiz": {
+                "question": "What does the `-A` flag enable in a single command?",
+                "options": [
+                  "Only port scanning",
+                  "OS detection, version detection, scripts, and traceroute",
+                  "Anonymous scanning",
+                  "Automatic exploitation"
+                ],
+                "correct_index": 1,
+                "explanation": "`-A` is an 'aggressive' shortcut that bundles several detection features together for a comprehensive scan."
+              }
+            },
+            {
+              "id": "u5_m4_l3",
+              "title": "The Nmap Scripting Engine (NSE)",
+              "cards": [
+                {
+                  "id": "u5_m4_l3_c1",
+                  "title": "Automated Intelligence",
+                  "body": "NSE lets Nmap run Lua scripts for tasks beyond scanning, like detecting vulnerabilities or brute-forcing logins. Example: `nmap --script vuln target`."
+                },
+                {
+                  "id": "u5_m4_l3_c2",
+                  "title": "Popular Script Categories",
+                  "body": "Categories include `safe` (won't crash services), `vuln` (checks known CVEs), `auth` (tests default credentials), and `brute` (password guessing)."
+                }
+              ],
+              "quiz": {
+                "question": "Which NSE script category specifically checks for known vulnerabilities (CVEs)?",
+                "options": [
+                  "safe",
+                  "vuln",
+                  "discovery",
+                  "broadcast"
+                ],
+                "correct_index": 1,
+                "explanation": "The `vuln` category runs scripts designed to detect specific known vulnerabilities on a target service."
+              }
+            },
+            {
+              "id": "u5_m4_l4",
+              "title": "Timing, Output & Evasion",
+              "cards": [
+                {
+                  "id": "u5_m4_l4_c1",
+                  "title": "Timing Templates (-T)",
+                  "body": "Nmap offers speed levels from `-T0` (paranoid, very slow, avoids IDS) to `-T5` (insane, fastest, very noisy). `-T4` is the common balance for most pentests."
+                },
+                {
+                  "id": "u5_m4_l4_c2",
+                  "title": "Saving Results",
+                  "body": "Use `-oN scan.txt` for normal text output, `-oX scan.xml` for XML (great for parsing into reports), or `-oA scan` to save all formats at once."
+                }
+              ],
+              "quiz": {
+                "question": "Which timing template is the slowest and most stealthy?",
+                "options": [
+                  "-T0",
+                  "-T3",
+                  "-T4",
+                  "-T5"
+                ],
+                "correct_index": 0,
+                "explanation": "`-T0` (paranoid) spaces out probes heavily to avoid triggering intrusion detection systems, at the cost of speed."
               }
             }
           ]
