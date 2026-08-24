@@ -1,14 +1,5 @@
 {
-  "app_info": {
-    "name": "Cyber Defender",
-    "developed_by": "NIELIT Delhi",
-    "developer_full_name": "National Institute of Electronics & Information Technology (NIELIT), Delhi",
-    "affiliation": "Ministry of Electronics & Information Technology (MeitY), Government of India",
-    "logo": "nielit_delhi_logo.png",
-    "tagline": "Learn. Practice. Defend.",
-    "description": "A complete cyber security and ethical hacking curriculum covering fundamentals, Linux, networking, penetration testing methodology, hands-on lab setup, the full CEH toolkit, and cyber law — developed by NIELIT Delhi."
-  },
-  "version": 21,
+  "version": 20,
   "units": [
     {
       "id": "unit_01",
@@ -1564,7 +1555,7 @@
                   "body": "Integrity ensures data is accurate, complete, and hasn't been tampered with. If a hacker changes your bank balance from $10 to $1,000,000, integrity is lost."
                 },
                 {
-                  "id": "u3_m2_l1_c2",
+                  "id": "u3_m2_l2_c2",
                   "title": "Authorized Changes Only",
                   "body": "Data should only be modified by authorized people in authorized ways. This includes preventing accidental corruption during a power cut."
                 }
@@ -2347,7 +2338,7 @@
                   "image_name": "u4_l3_index_of_backup_directory"
                 },
                 {
-                  "id": "u4_m2_l3_c4",
+                  "id": "u4_m2_l4_c4",
                   "title": "Advanced Operators",
                   "body": "• inurl: Finds keywords in the URL (inurl:admin)\n• intext: Searches body text (intext:\"password\")\n• cache: Shows Google's saved version of a page"
                 },
