@@ -1,5 +1,5 @@
 {
-  "version": 15,
+  "version": 16,
   "units": [
     {
       "id": "unit_01",
@@ -3346,6 +3346,464 @@
           ]
         }
       ]
+    },
+    {
+  "id": "unit_07",
+  "title": "Unit 7: Building a Cyber Security Lab",
+  "description": "Hands-on setup of a full, isolated penetration testing lab — VMware/VirtualBox, Kali Linux, target machines, bridged networking, Metasploit, and a Raspberry Pi.",
+  "modules": [
+    {
+      "id": "u7_m1",
+      "title": "Why Build a Cyber Security Lab?",
+      "description": "The purpose and architecture behind a safe, legal place to practice hacking.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m1_l1",
+          "title": "Lab Purpose & Architecture",
+          "cards": [
+            {
+              "id": "u7_m1_l1_c1",
+              "title": "Why Build a Cyber Security Lab?",
+              "body": "A lab is an isolated, safe environment to practice ethical hacking techniques legally, preventing any accidental impact on real production networks or the internet. It lets you experiment freely, break things, and learn without real-world consequences. The industry-standard setup includes an attacker machine (Kali), a target machine (Windows 7), and a deliberately vulnerable machine (Metasploitable2). The Golden Rule: never test tools or attacks on networks you don't own or have written permission for."
+            },
+            {
+              "id": "u7_m1_l1_c2",
+              "title": "Lab Architecture Overview",
+              "body": "The Host Machine is your physical laptop/desktop running virtualization software (VMware or VirtualBox). The Attacker VM (Kali Linux) is the penetration testing machine used to scan and exploit targets. The Target VMs (Windows 7 & Metasploitable2) are practice machines you will legally scan and test. All machines connect on the same isolated/bridged network segment for hands-on exercises."
+            }
+          ],
+          "quiz": {
+            "question": "What is the 'Golden Rule' of practicing in a cyber security lab?",
+            "options": [
+              "Always use the fastest scan settings",
+              "Never test tools or attacks on networks you don't own or have written permission for",
+              "Always disable your firewall first",
+              "Only practice on weekends"
+            ],
+            "correct_index": 1,
+            "explanation": "Practicing only in your own authorised lab is both an ethical and a legal requirement — this is the foundational rule of ethical hacking."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7_m2",
+      "title": "Virtualization Platforms",
+      "description": "Setting up VMware Workstation and VirtualBox, and choosing between them.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m2_l1",
+          "title": "VMware Workstation",
+          "cards": [
+            {
+              "id": "u7_m2_l1_c1",
+              "title": "What is Virtualization?",
+              "body": "Virtualization lets you run multiple 'virtual computers' (VMs) inside your physical machine. VMware Workstation Pro/Player is a widely used industry-standard virtualization tool for labs. Each VM is fully isolated — actions inside a VM don't affect the host or other VMs. Snapshots let you save a VM's state and instantly revert if something breaks."
+            },
+            {
+              "id": "u7_m2_l1_c2",
+              "title": "Installing & Touring VMware",
+              "body": "Installation: download the installer, run it and accept the license, choose an install location with 20GB+ free space, confirm Intel VT-x/AMD-V is enabled in BIOS/UEFI, then launch and license VMware. The interface has a Library Pane listing all VMs, Power Controls to start/stop VMs, a Snapshot Manager for undo history, and a Virtual Network Editor to customise VMnet adapters."
+            },
+            {
+              "id": "u7_m2_l1_c3",
+              "title": "VMware Network Modes",
+              "body": "Bridged: the VM gets its own IP directly on the physical LAN, behaving like a separate physical device (used for this lab). NAT: the VM shares the host's IP to reach the internet, good for updates only. Host-Only: the VM can talk only to the host and other Host-Only VMs, fully isolated from the internet."
+            }
+          ],
+          "quiz": {
+            "question": "Which VMware network mode gives a VM its own IP address directly on the physical LAN?",
+            "options": [
+              "NAT",
+              "Host-Only",
+              "Bridged",
+              "Airplane Mode"
+            ],
+            "correct_index": 2,
+            "explanation": "Bridged mode makes the VM appear as a separate physical device on the LAN, which is required when other machines need to reach it at its own IP — like in this lab."
+          }
+        },
+        {
+          "id": "u7_m2_l2",
+          "title": "VirtualBox & Choosing a Hypervisor",
+          "cards": [
+            {
+              "id": "u7_m2_l2_c1",
+              "title": "VirtualBox Overview & Setup",
+              "body": "Oracle VM VirtualBox is a free, open-source virtualization platform available on Windows, Linux, and macOS hosts. Its feature set closely mirrors VMware: snapshots, virtual networking, shared folders, and cloning. The Extension Pack adds USB 3.0 support, disk encryption, and remote display. To install: download the installer, run it (accepting the temporary network disconnect), install the matching Extension Pack, confirm VT-x/AMD-V is enabled, then launch and click New to create a VM."
+            },
+            {
+              "id": "u7_m2_l2_c2",
+              "title": "VirtualBox Network Modes",
+              "body": "Bridged Adapter: connects directly to the physical LAN, getting its own IP (used for this lab). NAT: shares the host's connection but isn't reachable from other devices. NAT Network: like NAT but lets multiple VMs see each other. Host-Only Adapter: reaches only the host and other Host-Only VMs. Internal Network: VMs reach only each other, not even the host."
+            },
+            {
+              "id": "u7_m2_l2_c3",
+              "title": "VMware vs VirtualBox",
+              "body": "VMware Workstation generally offers faster 3D graphics and better performance for heavier guest OSes, a more polished snapshot/cloning UI, and is preferred in many enterprise environments (Player is free, Pro is paid). Oracle VirtualBox is completely free and open-source for all use cases, cross-platform with an identical experience everywhere, and has slightly simpler networking for beginners — an excellent choice for students and used interchangeably with VMware in this course."
+            }
+          ],
+          "quiz": {
+            "question": "Which statement about VirtualBox is accurate?",
+            "options": [
+              "It only runs on Windows",
+              "It is completely free and open-source for all use cases",
+              "It cannot support Bridged networking",
+              "It requires a paid license for students"
+            ],
+            "correct_index": 1,
+            "explanation": "Unlike VMware Pro, VirtualBox is completely free and open-source, making it an excellent choice for students building a home lab."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7_m3",
+      "title": "Setting Up the Lab Machines",
+      "description": "Installing the attacker VM, the target VM, and the deliberately vulnerable machine.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m3_l1",
+          "title": "Installing Kali Linux",
+          "cards": [
+            {
+              "id": "u7_m3_l1_c1",
+              "title": "Kali as a Virtual Machine",
+              "body": "Use the official pre-built VMware/VirtualBox image for the fastest, most reliable setup: download the Kali image (.7z) from kali.org/get-kali, extract it to reveal the .vmx or .vbox/.vdi files, import/open it in your hypervisor, allocate at least 4GB RAM and 2 CPU cores, then power on and log in with default credentials kali/kali before changing the password immediately."
+            },
+            {
+              "id": "u7_m3_l1_c2",
+              "title": "First Boot & Post-Install Setup",
+              "body": "Immediately run 'sudo apt update && sudo apt full-upgrade' to bring the system current. Change the default password with 'passwd'. Install VMware Tools/Guest Additions for better display and clipboard support. Take a clean snapshot right after setup as your 'known good' restore point. Confirm networking is set to Bridged mode so Kali gets its own IP on the lab network."
+            },
+            {
+              "id": "u7_m3_l1_c3",
+              "title": "Essential Pen-Testing Commands",
+              "body": "'ip a' confirms the IP address Kali received. 'sudo netdiscover -r <subnet>' discovers live hosts on the local subnet. 'nmap -sn <subnet>' ping-sweeps a subnet. 'nmap -sV -p- <target-ip>' runs a full port scan with service detection. 'msfconsole' launches the Metasploit Framework. 'searchsploit <keyword>' searches the local Exploit-DB copy for known exploits."
+            }
+          ],
+          "quiz": {
+            "question": "What should you do immediately after Kali's first boot, before anything else?",
+            "options": [
+              "Start scanning other networks",
+              "Run a full system update and change the default password",
+              "Delete the default user account",
+              "Disable the network adapter"
+            ],
+            "correct_index": 1,
+            "explanation": "Updating the system and changing the default kali/kali password are essential first steps — leaving default credentials in place is a serious security risk."
+          }
+        },
+        {
+          "id": "u7_m3_l2",
+          "title": "Windows 7 Target Machine",
+          "cards": [
+            {
+              "id": "u7_m3_l2_c1",
+              "title": "Setting Up Windows 7",
+              "body": "Windows 7 is used as a legacy, deliberately-unpatched target for safe exploitation practice. Steps: obtain a licensed ISO/product key, create a new VM (Windows 7, 2GB+ RAM, 40GB disk), install Windows from the ISO, install Guest Tools for better integration, then set the network adapter to Bridged so it joins the same lab subnet as Kali."
+            },
+            {
+              "id": "u7_m3_l2_c2",
+              "title": "Configuration Notes",
+              "body": "Disable Windows Firewall temporarily (lab-only setting) so scans aren't blocked. Turn off Automatic Updates to keep a known, testable vulnerability set. Note the machine's IP with 'ipconfig'. Create a simple local user account with a weak password for authentication exercises. Take a snapshot immediately so the vulnerable state can always be restored. These settings are intentionally weak for learning — never replicate them outside an isolated lab."
+            }
+          ],
+          "quiz": {
+            "question": "Why is the Windows Firewall temporarily disabled on the Windows 7 target VM?",
+            "options": [
+              "To make the VM boot faster",
+              "So scans and exploits from the lab exercises aren't blocked",
+              "It's required by Windows 7 licensing",
+              "To save disk space"
+            ],
+            "correct_index": 1,
+            "explanation": "This is a lab-only setting that lets cadets practice scanning and exploitation without the firewall interfering — never used outside an isolated lab."
+          }
+        },
+        {
+          "id": "u7_m3_l3",
+          "title": "Metasploitable2",
+          "cards": [
+            {
+              "id": "u7_m3_l3_c1",
+              "title": "What & Why",
+              "body": "Metasploitable2 is an intentionally vulnerable Linux virtual machine, built by Rapid7 for security training. It ships pre-loaded with outdated, exploitable services like FTP, Samba, MySQL, and Tomcat. It is designed specifically to be scanned and exploited — a completely legal target within your own lab, and a perfect companion to Metasploit since most of its vulnerabilities have a matching module. Never expose it to a real network or the internet."
+            },
+            {
+              "id": "u7_m3_l3_c2",
+              "title": "Downloading, Importing & First Login",
+              "body": "Get the Metasploitable2 zip from SourceForge/Rapid7's mirror, extract it to reveal the .vmdk disk file, create a new VM (Linux, Other Linux 2.6.x kernel, 512MB RAM is sufficient), attach the .vmdk as the hard disk, and set the network to Bridged. Default login is msfadmin/msfadmin. Run 'ifconfig' to note its IP. Never run 'apt update' or patch this machine — doing so removes the intentional vulnerabilities. Take a snapshot immediately so the vulnerable baseline can always be restored."
+            }
+          ],
+          "quiz": {
+            "question": "Why should you never run 'apt update' on Metasploitable2?",
+            "options": [
+              "It would use too much bandwidth",
+              "It would remove the intentional vulnerabilities the machine is built to have",
+              "The machine has no internet access",
+              "It requires a different package manager"
+            ],
+            "correct_index": 1,
+            "explanation": "Metasploitable2 is deliberately kept vulnerable and outdated for training purposes — patching it would defeat its entire purpose."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7_m4",
+      "title": "Bridged Networking & Lab Connectivity",
+      "description": "Connecting every lab machine on one subnet and verifying it actually works.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m4_l1",
+          "title": "Understanding Bridged Networking",
+          "cards": [
+            {
+              "id": "u7_m4_l1_c1",
+              "title": "Bridged Networking Explained",
+              "body": "A bridged adapter makes the VM appear as a separate physical device on your existing LAN. The VM requests its own IP address from the same DHCP server (usually your router) as your laptop. All bridged VMs — Kali, Windows 7, Metasploitable2 — can reach each other exactly like real machines on a network. Because it touches the real LAN, only use bridged mode on a private, trusted network, never on a public one."
+            },
+            {
+              "id": "u7_m4_l1_c2",
+              "title": "Configuring Bridged Network — All Three VMs",
+              "body": "For each VM (Kali, Windows 7, Metasploitable2): open Settings → Network Adapter, change the mode from NAT to Bridged, choose your active host network card (Wi-Fi or Ethernet) as the bridge source, power on all VMs together so they request IPs, then confirm each machine received an IP in the same subnet as your host (e.g. 192.168.1.x)."
+            },
+            {
+              "id": "u7_m4_l1_c3",
+              "title": "IP Addressing Plan for the Bridged Lab",
+              "body": "Example addressing on a typical home/lab subnet 192.168.1.0/24: Host Machine (runs the hypervisor) at 192.168.1.10, Kali Linux VM (attacker) at 192.168.1.101, Windows 7 VM (target #1) at 192.168.1.102, Metasploitable2 VM (target #2, vulnerable) at 192.168.1.103, and Raspberry Pi (physical device) at 192.168.1.104."
+            }
+          ],
+          "quiz": {
+            "question": "In Bridged mode, where does a VM get its IP address from?",
+            "options": [
+              "The VM always uses 127.0.0.1",
+              "The same DHCP server (usually your router) as your physical laptop",
+              "It never gets an IP address",
+              "Only from the hypervisor software itself"
+            ],
+            "correct_index": 1,
+            "explanation": "A bridged VM behaves like a separate physical device on the LAN, requesting its own IP from the same DHCP server as the host machine."
+          }
+        },
+        {
+          "id": "u7_m4_l2",
+          "title": "Verifying the Lab Network",
+          "cards": [
+            {
+              "id": "u7_m4_l2_c1",
+              "title": "Ping Test Between All VMs",
+              "body": "Run these from a terminal/Command Prompt on each machine to confirm the bridged network is working end-to-end: from Kali, 'ping 192.168.1.102' confirms Kali can reach Windows 7, and 'ping 192.168.1.103' confirms it can reach Metasploitable2. From Windows 7, 'ping 192.168.1.101' confirms it can reach Kali. The host should also be able to ping every VM."
+            },
+            {
+              "id": "u7_m4_l2_c2",
+              "title": "Verifying Interfaces on Each VM",
+              "body": "On Kali/Metasploitable2 (Linux), run 'ip a' or 'ifconfig' to list interfaces and confirm the assigned IP. On Windows 7, run 'ipconfig /all' to see the IPv4 address and adapter status. Confirm the subnet mask and gateway match your host's network. If a VM shows an APIPA address (169.254.x.x), the bridged adapter failed to reach DHCP — recheck the adapter setting."
+            },
+            {
+              "id": "u7_m4_l2_c3",
+              "title": "Scanning the Lab with Nmap",
+              "body": "From Kali: 'nmap -sn 192.168.1.0/24' ping-sweeps the subnet to discover every live host. 'nmap -sV 192.168.1.102' scans the Windows 7 VM for open ports and service versions. 'nmap -sV 192.168.1.103' scans Metasploitable2, revealing its many deliberately open, outdated services. 'nmap -A 192.168.1.103' runs an aggressive scan with OS detection, scripts, and traceroute. Save results with '-oN scan.txt' for later review."
+            }
+          ],
+          "quiz": {
+            "question": "What does it mean if a VM shows an IP address starting with 169.254.x.x?",
+            "options": [
+              "The VM has successfully connected to the internet",
+              "The bridged adapter failed to reach DHCP",
+              "The VM is running in Host-Only mode correctly",
+              "The VM has a static IP configured"
+            ],
+            "correct_index": 1,
+            "explanation": "A 169.254.x.x (APIPA) address means the VM couldn't reach a DHCP server, indicating a bridged adapter misconfiguration."
+          }
+        },
+        {
+          "id": "u7_m4_l3",
+          "title": "Lab Topology & Snapshots",
+          "cards": [
+            {
+              "id": "u7_m4_l3_c1",
+              "title": "Bridged Lab Topology",
+              "body": "All bridged machines connect through the physical router/switch on one LAN with a shared DHCP pool (e.g. 192.168.1.0/24). The Host Machine runs VMware/VirtualBox, the Kali Linux VM is the attacker, and the Windows 7 and Metasploitable2 VMs are the targets. All machines share one subnet — Kali can directly scan and exploit both target VMs, exactly like real hardware on a LAN."
+            },
+            {
+              "id": "u7_m4_l3_c2",
+              "title": "Snapshotting Your Lab",
+              "body": "Take a snapshot of every VM once the bridged network is confirmed working — this is your clean baseline. Name snapshots clearly, e.g. 'Clean-Bridged-Verified'. Snapshot again before any exploitation attempt that could crash or corrupt a target machine. Reverting a snapshot takes seconds and instantly undoes any damage. A disciplined snapshot habit is what makes repeated, safe experimentation possible."
+            }
+          ],
+          "quiz": {
+            "question": "When should you take a fresh snapshot of a lab VM?",
+            "options": [
+              "Only once, when the VM is first created",
+              "After confirming the bridged network works, and again before any risky exploitation attempt",
+              "Only after the VM has already crashed",
+              "Snapshots are unnecessary if you have backups"
+            ],
+            "correct_index": 1,
+            "explanation": "A clean baseline snapshot plus a fresh one before any risky action lets you instantly revert any damage from a failed exercise."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7_m5",
+      "title": "Metasploit Framework",
+      "description": "Setting up and using the industry-standard exploitation framework.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m5_l1",
+          "title": "Getting Started with Metasploit",
+          "cards": [
+            {
+              "id": "u7_m5_l1_c1",
+              "title": "Metasploit Framework Overview",
+              "body": "Metasploit is the industry-standard framework for developing and executing exploit code. It comes pre-installed on Kali Linux with thousands of ready-to-use exploit and auxiliary modules. 'msfconsole' is the primary command-line interface used to search, configure, and launch modules, backed by a PostgreSQL database that stores hosts, scan results, credentials, and session data."
+            },
+            {
+              "id": "u7_m5_l1_c2",
+              "title": "Configuring the Metasploit Database",
+              "body": "Setup steps: 'sudo systemctl start postgresql' ensures the database service is running. 'sudo msfdb init' creates the Metasploit database and user credentials. Run 'msfconsole' to open the interface. Inside msfconsole, run 'db_status' to confirm a successful connection. Finally, 'workspace -a lab-day2' creates a workspace to organise this course's findings separately."
+            }
+          ],
+          "quiz": {
+            "question": "What must be running before Metasploit's database features will work?",
+            "options": [
+              "A web browser",
+              "The PostgreSQL service",
+              "A VPN connection",
+              "Windows Defender"
+            ],
+            "correct_index": 1,
+            "explanation": "Metasploit stores hosts, scan results, and session data in a PostgreSQL database, which must be started with 'sudo systemctl start postgresql' before use."
+          }
+        },
+        {
+          "id": "u7_m5_l2",
+          "title": "Using msfconsole",
+          "cards": [
+            {
+              "id": "u7_m5_l2_c1",
+              "title": "Workspace & db_status",
+              "body": "A workspace is an isolated project space inside the Metasploit database for organising one engagement. 'workspace' lists all workspaces; 'workspace -a <name>' creates and switches to a new one. 'db_nmap <target>' runs Nmap and automatically stores the results into the current workspace. 'hosts' and 'services' commands show everything discovered so far in the active workspace."
+            },
+            {
+              "id": "u7_m5_l2_c2",
+              "title": "Basic msfconsole Commands",
+              "body": "'search <keyword>' searches all modules for a keyword, e.g. 'search vsftpd'. 'use <module-path>' selects a specific exploit or auxiliary module. 'show options' displays the parameters the module needs (RHOSTS, RPORT, etc.). 'set RHOSTS <ip>' sets the target IP. 'set PAYLOAD <payload>' chooses what code runs after successful exploitation. 'exploit' or 'run' launches the configured module."
+            }
+          ],
+          "quiz": {
+            "question": "Which msfconsole command runs Nmap and automatically saves the results into the current workspace?",
+            "options": [
+              "search",
+              "db_nmap",
+              "show options",
+              "exploit"
+            ],
+            "correct_index": 1,
+            "explanation": "'db_nmap' combines an Nmap scan with automatic storage into Metasploit's database, keeping all reconnaissance organised by workspace."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u7_m6",
+      "title": "Raspberry Pi & Wrapping Up",
+      "description": "Adding a physical device to the lab, then checking, troubleshooting, and closing out safely.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u7_m6_l1",
+          "title": "Raspberry Pi in the Lab",
+          "cards": [
+            {
+              "id": "u7_m6_l1_c1",
+              "title": "Raspberry Pi Overview",
+              "body": "A low-cost, credit-card-sized single-board computer widely used in security labs. It's useful for building portable pen-testing kits, IoT security testing, and network monitoring devices. It can run Kali Linux ARM edition directly, turning it into a compact attacker platform, and is popular in real-world red-team exercises for covert physical network drops."
+            },
+            {
+              "id": "u7_m6_l1_c2",
+              "title": "Setup & Network Configuration",
+              "body": "Setup: download the Raspberry Pi Imager, flash Kali Linux ARM or Raspberry Pi OS to a microSD card, enable SSH before first boot for headless setup, insert the card and power on, then SSH in from your laptop. Networking: assign a static IP via /etc/dhcpcd.conf, connect to the same bridged/lab network as Kali and Windows 7, change the default password immediately, and verify with 'ssh pi@<static-ip>' from Kali."
+            }
+          ],
+          "quiz": {
+            "question": "Why is a static IP address assigned to the Raspberry Pi in the lab?",
+            "options": [
+              "Static IPs are required by all Linux devices",
+              "So the Pi is always reachable at the same address across lab sessions",
+              "To disable SSH access",
+              "It makes the Pi run Kali Linux faster"
+            ],
+            "correct_index": 1,
+            "explanation": "A static IP keeps the Raspberry Pi reliably reachable at the same address every time, which is essential for consistent lab exercises."
+          }
+        },
+        {
+          "id": "u7_m6_l2",
+          "title": "Lab Checklist & Troubleshooting",
+          "cards": [
+            {
+              "id": "u7_m6_l2_c1",
+              "title": "Lab Setup Checklist",
+              "body": "Before starting exercises, confirm: VMware or VirtualBox installed and working; Kali Linux VM installed, updated, and snapshotted; Windows 7 VM installed as an isolated target; Metasploitable2 VM imported and running; all VMs connected via Bridged network and pinging each other; Metasploit configured with a working database and workspace; Raspberry Pi flashed, given a static IP, and reachable via SSH; clean snapshots taken of every VM."
+            },
+            {
+              "id": "u7_m6_l2_c2",
+              "title": "Common Setup Issues & Command-Line Mistakes",
+              "body": "If VMs can't ping each other, confirm all are set to Bridged mode on the same physical NIC. No internet in Kali? Temporarily switch to NAT for updates, then back to Bridged. If msfconsole shows 'db not connected', restart PostgreSQL and re-run msfdb init. Common command-line mistakes: forgetting 'chmod +x' before running a script, forgetting 'sudo' for admin tasks, and getting stuck in vi (press Esc then type ':q!' to quit without saving)."
+            }
+          ],
+          "quiz": {
+            "question": "What's the fix if 'msfconsole' reports the database is not connected?",
+            "options": [
+              "Reinstall Kali Linux entirely",
+              "Run 'sudo systemctl start postgresql' then 'sudo msfdb init' again",
+              "Switch the network adapter to Host-Only",
+              "Restart the physical router"
+            ],
+            "correct_index": 1,
+            "explanation": "Restarting the PostgreSQL service and reinitialising the Metasploit database resolves the most common 'db not connected' error."
+          }
+        },
+        {
+          "id": "u7_m6_l3",
+          "title": "Ethics & Key Takeaways",
+          "cards": [
+            {
+              "id": "u7_m6_l3_c1",
+              "title": "Legal & Ethical Boundaries",
+              "body": "Every tool and technique in this course must only be used inside your own isolated/bridged lab. Scanning, exploiting, or accessing any system without explicit written authorisation is illegal in India and most countries. Bridged networking makes your VMs visible on the wider LAN — never point scans or exploits at other devices on that network. Real-world engagements always begin with a signed scope-of-work and rules of engagement document. When in doubt, don't run it — ask an instructor first."
+            },
+            {
+              "id": "u7_m6_l3_c2",
+              "title": "Key Takeaways",
+              "body": "VMware and VirtualBox both provide everything needed to build a professional-grade lab. Bridged networking gives every VM its own IP, letting Kali, Windows 7, Metasploitable2, and the Pi interact like real hardware. Metasploitable2 is deliberately vulnerable and must never be exposed beyond the lab. Metasploit, backed by a working PostgreSQL database, is the central exploitation framework used throughout. Snapshots are what make fearless, repeatable practice possible."
+            }
+          ],
+          "quiz": {
+            "question": "Since bridged networking makes lab VMs visible on the wider LAN, what is the correct practice?",
+            "options": [
+              "Scan any device you can see on the network for practice",
+              "Never point scans or exploits at devices outside your defined lab scope",
+              "Bridged mode is always safe to use on public Wi-Fi",
+              "Ask forgiveness later if you accidentally scan a neighbor's device"
+            ],
+            "correct_index": 1,
+            "explanation": "Because bridged VMs are visible on the real LAN, scanning or exploiting anything outside your own authorised lab machines is illegal and unethical."
+          }
+        }
+      ]
     }
+  ]
+}
   ]
 }
