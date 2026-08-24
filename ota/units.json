@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "units": [
     {
       "id": "unit_01",
@@ -1409,7 +1409,7 @@
                 {
                   "id": "u3_m1_l1_c2",
                   "title": "Real-world Example",
-                  "body": "A hospital employee looking up a celebrity’s medical records without authorization is a direct breach of confidentiality, even if they don't change anything."
+                  "body": "A hospital employee looking up a celebrity's medical records without authorization is a direct breach of confidentiality, even if they don't change anything."
                 }
               ],
               "quiz": {
@@ -3077,275 +3077,275 @@
       ]
     },
     {
-  "id": "unit_06",
-  "title": "Unit 6: Fundamentals of Computer Networking",
-  "description": "From LANs to the OSI model — the technical foundation behind every device, app, and cyber attack.",
-  "modules": [
-    {
-      "id": "u6_m1",
-      "title": "Networking Foundations",
-      "description": "Understanding networks, their scale, and how devices are physically and logically connected.",
-      "is_pro": false,
-      "lessons": [
+      "id": "unit_06",
+      "title": "Unit 6: Fundamentals of Computer Networking",
+      "description": "From LANs to the OSI model — the technical foundation behind every device, app, and cyber attack.",
+      "modules": [
         {
-          "id": "u6_m1_l1",
-          "title": "What is a Computer Network?",
-          "cards": [
+          "id": "u6_m1",
+          "title": "Networking Foundations",
+          "description": "Understanding networks, their scale, and how devices are physically and logically connected.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u6_m1_l1_c1",
+              "id": "u6_m1_l1",
               "title": "What is a Computer Network?",
-              "body": "A network is a group of two or more connected devices that can share data and resources. Connections can be wired (Ethernet cable) or wireless (Wi-Fi, Bluetooth). Every network needs a sender, a receiver, a medium, and an agreed set of rules called a protocol. The internet itself is simply a massive, global network of networks."
+              "cards": [
+                {
+                  "id": "u6_m1_l1_c1",
+                  "title": "What is a Computer Network?",
+                  "body": "A network is a group of two or more connected devices that can share data and resources. Connections can be wired (Ethernet cable) or wireless (Wi-Fi, Bluetooth). Every network needs a sender, a receiver, a medium, and an agreed set of rules called a protocol. The internet itself is simply a massive, global network of networks."
+                },
+                {
+                  "id": "u6_m1_l1_c2",
+                  "title": "Types of Networks by Scale",
+                  "body": "LAN (Local Area Network): a single building, like a college campus or home. MAN (Metropolitan Area Network): a city or large campus spanning multiple buildings. WAN (Wide Area Network): country or global scale — the Internet is the largest WAN."
+                }
+              ],
+              "quiz": {
+                "question": "Which type of network spans an entire country or the globe?",
+                "options": [
+                  "LAN",
+                  "MAN",
+                  "WAN",
+                  "PAN"
+                ],
+                "correct_index": 2,
+                "explanation": "A Wide Area Network (WAN) covers the largest geographical scale; the Internet itself is the biggest example of a WAN."
+              }
             },
             {
-              "id": "u6_m1_l1_c2",
-              "title": "Types of Networks by Scale",
-              "body": "LAN (Local Area Network): a single building, like a college campus or home. MAN (Metropolitan Area Network): a city or large campus spanning multiple buildings. WAN (Wide Area Network): country or global scale — the Internet is the largest WAN."
+              "id": "u6_m1_l2",
+              "title": "Internet, Intranet & Extranet",
+              "cards": [
+                {
+                  "id": "u6_m1_l2_c1",
+                  "title": "The Internet",
+                  "body": "The Internet is a public, global network accessible to anyone, anywhere. It connects billions of devices worldwide with no single owner."
+                },
+                {
+                  "id": "u6_m1_l2_c2",
+                  "title": "Intranet & Extranet",
+                  "body": "An Intranet is a private network restricted to an organisation's own members, used for internal resources. An Extranet is a controlled private network extended to trusted outside partners, like suppliers or clients, giving limited access to internal systems."
+                }
+              ],
+              "quiz": {
+                "question": "Which network type is restricted to an organisation's own employees only?",
+                "options": [
+                  "Internet",
+                  "Intranet",
+                  "Extranet",
+                  "WAN"
+                ],
+                "correct_index": 1,
+                "explanation": "An Intranet is a private internal network meant only for an organisation's own members, unlike the public Internet or a partner-facing Extranet."
+              }
+            },
+            {
+              "id": "u6_m1_l3",
+              "title": "Network Topologies",
+              "cards": [
+                {
+                  "id": "u6_m1_l3_c1",
+                  "title": "How Devices Connect",
+                  "body": "Bus: all devices share one central cable. Star: all devices connect to one central hub/switch. Ring: devices connect in a closed loop. Mesh: every device connects to many others."
+                },
+                {
+                  "id": "u6_m1_l3_c2",
+                  "title": "Topology Trade-offs",
+                  "body": "Bus is simple and low cost, but one cable failure can disrupt the whole network. Star is easy to manage since one device failing doesn't affect others, but if the central hub fails, the whole network goes down. Ring gives orderly, predictable data flow, but a single broken link disrupts the loop. Mesh is highly reliable with multiple paths, but is expensive and complex to wire and maintain."
+                }
+              ],
+              "quiz": {
+                "question": "In a Star topology, what happens if the central hub or switch fails?",
+                "options": [
+                  "Nothing, the network keeps working normally",
+                  "Only one device loses connection",
+                  "The entire network goes down",
+                  "The topology automatically becomes a Ring"
+                ],
+                "correct_index": 2,
+                "explanation": "Since every device in a Star topology depends on the central hub, a hub failure disconnects the entire network — its main disadvantage."
+              }
+            },
+            {
+              "id": "u6_m1_l4",
+              "title": "The OSI & TCP/IP Models",
+              "cards": [
+                {
+                  "id": "u6_m1_l4_c1",
+                  "title": "The OSI Model — 7 Layers (Simplified)",
+                  "body": "The OSI model describes how data travels in organised layers: 1. Physical (cables, signals, hardware), 2. Data Link (MAC addresses, local delivery), 3. Network (IP addressing & routing), 4. Transport (reliable end-to-end delivery), and further layers up to Application at the top."
+                },
+                {
+                  "id": "u6_m1_l4_c2",
+                  "title": "TCP/IP Model vs OSI Model",
+                  "body": "The TCP/IP model condenses OSI's 7 layers into 4: Application (maps to OSI's Application, Presentation, Session — browsers, email), Transport (end-to-end delivery via TCP/UDP), Internet (logical addressing & routing via IP), and Network Access (maps to Data Link and Physical — physical transmission of data)."
+                }
+              ],
+              "quiz": {
+                "question": "Which OSI layer is responsible for IP addressing and routing?",
+                "options": [
+                  "Physical Layer",
+                  "Data Link Layer",
+                  "Network Layer",
+                  "Transport Layer"
+                ],
+                "correct_index": 2,
+                "explanation": "The Network layer handles logical addressing (IP) and routing, deciding the best path for data to travel across networks."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Which type of network spans an entire country or the globe?",
-            "options": [
-              "LAN",
-              "MAN",
-              "WAN",
-              "PAN"
-            ],
-            "correct_index": 2,
-            "explanation": "A Wide Area Network (WAN) covers the largest geographical scale; the Internet itself is the biggest example of a WAN."
-          }
+          ]
         },
         {
-          "id": "u6_m1_l2",
-          "title": "Internet, Intranet & Extranet",
-          "cards": [
+          "id": "u6_m2",
+          "title": "Addressing, Devices & Security",
+          "description": "From IP and MAC addresses to the hardware and protocols that keep networks running and safe.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u6_m1_l2_c1",
-              "title": "The Internet",
-              "body": "The Internet is a public, global network accessible to anyone, anywhere. It connects billions of devices worldwide with no single owner."
+              "id": "u6_m2_l1",
+              "title": "IP Addressing Basics",
+              "cards": [
+                {
+                  "id": "u6_m2_l1_c1",
+                  "title": "What is an IP Address?",
+                  "body": "An IP address is a unique numerical label assigned to every device on a network. It works like a postal address — it tells data exactly where to be delivered. There are two types: Public IP (visible on the internet) and Private IP (used inside a local network). Addresses can be static (fixed) or dynamic (assigned automatically, and can change). Format example: 192.168.1.1 (IPv4)."
+                },
+                {
+                  "id": "u6_m2_l1_c2",
+                  "title": "IPv4 vs IPv6",
+                  "body": "IPv4 uses 32-bit addresses (e.g. 192.168.1.1) giving about 4.3 billion total addresses, and is running out due to explosive device growth. IPv6 uses 128-bit addresses (e.g. 2001:0db8:85a3::8a2e:0370:7334), offering a practically unlimited number of addresses — 340 undecillion — designed to meet future global demand."
+                }
+              ],
+              "quiz": {
+                "question": "Why was IPv6 developed to replace IPv4?",
+                "options": [
+                  "IPv4 was too fast",
+                  "IPv4 is running out of available addresses",
+                  "IPv6 uses fewer bits than IPv4",
+                  "IPv4 doesn't support Wi-Fi"
+                ],
+                "correct_index": 1,
+                "explanation": "IPv4's 32-bit address space (~4.3 billion addresses) can't keep up with the explosive growth of connected devices, so IPv6's 128-bit space was designed to meet future demand."
+              }
             },
             {
-              "id": "u6_m1_l2_c2",
-              "title": "Intranet & Extranet",
-              "body": "An Intranet is a private network restricted to an organisation's own members, used for internal resources. An Extranet is a controlled private network extended to trusted outside partners, like suppliers or clients, giving limited access to internal systems."
+              "id": "u6_m2_l2",
+              "title": "MAC Addresses, DNS & DHCP",
+              "cards": [
+                {
+                  "id": "u6_m2_l2_c1",
+                  "title": "MAC Address",
+                  "body": "A MAC (Media Access Control) address is a unique physical identifier burned into a device's network hardware, formatted as six pairs of hex digits (e.g. 00:1A:2B:3C:4D:5E). Unlike an IP address, a MAC address usually never changes and doesn't depend on the network. In short: IP address = where you're logically located; MAC address = who you physically are."
+                },
+                {
+                  "id": "u6_m2_l2_c2",
+                  "title": "DNS — Domain Name System",
+                  "body": "DNS translates human-friendly domain names into numeric IP addresses. The flow: you type www.example.com in your browser, the browser asks a DNS server to resolve it, DNS replies with the site's numeric IP, and the browser connects to that IP address."
+                },
+                {
+                  "id": "u6_m2_l2_c3",
+                  "title": "DHCP — Dynamic Host Configuration Protocol",
+                  "body": "DHCP automatically assigns an IP address to a device when it joins a network, removing the need to manually configure IP settings. It also provides settings like subnet mask, default gateway, and DNS server. Your home Wi-Fi router runs a DHCP server for all connected devices, and addresses are usually 'leased' for a period."
+                }
+              ],
+              "quiz": {
+                "question": "What does DNS primarily do?",
+                "options": [
+                  "Assigns IP addresses automatically to new devices",
+                  "Translates domain names into numeric IP addresses",
+                  "Encrypts data travelling over Wi-Fi",
+                  "Blocks unauthorized network traffic"
+                ],
+                "correct_index": 1,
+                "explanation": "DNS acts like the internet's phonebook, converting human-readable domain names into the numeric IP addresses computers use to connect."
+              }
+            },
+            {
+              "id": "u6_m2_l3",
+              "title": "Core Networking Devices",
+              "cards": [
+                {
+                  "id": "u6_m2_l3_c1",
+                  "title": "Connecting Devices",
+                  "body": "Router: connects different networks together and directs data between them. Switch: connects multiple devices within the same LAN, sending data only to the intended device. Hub: a basic device that connects devices but broadcasts data to all ports (largely outdated)."
+                },
+                {
+                  "id": "u6_m2_l3_c2",
+                  "title": "Boundary & Security Devices",
+                  "body": "Gateway: the entry/exit point between your local network and an external network, like the internet. Modem: converts digital data to signals suitable for transmission over telephone/cable lines and back. Firewall: monitors and filters incoming/outgoing traffic based on defined security rules."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between a Switch and a Hub?",
+                "options": [
+                  "A Switch sends data only to the intended device; a Hub broadcasts to all ports",
+                  "A Hub is faster than a Switch",
+                  "A Switch connects different networks; a Hub connects only two devices",
+                  "There is no difference"
+                ],
+                "correct_index": 0,
+                "explanation": "A Switch is smarter than a Hub — it directs data only to the intended recipient device, while a Hub broadcasts to every connected port, wasting bandwidth."
+              }
+            },
+            {
+              "id": "u6_m2_l4",
+              "title": "Wireless, VPN & Cloud",
+              "cards": [
+                {
+                  "id": "u6_m2_l4_c1",
+                  "title": "Wireless Networking & Wi-Fi",
+                  "body": "Wi-Fi allows devices to connect to a network without physical cables, using radio waves, governed by IEEE 802.11 standards (e.g. Wi-Fi 5, Wi-Fi 6). Always use WPA2/WPA3 encryption on personal routers and avoid open/unsecured Wi-Fi. Public Wi-Fi (cafés, stations) is convenient but carries higher interception risk, so always change the router's default admin password and Wi-Fi name (SSID)."
+                },
+                {
+                  "id": "u6_m2_l4_c2",
+                  "title": "VPN & Cloud Networking Basics",
+                  "body": "A VPN (Virtual Private Network) creates an encrypted tunnel for your data over the internet, hiding your real IP address and protecting data from interception on untrusted networks. Cloud networking lets organisations run infrastructure on remote data centres instead of local hardware, with common providers like AWS, Microsoft Azure, and Google Cloud. Always use trusted, verified VPN and cloud services — free/unknown VPNs may log your data."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main security benefit of using a VPN?",
+                "options": [
+                  "It makes your internet connection faster",
+                  "It creates an encrypted tunnel and hides your real IP address",
+                  "It automatically blocks all viruses",
+                  "It replaces the need for a Wi-Fi password"
+                ],
+                "correct_index": 1,
+                "explanation": "A VPN encrypts your traffic in a secure tunnel and masks your real IP address, protecting your data especially on untrusted networks like public Wi-Fi."
+              }
+            },
+            {
+              "id": "u6_m2_l5",
+              "title": "How Data Travels",
+              "cards": [
+                {
+                  "id": "u6_m2_l5_c1",
+                  "title": "The Journey of a Data Packet",
+                  "body": "Data travels in four stages: 1. Created — the app breaks data into packets. 2. Addressed — source and destination IP are added. 3. Routed — routers forward it toward its destination. 4. Delivered — the destination device reassembles the packets."
+                },
+                {
+                  "id": "u6_m2_l5_c2",
+                  "title": "Module Recap: Key Takeaways",
+                  "body": "Networks connect devices using topologies, protocols, and addressing schemes. The OSI/TCP-IP models describe how data travels in organised layers. IP addresses locate devices logically; MAC addresses identify them physically. Routers, switches, gateways, and firewalls each play a distinct role. Understanding networking is essential to understanding how cyber attacks actually happen."
+                }
+              ],
+              "quiz": {
+                "question": "What is the correct order in the journey of a data packet?",
+                "options": [
+                  "Routed → Created → Delivered → Addressed",
+                  "Created → Addressed → Routed → Delivered",
+                  "Addressed → Delivered → Created → Routed",
+                  "Delivered → Routed → Addressed → Created"
+                ],
+                "correct_index": 1,
+                "explanation": "A packet is first created by breaking data into pieces, then addressed with source/destination IPs, then routed across the network, and finally delivered and reassembled at its destination."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Which network type is restricted to an organisation's own employees only?",
-            "options": [
-              "Internet",
-              "Intranet",
-              "Extranet",
-              "WAN"
-            ],
-            "correct_index": 1,
-            "explanation": "An Intranet is a private internal network meant only for an organisation's own members, unlike the public Internet or a partner-facing Extranet."
-          }
-        },
-        {
-          "id": "u6_m1_l3",
-          "title": "Network Topologies",
-          "cards": [
-            {
-              "id": "u6_m1_l3_c1",
-              "title": "How Devices Connect",
-              "body": "Bus: all devices share one central cable. Star: all devices connect to one central hub/switch. Ring: devices connect in a closed loop. Mesh: every device connects to many others."
-            },
-            {
-              "id": "u6_m1_l3_c2",
-              "title": "Topology Trade-offs",
-              "body": "Bus is simple and low cost, but one cable failure can disrupt the whole network. Star is easy to manage since one device failing doesn't affect others, but if the central hub fails, the whole network goes down. Ring gives orderly, predictable data flow, but a single broken link disrupts the loop. Mesh is highly reliable with multiple paths, but is expensive and complex to wire and maintain."
-            }
-          ],
-          "quiz": {
-            "question": "In a Star topology, what happens if the central hub or switch fails?",
-            "options": [
-              "Nothing, the network keeps working normally",
-              "Only one device loses connection",
-              "The entire network goes down",
-              "The topology automatically becomes a Ring"
-            ],
-            "correct_index": 2,
-            "explanation": "Since every device in a Star topology depends on the central hub, a hub failure disconnects the entire network — its main disadvantage."
-          }
-        },
-        {
-          "id": "u6_m1_l4",
-          "title": "The OSI & TCP/IP Models",
-          "cards": [
-            {
-              "id": "u6_m1_l4_c1",
-              "title": "The OSI Model — 7 Layers (Simplified)",
-              "body": "The OSI model describes how data travels in organised layers: 1. Physical (cables, signals, hardware), 2. Data Link (MAC addresses, local delivery), 3. Network (IP addressing & routing), 4. Transport (reliable end-to-end delivery), and further layers up to Application at the top."
-            },
-            {
-              "id": "u6_m1_l4_c2",
-              "title": "TCP/IP Model vs OSI Model",
-              "body": "The TCP/IP model condenses OSI's 7 layers into 4: Application (maps to OSI's Application, Presentation, Session — browsers, email), Transport (end-to-end delivery via TCP/UDP), Internet (logical addressing & routing via IP), and Network Access (maps to Data Link and Physical — physical transmission of data)."
-            }
-          ],
-          "quiz": {
-            "question": "Which OSI layer is responsible for IP addressing and routing?",
-            "options": [
-              "Physical Layer",
-              "Data Link Layer",
-              "Network Layer",
-              "Transport Layer"
-            ],
-            "correct_index": 2,
-            "explanation": "The Network layer handles logical addressing (IP) and routing, deciding the best path for data to travel across networks."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u6_m2",
-      "title": "Addressing, Devices & Security",
-      "description": "From IP and MAC addresses to the hardware and protocols that keep networks running and safe.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u6_m2_l1",
-          "title": "IP Addressing Basics",
-          "cards": [
-            {
-              "id": "u6_m2_l1_c1",
-              "title": "What is an IP Address?",
-              "body": "An IP address is a unique numerical label assigned to every device on a network. It works like a postal address — it tells data exactly where to be delivered. There are two types: Public IP (visible on the internet) and Private IP (used inside a local network). Addresses can be static (fixed) or dynamic (assigned automatically, and can change). Format example: 192.168.1.1 (IPv4)."
-            },
-            {
-              "id": "u6_m2_l1_c2",
-              "title": "IPv4 vs IPv6",
-              "body": "IPv4 uses 32-bit addresses (e.g. 192.168.1.1) giving about 4.3 billion total addresses, and is running out due to explosive device growth. IPv6 uses 128-bit addresses (e.g. 2001:0db8:85a3::8a2e:0370:7334), offering a practically unlimited number of addresses — 340 undecillion — designed to meet future global demand."
-            }
-          ],
-          "quiz": {
-            "question": "Why was IPv6 developed to replace IPv4?",
-            "options": [
-              "IPv4 was too fast",
-              "IPv4 is running out of available addresses",
-              "IPv6 uses fewer bits than IPv4",
-              "IPv4 doesn't support Wi-Fi"
-            ],
-            "correct_index": 1,
-            "explanation": "IPv4's 32-bit address space (~4.3 billion addresses) can't keep up with the explosive growth of connected devices, so IPv6's 128-bit space was designed to meet future demand."
-          }
-        },
-        {
-          "id": "u6_m2_l2",
-          "title": "MAC Addresses, DNS & DHCP",
-          "cards": [
-            {
-              "id": "u6_m2_l2_c1",
-              "title": "MAC Address",
-              "body": "A MAC (Media Access Control) address is a unique physical identifier burned into a device's network hardware, formatted as six pairs of hex digits (e.g. 00:1A:2B:3C:4D:5E). Unlike an IP address, a MAC address usually never changes and doesn't depend on the network. In short: IP address = where you're logically located; MAC address = who you physically are."
-            },
-            {
-              "id": "u6_m2_l2_c2",
-              "title": "DNS — Domain Name System",
-              "body": "DNS translates human-friendly domain names into numeric IP addresses. The flow: you type www.example.com in your browser, the browser asks a DNS server to resolve it, DNS replies with the site's numeric IP, and the browser connects to that IP address."
-            },
-            {
-              "id": "u6_m2_l2_c3",
-              "title": "DHCP — Dynamic Host Configuration Protocol",
-              "body": "DHCP automatically assigns an IP address to a device when it joins a network, removing the need to manually configure IP settings. It also provides settings like subnet mask, default gateway, and DNS server. Your home Wi-Fi router runs a DHCP server for all connected devices, and addresses are usually 'leased' for a period."
-            }
-          ],
-          "quiz": {
-            "question": "What does DNS primarily do?",
-            "options": [
-              "Assigns IP addresses automatically to new devices",
-              "Translates domain names into numeric IP addresses",
-              "Encrypts data travelling over Wi-Fi",
-              "Blocks unauthorized network traffic"
-            ],
-            "correct_index": 1,
-            "explanation": "DNS acts like the internet's phonebook, converting human-readable domain names into the numeric IP addresses computers use to connect."
-          }
-        },
-        {
-          "id": "u6_m2_l3",
-          "title": "Core Networking Devices",
-          "cards": [
-            {
-              "id": "u6_m2_l3_c1",
-              "title": "Connecting Devices",
-              "body": "Router: connects different networks together and directs data between them. Switch: connects multiple devices within the same LAN, sending data only to the intended device. Hub: a basic device that connects devices but broadcasts data to all ports (largely outdated)."
-            },
-            {
-              "id": "u6_m2_l3_c2",
-              "title": "Boundary & Security Devices",
-              "body": "Gateway: the entry/exit point between your local network and an external network, like the internet. Modem: converts digital data to signals suitable for transmission over telephone/cable lines and back. Firewall: monitors and filters incoming/outgoing traffic based on defined security rules."
-            }
-          ],
-          "quiz": {
-            "question": "What is the key difference between a Switch and a Hub?",
-            "options": [
-              "A Switch sends data only to the intended device; a Hub broadcasts to all ports",
-              "A Hub is faster than a Switch",
-              "A Switch connects different networks; a Hub connects only two devices",
-              "There is no difference"
-            ],
-            "correct_index": 0,
-            "explanation": "A Switch is smarter than a Hub — it directs data only to the intended recipient device, while a Hub broadcasts to every connected port, wasting bandwidth."
-          }
-        },
-        {
-          "id": "u6_m2_l4",
-          "title": "Wireless, VPN & Cloud",
-          "cards": [
-            {
-              "id": "u6_m2_l4_c1",
-              "title": "Wireless Networking & Wi-Fi",
-              "body": "Wi-Fi allows devices to connect to a network without physical cables, using radio waves, governed by IEEE 802.11 standards (e.g. Wi-Fi 5, Wi-Fi 6). Always use WPA2/WPA3 encryption on personal routers and avoid open/unsecured Wi-Fi. Public Wi-Fi (cafés, stations) is convenient but carries higher interception risk, so always change the router's default admin password and Wi-Fi name (SSID)."
-            },
-            {
-              "id": "u6_m2_l4_c2",
-              "title": "VPN & Cloud Networking Basics",
-              "body": "A VPN (Virtual Private Network) creates an encrypted tunnel for your data over the internet, hiding your real IP address and protecting data from interception on untrusted networks. Cloud networking lets organisations run infrastructure on remote data centres instead of local hardware, with common providers like AWS, Microsoft Azure, and Google Cloud. Always use trusted, verified VPN and cloud services — free/unknown VPNs may log your data."
-            }
-          ],
-          "quiz": {
-            "question": "What is the main security benefit of using a VPN?",
-            "options": [
-              "It makes your internet connection faster",
-              "It creates an encrypted tunnel and hides your real IP address",
-              "It automatically blocks all viruses",
-              "It replaces the need for a Wi-Fi password"
-            ],
-            "correct_index": 1,
-            "explanation": "A VPN encrypts your traffic in a secure tunnel and masks your real IP address, protecting your data especially on untrusted networks like public Wi-Fi."
-          }
-        },
-        {
-          "id": "u6_m2_l5",
-          "title": "How Data Travels",
-          "cards": [
-            {
-              "id": "u6_m2_l5_c1",
-              "title": "The Journey of a Data Packet",
-              "body": "Data travels in four stages: 1. Created — the app breaks data into packets. 2. Addressed — source and destination IP are added. 3. Routed — routers forward it toward its destination. 4. Delivered — the destination device reassembles the packets."
-            },
-            {
-              "id": "u6_m2_l5_c2",
-              "title": "Module Recap: Key Takeaways",
-              "body": "Networks connect devices using topologies, protocols, and addressing schemes. The OSI/TCP-IP models describe how data travels in organised layers. IP addresses locate devices logically; MAC addresses identify them physically. Routers, switches, gateways, and firewalls each play a distinct role. Understanding networking is essential to understanding how cyber attacks actually happen."
-            }
-          ],
-          "quiz": {
-            "question": "What is the correct order in the journey of a data packet?",
-            "options": [
-              "Routed → Created → Delivered → Addressed",
-              "Created → Addressed → Routed → Delivered",
-              "Addressed → Delivered → Created → Routed",
-              "Delivered → Routed → Addressed → Created"
-            ],
-            "correct_index": 1,
-            "explanation": "A packet is first created by breaking data into pieces, then addressed with source/destination IPs, then routed across the network, and finally delivered and reassembled at its destination."
-          }
+          ]
         }
       ]
     }
-  ]
-}
   ]
 }
