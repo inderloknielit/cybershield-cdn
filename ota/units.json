@@ -8,7 +8,7 @@
     "tagline": "Learn. Practice. Defend.",
     "description": "A complete cyber security and ethical hacking curriculum covering fundamentals, Linux, networking, penetration testing methodology, hands-on lab setup, the full CEH toolkit, and cyber law — developed by NIELIT Delhi."
   },
-  "version": 22,
+  "version": 23,
   "units": [
     {
       "id": "unit_01",
@@ -5723,1301 +5723,1189 @@
           ]
         }
       ]
-    }
-  ],
-  "final_assessment": {
-    "id": "final_exam",
-    "type": "final_assessment_module",
-    "title": "Final Assessment: Cyber Security & Ethical Hacking",
-    "description": "A comprehensive 50-question, 50-mark exam covering every unit of the curriculum — from cybersecurity fundamentals to Kali Linux and cyber law. Complete this to test your overall mastery.",
-    "total_marks": 50,
-    "marks_per_question": 1,
-    "passing_marks": 30,
-    "passing_percentage": 60,
-    "time_limit_minutes": 60,
-    "shuffle_questions": true,
-    "shuffle_options": true,
-    "scoring": {
-      "display_after_completion": true,
-      "show_score": true,
-      "show_percentage": true,
-      "show_pass_fail": true,
-      "show_correct_answers_after_submit": true,
-      "grade_bands": [
-        {
-          "min_percentage": 90,
-          "grade": "A+",
-          "label": "Cyber Defender Expert"
-        },
-        {
-          "min_percentage": 75,
-          "grade": "A",
-          "label": "Cyber Defender Pro"
-        },
-        {
-          "min_percentage": 60,
-          "grade": "B",
-          "label": "Cyber Defender (Passed)"
-        },
-        {
-          "min_percentage": 0,
-          "grade": "F",
-          "label": "Not Yet Passed — Review & Retry"
-        }
-      ],
-      "completion_message_template": "You scored {score}/{total_marks} ({percentage}%) — {grade_label}"
     },
-    "questions": [
-      {
-        "id": "final_exam_q1",
-        "marks": 1,
-        "question": "What does the 'Integrity' pillar of the CIA Triad protect against?",
-        "options": [
+    {
+      "id": "unit_12",
+      "title": "Unit 12: Final Assessment — Cyber Security & Ethical Hacking",
+      "description": "A comprehensive 50-question, 50-mark exam covering every unit of the curriculum. Complete all 5 sections to test your overall mastery — your final score and grade are shown on completion.",
+      "is_final_assessment": true,
+      "total_marks": 50,
+      "marks_per_question": 1,
+      "passing_marks": 30,
+      "passing_percentage": 60,
+      "time_limit_minutes": 60,
+      "scoring": {
+        "display_after_completion": true,
+        "show_score": true,
+        "show_percentage": true,
+        "show_pass_fail": true,
+        "show_correct_answers_after_submit": true,
+        "grade_bands": [
           {
-            "id": "a",
-            "text": "Unauthorized data changes"
+            "min_percentage": 90,
+            "grade": "A+",
+            "label": "Cyber Defender Expert"
           },
           {
-            "id": "b",
-            "text": "Unauthorized data viewing"
+            "min_percentage": 75,
+            "grade": "A",
+            "label": "Cyber Defender Pro"
           },
           {
-            "id": "c",
-            "text": "System downtime"
+            "min_percentage": 60,
+            "grade": "B",
+            "label": "Cyber Defender (Passed)"
           },
           {
-            "id": "d",
-            "text": "Slow internet speeds"
+            "min_percentage": 0,
+            "grade": "F",
+            "label": "Not Yet Passed - Review & Retry"
           }
         ],
-        "correct_option_id": "a",
-        "explanation": "Integrity ensures data is accurate and untampered — protecting against unauthorized modification."
+        "completion_message_template": "You scored {score}/{total_marks} ({percentage}%) - {grade_label}"
       },
-      {
-        "id": "final_exam_q2",
-        "marks": 1,
-        "question": "What percentage of cybersecurity breaches are primarily caused by human error?",
-        "options": [
-          {
-            "id": "a",
-            "text": "25%"
-          },
-          {
-            "id": "b",
-            "text": "50%"
-          },
-          {
-            "id": "c",
-            "text": "95%"
-          },
-          {
-            "id": "d",
-            "text": "10%"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "Roughly 95% of breaches trace back to human error — clicking bad links, weak passwords, or misconfiguration."
-      },
-      {
-        "id": "final_exam_q3",
-        "marks": 1,
-        "question": "Which type of hacker has explicit permission to test a system?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Black Hat"
-          },
-          {
-            "id": "b",
-            "text": "White Hat"
-          },
-          {
-            "id": "c",
-            "text": "Grey Hat"
-          },
-          {
-            "id": "d",
-            "text": "Script Kiddie"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "White Hat hackers are authorized professionals who test systems with permission to improve security."
-      },
-      {
-        "id": "final_exam_q4",
-        "marks": 1,
-        "question": "What made the WannaCry ransomware outbreak so devastating?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It targeted only smartphones"
-          },
-          {
-            "id": "b",
-            "text": "It exploited an already-patched Windows vulnerability that many systems hadn't updated"
-          },
-          {
-            "id": "c",
-            "text": "It was spread only via USB drives"
-          },
-          {
-            "id": "d",
-            "text": "It only affected Mac computers"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "WannaCry spread through a Windows SMB vulnerability for which a patch already existed — unpatched systems were the ones infected."
-      },
-      {
-        "id": "final_exam_q5",
-        "marks": 1,
-        "question": "What is a 'Supply Chain Attack', as illustrated by the SolarWinds incident?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Stealing delivery trucks"
-          },
-          {
-            "id": "b",
-            "text": "Infecting a trusted third-party software that many organizations rely on"
-          },
-          {
-            "id": "c",
-            "text": "Attacking a physical warehouse"
-          },
-          {
-            "id": "d",
-            "text": "A type of phishing email"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "By compromising one widely-used software supplier, attackers gained indirect access to all of that supplier's customers at once."
-      },
-      {
-        "id": "final_exam_q6",
-        "marks": 1,
-        "question": "Which directory in Linux holds system-wide configuration files like network and password settings?",
-        "options": [
-          {
-            "id": "a",
-            "text": "/home"
-          },
-          {
-            "id": "b",
-            "text": "/bin"
-          },
-          {
-            "id": "c",
-            "text": "/etc"
-          },
-          {
-            "id": "d",
-            "text": "/var"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "/etc is the central location for all system-wide configuration files in Linux."
-      },
-      {
-        "id": "final_exam_q7",
-        "marks": 1,
-        "question": "What is the safest way to perform administrative tasks in Linux?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Log in permanently as root"
-          },
-          {
-            "id": "b",
-            "text": "Use 'sudo' before a specific command"
-          },
-          {
-            "id": "c",
-            "text": "Delete the root password"
-          },
-          {
-            "id": "d",
-            "text": "Disable all permissions"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "'sudo' grants temporary elevated privileges for a single command, avoiding the risk of staying logged in as root."
-      },
-      {
-        "id": "final_exam_q8",
-        "marks": 1,
-        "question": "What does the numeric file permission '755' represent?",
-        "options": [
-          {
-            "id": "a",
-            "text": "No one has access"
-          },
-          {
-            "id": "b",
-            "text": "Owner has full access (7); Group and Others can read/execute (5)"
-          },
-          {
-            "id": "c",
-            "text": "Everyone has full read/write/execute access"
-          },
-          {
-            "id": "d",
-            "text": "Only the group has access"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "7 (rwx) for the owner, and 5 (r-x) for group and others — read and execute but not write."
-      },
-      {
-        "id": "final_exam_q9",
-        "marks": 1,
-        "question": "Which command would you use to search for the word 'password' inside a log file?",
-        "options": [
-          {
-            "id": "a",
-            "text": "cat log.txt"
-          },
-          {
-            "id": "b",
-            "text": "grep 'password' log.txt"
-          },
-          {
-            "id": "c",
-            "text": "rm log.txt"
-          },
-          {
-            "id": "d",
-            "text": "chmod log.txt"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "grep is the standard Linux tool for searching text patterns within files."
-      },
-      {
-        "id": "final_exam_q10",
-        "marks": 1,
-        "question": "Which access control model assigns permissions based on a user's job function, like Manager or HR?",
-        "options": [
-          {
-            "id": "a",
-            "text": "DAC"
-          },
-          {
-            "id": "b",
-            "text": "MAC"
-          },
-          {
-            "id": "c",
-            "text": "RBAC"
-          },
-          {
-            "id": "d",
-            "text": "No Access Control"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "Role-Based Access Control (RBAC) grants access based on the user's assigned role within an organization."
-      },
-      {
-        "id": "final_exam_q11",
-        "marks": 1,
-        "question": "Which type of encryption protects your data if your laptop is physically stolen?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Encryption in Transit"
-          },
-          {
-            "id": "b",
-            "text": "Encryption at Rest"
-          },
-          {
-            "id": "c",
-            "text": "Wi-Fi Encryption"
-          },
-          {
-            "id": "d",
-            "text": "None of the above"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Encryption at Rest secures data stored on a device, making it unreadable to a thief without the decryption key."
-      },
-      {
-        "id": "final_exam_q12",
-        "marks": 1,
-        "question": "What is the purpose of Multi-Factor Authentication (MFA)?",
-        "options": [
-          {
-            "id": "a",
-            "text": "To make passwords longer"
-          },
-          {
-            "id": "b",
-            "text": "To require an attacker to compromise two or more different types of credentials"
-          },
-          {
-            "id": "c",
-            "text": "To speed up login"
-          },
-          {
-            "id": "d",
-            "text": "To eliminate the need for passwords entirely"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "MFA requires multiple independent proof factors, so stealing just one (like a password) isn't enough to gain access."
-      },
-      {
-        "id": "final_exam_q13",
-        "marks": 1,
-        "question": "What does 'Non-Repudiation' guarantee in a digital transaction?",
-        "options": [
-          {
-            "id": "a",
-            "text": "That data is encrypted"
-          },
-          {
-            "id": "b",
-            "text": "That a person cannot later deny having performed an action"
-          },
-          {
-            "id": "c",
-            "text": "That the server never goes down"
-          },
-          {
-            "id": "d",
-            "text": "That passwords are strong"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Non-repudiation ensures a verified action (like a digital signature) can't be credibly denied later by the person who performed it."
-      },
-      {
-        "id": "final_exam_q14",
-        "marks": 1,
-        "question": "What is the '1' in the 3-2-1 backup rule?",
-        "options": [
-          {
-            "id": "a",
-            "text": "1 password for all backups"
-          },
-          {
-            "id": "b",
-            "text": "1 copy kept offsite"
-          },
-          {
-            "id": "c",
-            "text": "1 hour to complete a backup"
-          },
-          {
-            "id": "d",
-            "text": "1 terabyte minimum"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "The 3-2-1 rule requires 3 copies of data, on 2 different media, with 1 copy kept offsite for disaster resilience."
-      },
-      {
-        "id": "final_exam_q15",
-        "marks": 1,
-        "question": "What is the correct order of the 6 phases of penetration testing?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Scanning, Reconnaissance, Access, Persistence, Tracks, Report"
-          },
-          {
-            "id": "b",
-            "text": "Reconnaissance, Scanning, Gaining Access, Maintaining Access, Covering Tracks, Reporting"
-          },
-          {
-            "id": "c",
-            "text": "Reporting, Access, Scanning, Recon, Tracks, Persistence"
-          },
-          {
-            "id": "d",
-            "text": "Access, Recon, Scanning, Report, Tracks, Persistence"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "The standard methodology follows: Reconnaissance → Scanning → Gaining Access → Maintaining Access → Covering Tracks → Reporting."
-      },
-      {
-        "id": "final_exam_q16",
-        "marks": 1,
-        "question": "What is a 'vulnerability' in cybersecurity terms?",
-        "options": [
-          {
-            "id": "a",
-            "text": "A tool used to attack a system"
-          },
-          {
-            "id": "b",
-            "text": "A weakness or flaw in a system that can be exploited"
-          },
-          {
-            "id": "c",
-            "text": "A type of firewall"
-          },
-          {
-            "id": "d",
-            "text": "An encrypted password"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "A vulnerability is a flaw or weakness — like outdated software or a weak password — that an attacker can exploit."
-      },
-      {
-        "id": "final_exam_q17",
-        "marks": 1,
-        "question": "Which Google Dork operator restricts search results to a specific website domain?",
-        "options": [
-          {
-            "id": "a",
-            "text": "filetype:"
-          },
-          {
-            "id": "b",
-            "text": "site:"
-          },
-          {
-            "id": "c",
-            "text": "inurl:"
-          },
-          {
-            "id": "d",
-            "text": "cache:"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "The 'site:' operator limits search results to a single specified domain."
-      },
-      {
-        "id": "final_exam_q18",
-        "marks": 1,
-        "question": "What does 'Enumeration' involve in the reconnaissance/scanning process?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Deleting collected data"
-          },
-          {
-            "id": "b",
-            "text": "Collecting detailed information like usernames, shared folders, and software versions"
-          },
-          {
-            "id": "c",
-            "text": "Encrypting the target's files"
-          },
-          {
-            "id": "d",
-            "text": "Sending phishing emails"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Enumeration is an active info-gathering step that pulls specific, detailed data about a target system."
-      },
-      {
-        "id": "final_exam_q19",
-        "marks": 1,
-        "question": "What is the single most important output of a professional penetration test?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Stolen data as proof"
-          },
-          {
-            "id": "b",
-            "text": "A detailed report with findings and remediation steps"
-          },
-          {
-            "id": "c",
-            "text": "The fastest possible exploitation"
-          },
-          {
-            "id": "d",
-            "text": "Access to the most systems possible"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "The report — documenting what was found and how to fix it — is the actual deliverable clients pay for, not the exploitation itself."
-      },
-      {
-        "id": "final_exam_q20",
-        "marks": 1,
-        "question": "Which Nmap flag performs a stealthy 'half-open' SYN scan?",
-        "options": [
-          {
-            "id": "a",
-            "text": "-sT"
-          },
-          {
-            "id": "b",
-            "text": "-sU"
-          },
-          {
-            "id": "c",
-            "text": "-sS"
-          },
-          {
-            "id": "d",
-            "text": "-sn"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "-sS sends a SYN packet without completing the handshake, making it faster and less likely to be logged than a full connect scan."
-      },
-      {
-        "id": "final_exam_q21",
-        "marks": 1,
-        "question": "What does the 'Filtered' port state in Nmap output usually indicate?",
-        "options": [
-          {
-            "id": "a",
-            "text": "A service is actively listening"
-          },
-          {
-            "id": "b",
-            "text": "The port is definitely open"
-          },
-          {
-            "id": "c",
-            "text": "A firewall is blocking Nmap from determining the true state"
-          },
-          {
-            "id": "d",
-            "text": "The scan completely failed"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "Filtered means a firewall or packet filter is interfering, preventing Nmap from confirming whether the port is open or closed."
-      },
-      {
-        "id": "final_exam_q22",
-        "marks": 1,
-        "question": "Which Nmap flag scans all 65,535 ports on a target?",
-        "options": [
-          {
-            "id": "a",
-            "text": "-F"
-          },
-          {
-            "id": "b",
-            "text": "-p-"
-          },
-          {
-            "id": "c",
-            "text": "-sn"
-          },
-          {
-            "id": "d",
-            "text": "-6"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "-p- is shorthand for -p 1-65535, telling Nmap to check every possible port rather than the default top 1000."
-      },
-      {
-        "id": "final_exam_q23",
-        "marks": 1,
-        "question": "What is the purpose of the Nmap Scripting Engine (NSE)?",
-        "options": [
-          {
-            "id": "a",
-            "text": "To replace Wireshark entirely"
-          },
-          {
-            "id": "b",
-            "text": "To extend Nmap with automated deeper checks like vulnerability detection"
-          },
-          {
-            "id": "c",
-            "text": "To only add color to the terminal"
-          },
-          {
-            "id": "d",
-            "text": "To create new DNS records"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "NSE runs Lua scripts for tasks beyond basic scanning, such as detecting known vulnerabilities or testing default credentials."
-      },
-      {
-        "id": "final_exam_q24",
-        "marks": 1,
-        "question": "Which type of network spans an entire country or the globe?",
-        "options": [
-          {
-            "id": "a",
-            "text": "LAN"
-          },
-          {
-            "id": "b",
-            "text": "MAN"
-          },
-          {
-            "id": "c",
-            "text": "WAN"
-          },
-          {
-            "id": "d",
-            "text": "PAN"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "A Wide Area Network (WAN) covers the largest geographical scale — the Internet itself is the biggest example."
-      },
-      {
-        "id": "final_exam_q25",
-        "marks": 1,
-        "question": "What is the key difference between a Switch and a Hub?",
-        "options": [
-          {
-            "id": "a",
-            "text": "A Switch sends data only to the intended device; a Hub broadcasts to all ports"
-          },
-          {
-            "id": "b",
-            "text": "A Hub is faster than a Switch"
-          },
-          {
-            "id": "c",
-            "text": "They are exactly the same device"
-          },
-          {
-            "id": "d",
-            "text": "A Switch only works wirelessly"
-          }
-        ],
-        "correct_option_id": "a",
-        "explanation": "A Switch intelligently directs traffic only to its intended recipient, while a Hub broadcasts to every connected device."
-      },
-      {
-        "id": "final_exam_q26",
-        "marks": 1,
-        "question": "What does DNS primarily do?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Assigns IP addresses automatically"
-          },
-          {
-            "id": "b",
-            "text": "Translates domain names into numeric IP addresses"
-          },
-          {
-            "id": "c",
-            "text": "Encrypts Wi-Fi traffic"
-          },
-          {
-            "id": "d",
-            "text": "Blocks malicious websites"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "DNS acts as the internet's phonebook, converting human-readable names into the IP addresses computers actually use."
-      },
-      {
-        "id": "final_exam_q27",
-        "marks": 1,
-        "question": "What is the main security benefit of using a VPN?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Faster internet speed"
-          },
-          {
-            "id": "b",
-            "text": "Creates an encrypted tunnel and hides your real IP address"
-          },
-          {
-            "id": "c",
-            "text": "Automatically removes viruses"
-          },
-          {
-            "id": "d",
-            "text": "Replaces the need for any password"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "A VPN encrypts traffic through a secure tunnel and masks the user's real IP, protecting data especially on untrusted networks."
-      },
-      {
-        "id": "final_exam_q28",
-        "marks": 1,
-        "question": "What is the 'Golden Rule' of practicing in a cyber security lab?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Always use the fastest scan settings"
-          },
-          {
-            "id": "b",
-            "text": "Never test tools or attacks on networks you don't own or have written permission for"
-          },
-          {
-            "id": "c",
-            "text": "Always disable your firewall first"
-          },
-          {
-            "id": "d",
-            "text": "Only practice at night"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Practicing only within your own authorized lab environment is both an ethical and legal requirement."
-      },
-      {
-        "id": "final_exam_q29",
-        "marks": 1,
-        "question": "In Bridged networking mode, where does a VM get its IP address from?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It never gets an IP address"
-          },
-          {
-            "id": "b",
-            "text": "The same DHCP server as your physical host machine"
-          },
-          {
-            "id": "c",
-            "text": "Only from the hypervisor software"
-          },
-          {
-            "id": "d",
-            "text": "It always uses 127.0.0.1"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "A bridged VM behaves like a separate physical device on the LAN, requesting an IP from the same DHCP server as the host."
-      },
-      {
-        "id": "final_exam_q30",
-        "marks": 1,
-        "question": "Why should you never run 'apt update' on Metasploitable2?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It uses too much bandwidth"
-          },
-          {
-            "id": "b",
-            "text": "It would remove the intentional vulnerabilities the machine is designed to have"
-          },
-          {
-            "id": "c",
-            "text": "It requires a different package manager"
-          },
-          {
-            "id": "d",
-            "text": "It has no internet access at all"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Metasploitable2 is deliberately kept vulnerable for training — patching it would defeat its entire purpose."
-      },
-      {
-        "id": "final_exam_q31",
-        "marks": 1,
-        "question": "What must be running before Metasploit's database features (like db_nmap) will work?",
-        "options": [
-          {
-            "id": "a",
-            "text": "A web browser"
-          },
-          {
-            "id": "b",
-            "text": "The PostgreSQL service"
-          },
-          {
-            "id": "c",
-            "text": "A VPN connection"
-          },
-          {
-            "id": "d",
-            "text": "Windows Defender"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Metasploit stores scan results and sessions in a PostgreSQL database, which must be started before use."
-      },
-      {
-        "id": "final_exam_q32",
-        "marks": 1,
-        "question": "In Maltego, what is a 'Transform'?",
-        "options": [
-          {
-            "id": "a",
-            "text": "A visual theme"
-          },
-          {
-            "id": "b",
-            "text": "A query that expands an entity to reveal new connected data"
-          },
-          {
-            "id": "c",
-            "text": "A type of malware"
-          },
-          {
-            "id": "d",
-            "text": "An encryption method"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Transforms are the core mechanism in Maltego — running one pulls in new related data about an entity."
-      },
-      {
-        "id": "final_exam_q33",
-        "marks": 1,
-        "question": "How does OpenVAS differ from Nmap?",
-        "options": [
-          {
-            "id": "a",
-            "text": "They are identical tools"
-          },
-          {
-            "id": "b",
-            "text": "Nmap discovers hosts/ports; OpenVAS checks those services against known vulnerabilities"
-          },
-          {
-            "id": "c",
-            "text": "OpenVAS only works on web applications"
-          },
-          {
-            "id": "d",
-            "text": "Nmap finds vulnerabilities; OpenVAS finds open ports"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Nmap answers 'what's open?' while OpenVAS answers 'given what's open, what's actually vulnerable?'"
-      },
-      {
-        "id": "final_exam_q34",
-        "marks": 1,
-        "question": "What is the key difference between a Capture Filter and a Display Filter in Wireshark?",
-        "options": [
-          {
-            "id": "a",
-            "text": "There is no difference"
-          },
-          {
-            "id": "b",
-            "text": "Capture filters decide what gets recorded; display filters narrow what's shown from already-captured data"
-          },
-          {
-            "id": "c",
-            "text": "Display filters only work on saved files"
-          },
-          {
-            "id": "d",
-            "text": "Capture filters only work on HTTP traffic"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Capture filters apply before packets are saved; display filters narrow the view of already-captured data."
-      },
-      {
-        "id": "final_exam_q35",
-        "marks": 1,
-        "question": "Which Burp Suite Intruder attack type tests every combination of two payload sets?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Sniper"
-          },
-          {
-            "id": "b",
-            "text": "Battering Ram"
-          },
-          {
-            "id": "c",
-            "text": "Pitchfork"
-          },
-          {
-            "id": "d",
-            "text": "Cluster Bomb"
-          }
-        ],
-        "correct_option_id": "d",
-        "explanation": "Cluster Bomb tests every combination of multiple payload sets, ideal for brute-forcing every username against every password."
-      },
-      {
-        "id": "final_exam_q36",
-        "marks": 1,
-        "question": "Why does Burp Suite need its CA certificate installed in the browser's trust store?",
-        "options": [
-          {
-            "id": "a",
-            "text": "To speed up browsing"
-          },
-          {
-            "id": "b",
-            "text": "To let Burp intercept and read encrypted HTTPS traffic without warnings"
-          },
-          {
-            "id": "c",
-            "text": "It's required just to open Burp"
-          },
-          {
-            "id": "d",
-            "text": "To block ads"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Trusting Burp's CA certificate allows it to decrypt and inspect HTTPS traffic during a proxied testing session."
-      },
-      {
-        "id": "final_exam_q37",
-        "marks": 1,
-        "question": "Why are offline password attacks generally faster than online attacks?",
-        "options": [
-          {
-            "id": "a",
-            "text": "They use less electricity"
-          },
-          {
-            "id": "b",
-            "text": "They are limited only by computing power, not network speed or lockout policies"
-          },
-          {
-            "id": "c",
-            "text": "Online attacks always use stronger encryption"
-          },
-          {
-            "id": "d",
-            "text": "There's no actual speed difference"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Offline attacks work against a captured hash file locally, unaffected by network latency or account lockout protections."
-      },
-      {
-        "id": "final_exam_q38",
-        "marks": 1,
-        "question": "Why is Meterpreter considered harder to detect than a traditional payload?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It uses a different color scheme"
-          },
-          {
-            "id": "b",
-            "text": "It runs entirely in memory rather than being written to disk"
-          },
-          {
-            "id": "c",
-            "text": "It doesn't communicate with the attacker"
-          },
-          {
-            "id": "d",
-            "text": "It only works on Linux"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Running in-memory rather than writing to disk means Meterpreter leaves fewer traditional forensic traces."
-      },
-      {
-        "id": "final_exam_q39",
-        "marks": 1,
-        "question": "What is the main purpose of a Command & Control (C2) channel?",
-        "options": [
-          {
-            "id": "a",
-            "text": "To encrypt files for ransom"
-          },
-          {
-            "id": "b",
-            "text": "To let an attacker remotely direct a compromised system after it 'calls home'"
-          },
-          {
-            "id": "c",
-            "text": "To scan for open ports"
-          },
-          {
-            "id": "d",
-            "text": "To perform a WHOIS lookup"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "A C2 channel is the attacker's remote control mechanism for directing compromised machines that periodically check in."
-      },
-      {
-        "id": "final_exam_q40",
-        "marks": 1,
-        "question": "Why is a completely empty log file often MORE suspicious to investigators than a normal one?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Empty logs indicate good security"
-          },
-          {
-            "id": "b",
-            "text": "A total absence of expected entries is itself a red flag indicating deliberate tampering"
-          },
-          {
-            "id": "c",
-            "text": "Investigators never check logs"
-          },
-          {
-            "id": "d",
-            "text": "Empty logs mean the system was never used"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Because logs are expected to contain routine activity, a total gap stands out as unusual and prompts closer investigation."
-      },
-      {
-        "id": "final_exam_q41",
-        "marks": 1,
-        "question": "What makes Spear Phishing more dangerous than generic Mass Phishing?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It's sent to more people at once"
-          },
-          {
-            "id": "b",
-            "text": "It's highly personalized using researched details, making it far more credible"
-          },
-          {
-            "id": "c",
-            "text": "It never contains any links"
-          },
-          {
-            "id": "d",
-            "text": "It only targets computers, not people"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Spear phishing uses researched personal details (often via OSINT) to make the message far more believable and effective."
-      },
-      {
-        "id": "final_exam_q42",
-        "marks": 1,
-        "question": "What is Nikto primarily designed to scan for?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Wireless network passwords"
-          },
-          {
-            "id": "b",
-            "text": "Outdated web server software, dangerous files, and known misconfigurations"
-          },
-          {
-            "id": "c",
-            "text": "Windows registry entries"
-          },
-          {
-            "id": "d",
-            "text": "Email phishing content"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Nikto specializes in web server vulnerability scanning for outdated software and dangerous default files."
-      },
-      {
-        "id": "final_exam_q43",
-        "marks": 1,
-        "question": "What is the main difference between Nessus Essentials and Nessus Professional?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Essentials only scans Windows machines"
-          },
-          {
-            "id": "b",
-            "text": "Essentials is free but limited to 16 IPs; Professional is paid and unlimited"
-          },
-          {
-            "id": "c",
-            "text": "There is no difference"
-          },
-          {
-            "id": "d",
-            "text": "Professional cannot run on Kali Linux"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Nessus Essentials is a free, IP-capped edition for learning; Professional removes the cap for enterprise use."
-      },
-      {
-        "id": "final_exam_q44",
-        "marks": 1,
-        "question": "What is the key difference between Hydra and an offline cracker like John the Ripper?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Hydra only works on Windows"
-          },
-          {
-            "id": "b",
-            "text": "Hydra attacks a live network login service directly; offline crackers work against a captured hash file"
-          },
-          {
-            "id": "c",
-            "text": "There is no difference"
-          },
-          {
-            "id": "d",
-            "text": "John the Ripper is always faster"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Hydra performs online brute-forcing over the network, while offline tools crack an already-captured hash file."
-      },
-      {
-        "id": "final_exam_q45",
-        "marks": 1,
-        "question": "What does increasing SQLmap's '--risk' level control?",
-        "options": [
-          {
-            "id": "a",
-            "text": "How fast the scan runs"
-          },
-          {
-            "id": "b",
-            "text": "How aggressive/potentially destructive the tested payloads are"
-          },
-          {
-            "id": "c",
-            "text": "The output file format"
-          },
-          {
-            "id": "d",
-            "text": "The target's IP range"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Higher risk levels include payloads more likely to alter data, requiring greater caution and authorization."
-      },
-      {
-        "id": "final_exam_q46",
-        "marks": 1,
-        "question": "Why should WEP wireless encryption never be used today?",
-        "options": [
-          {
-            "id": "a",
-            "text": "It's too slow for modern devices"
-          },
-          {
-            "id": "b",
-            "text": "It has fundamental cryptographic weaknesses crackable in minutes regardless of password strength"
-          },
-          {
-            "id": "c",
-            "text": "It's more expensive than WPA2"
-          },
-          {
-            "id": "d",
-            "text": "It only works with 5GHz Wi-Fi"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "WEP's encryption design is fundamentally broken and can be cracked quickly using well-known techniques."
-      },
-      {
-        "id": "final_exam_q47",
-        "marks": 1,
-        "question": "What are Kali's default login credentials on the official pre-built VM image?",
-        "options": [
-          {
-            "id": "a",
-            "text": "root/toor"
-          },
-          {
-            "id": "b",
-            "text": "admin/admin"
-          },
-          {
-            "id": "c",
-            "text": "kali/kali"
-          },
-          {
-            "id": "d",
-            "text": "user/password"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "The official pre-built Kali VM images use kali/kali by default — this must be changed immediately after first login."
-      },
-      {
-        "id": "final_exam_q48",
-        "marks": 1,
-        "question": "Under India's IT Act, which section specifically addresses identity theft involving passwords or electronic signatures?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Section 43"
-          },
-          {
-            "id": "b",
-            "text": "Section 66"
-          },
-          {
-            "id": "c",
-            "text": "Section 66C"
-          },
-          {
-            "id": "d",
-            "text": "Section 67"
-          }
-        ],
-        "correct_option_id": "c",
-        "explanation": "Section 66C specifically criminalizes fraudulent use of another person's electronic signature, password, or unique identifier."
-      },
-      {
-        "id": "final_exam_q49",
-        "marks": 1,
-        "question": "Within how many hours must a data breach be reported under GDPR?",
-        "options": [
-          {
-            "id": "a",
-            "text": "24 hours"
-          },
-          {
-            "id": "b",
-            "text": "72 hours"
-          },
-          {
-            "id": "c",
-            "text": "1 week"
-          },
-          {
-            "id": "d",
-            "text": "30 days"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "GDPR requires organizations to notify the relevant authority of a personal data breach within 72 hours of becoming aware."
-      },
-      {
-        "id": "final_exam_q50",
-        "marks": 1,
-        "question": "What is 'responsible disclosure' when a vulnerability is discovered?",
-        "options": [
-          {
-            "id": "a",
-            "text": "Immediately posting it publicly on social media"
-          },
-          {
-            "id": "b",
-            "text": "Reporting it privately to the affected organization and giving them time to fix it first"
-          },
-          {
-            "id": "c",
-            "text": "Selling it to the highest bidder"
-          },
-          {
-            "id": "d",
-            "text": "Ignoring it entirely"
-          }
-        ],
-        "correct_option_id": "b",
-        "explanation": "Responsible disclosure protects users by giving the organization a fair chance to patch the issue before public details could be exploited."
-      }
-    ]
-  }
+      "modules": [
+        {
+          "id": "u12_m1",
+          "title": "Section 1: Fundamentals, Linux & Security Concepts",
+          "description": "Covers Units 1-3: cybersecurity basics, Linux, and core security principles.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u12_m1_l1",
+              "title": "Question 1 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l1_c1",
+                  "title": "Final Exam — Question 1",
+                  "body": "This is question 1 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does the 'Integrity' pillar of the CIA Triad protect against?",
+                "options": [
+                  "Unauthorized data changes",
+                  "Unauthorized data viewing",
+                  "System downtime",
+                  "Slow internet speeds"
+                ],
+                "correct_index": 0,
+                "explanation": "Integrity ensures data is accurate and untampered — protecting against unauthorized modification."
+              }
+            },
+            {
+              "id": "u12_m1_l2",
+              "title": "Question 2 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l2_c1",
+                  "title": "Final Exam — Question 2",
+                  "body": "This is question 2 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What percentage of cybersecurity breaches are primarily caused by human error?",
+                "options": [
+                  "25%",
+                  "50%",
+                  "95%",
+                  "10%"
+                ],
+                "correct_index": 2,
+                "explanation": "Roughly 95% of breaches trace back to human error — clicking bad links, weak passwords, or misconfiguration."
+              }
+            },
+            {
+              "id": "u12_m1_l3",
+              "title": "Question 3 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l3_c1",
+                  "title": "Final Exam — Question 3",
+                  "body": "This is question 3 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which type of hacker has explicit permission to test a system?",
+                "options": [
+                  "Black Hat",
+                  "White Hat",
+                  "Grey Hat",
+                  "Script Kiddie"
+                ],
+                "correct_index": 1,
+                "explanation": "White Hat hackers are authorized professionals who test systems with permission to improve security."
+              }
+            },
+            {
+              "id": "u12_m1_l4",
+              "title": "Question 4 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l4_c1",
+                  "title": "Final Exam — Question 4",
+                  "body": "This is question 4 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What made the WannaCry ransomware outbreak so devastating?",
+                "options": [
+                  "It targeted only smartphones",
+                  "It exploited an already-patched Windows vulnerability that many systems hadn't updated",
+                  "It was spread only via USB drives",
+                  "It only affected Mac computers"
+                ],
+                "correct_index": 1,
+                "explanation": "WannaCry spread through a Windows SMB vulnerability for which a patch already existed — unpatched systems were the ones infected."
+              }
+            },
+            {
+              "id": "u12_m1_l5",
+              "title": "Question 5 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l5_c1",
+                  "title": "Final Exam — Question 5",
+                  "body": "This is question 5 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is a 'Supply Chain Attack', as illustrated by the SolarWinds incident?",
+                "options": [
+                  "Stealing delivery trucks",
+                  "Infecting a trusted third-party software that many organizations rely on",
+                  "Attacking a physical warehouse",
+                  "A type of phishing email"
+                ],
+                "correct_index": 1,
+                "explanation": "By compromising one widely-used software supplier, attackers gained indirect access to all of that supplier's customers at once."
+              }
+            },
+            {
+              "id": "u12_m1_l6",
+              "title": "Question 6 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l6_c1",
+                  "title": "Final Exam — Question 6",
+                  "body": "This is question 6 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which directory in Linux holds system-wide configuration files like network and password settings?",
+                "options": [
+                  "/home",
+                  "/bin",
+                  "/etc",
+                  "/var"
+                ],
+                "correct_index": 2,
+                "explanation": "/etc is the central location for all system-wide configuration files in Linux."
+              }
+            },
+            {
+              "id": "u12_m1_l7",
+              "title": "Question 7 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l7_c1",
+                  "title": "Final Exam — Question 7",
+                  "body": "This is question 7 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the safest way to perform administrative tasks in Linux?",
+                "options": [
+                  "Log in permanently as root",
+                  "Use 'sudo' before a specific command",
+                  "Delete the root password",
+                  "Disable all permissions"
+                ],
+                "correct_index": 1,
+                "explanation": "'sudo' grants temporary elevated privileges for a single command, avoiding the risk of staying logged in as root."
+              }
+            },
+            {
+              "id": "u12_m1_l8",
+              "title": "Question 8 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l8_c1",
+                  "title": "Final Exam — Question 8",
+                  "body": "This is question 8 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does the numeric file permission '755' represent?",
+                "options": [
+                  "No one has access",
+                  "Owner has full access (7); Group and Others can read/execute (5)",
+                  "Everyone has full read/write/execute access",
+                  "Only the group has access"
+                ],
+                "correct_index": 1,
+                "explanation": "7 (rwx) for the owner, and 5 (r-x) for group and others — read and execute but not write."
+              }
+            },
+            {
+              "id": "u12_m1_l9",
+              "title": "Question 9 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l9_c1",
+                  "title": "Final Exam — Question 9",
+                  "body": "This is question 9 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which command would you use to search for the word 'password' inside a log file?",
+                "options": [
+                  "cat log.txt",
+                  "grep 'password' log.txt",
+                  "rm log.txt",
+                  "chmod log.txt"
+                ],
+                "correct_index": 1,
+                "explanation": "grep is the standard Linux tool for searching text patterns within files."
+              }
+            },
+            {
+              "id": "u12_m1_l10",
+              "title": "Question 10 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l10_c1",
+                  "title": "Final Exam — Question 10",
+                  "body": "This is question 10 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which access control model assigns permissions based on a user's job function, like Manager or HR?",
+                "options": [
+                  "DAC",
+                  "MAC",
+                  "RBAC",
+                  "No Access Control"
+                ],
+                "correct_index": 2,
+                "explanation": "Role-Based Access Control (RBAC) grants access based on the user's assigned role within an organization."
+              }
+            },
+            {
+              "id": "u12_m1_l11",
+              "title": "Question 11 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l11_c1",
+                  "title": "Final Exam — Question 11",
+                  "body": "This is question 11 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which type of encryption protects your data if your laptop is physically stolen?",
+                "options": [
+                  "Encryption in Transit",
+                  "Encryption at Rest",
+                  "Wi-Fi Encryption",
+                  "None of the above"
+                ],
+                "correct_index": 1,
+                "explanation": "Encryption at Rest secures data stored on a device, making it unreadable to a thief without the decryption key."
+              }
+            },
+            {
+              "id": "u12_m1_l12",
+              "title": "Question 12 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l12_c1",
+                  "title": "Final Exam — Question 12",
+                  "body": "This is question 12 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the purpose of Multi-Factor Authentication (MFA)?",
+                "options": [
+                  "To make passwords longer",
+                  "To require an attacker to compromise two or more different types of credentials",
+                  "To speed up login",
+                  "To eliminate the need for passwords entirely"
+                ],
+                "correct_index": 1,
+                "explanation": "MFA requires multiple independent proof factors, so stealing just one (like a password) isn't enough to gain access."
+              }
+            },
+            {
+              "id": "u12_m1_l13",
+              "title": "Question 13 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l13_c1",
+                  "title": "Final Exam — Question 13",
+                  "body": "This is question 13 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does 'Non-Repudiation' guarantee in a digital transaction?",
+                "options": [
+                  "That data is encrypted",
+                  "That a person cannot later deny having performed an action",
+                  "That the server never goes down",
+                  "That passwords are strong"
+                ],
+                "correct_index": 1,
+                "explanation": "Non-repudiation ensures a verified action (like a digital signature) can't be credibly denied later by the person who performed it."
+              }
+            },
+            {
+              "id": "u12_m1_l14",
+              "title": "Question 14 of 50",
+              "cards": [
+                {
+                  "id": "u12_m1_l14_c1",
+                  "title": "Final Exam — Question 14",
+                  "body": "This is question 14 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the '1' in the 3-2-1 backup rule?",
+                "options": [
+                  "1 password for all backups",
+                  "1 copy kept offsite",
+                  "1 hour to complete a backup",
+                  "1 terabyte minimum"
+                ],
+                "correct_index": 1,
+                "explanation": "The 3-2-1 rule requires 3 copies of data, on 2 different media, with 1 copy kept offsite for disaster resilience."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u12_m2",
+          "title": "Section 2: Pen Testing, Nmap & Networking",
+          "description": "Covers Units 4-6: ethical hacking methodology, Nmap, and networking fundamentals.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u12_m2_l15",
+              "title": "Question 15 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l15_c1",
+                  "title": "Final Exam — Question 15",
+                  "body": "This is question 15 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the correct order of the 6 phases of penetration testing?",
+                "options": [
+                  "Scanning, Reconnaissance, Access, Persistence, Tracks, Report",
+                  "Reconnaissance, Scanning, Gaining Access, Maintaining Access, Covering Tracks, Reporting",
+                  "Reporting, Access, Scanning, Recon, Tracks, Persistence",
+                  "Access, Recon, Scanning, Report, Tracks, Persistence"
+                ],
+                "correct_index": 1,
+                "explanation": "The standard methodology follows: Reconnaissance → Scanning → Gaining Access → Maintaining Access → Covering Tracks → Reporting."
+              }
+            },
+            {
+              "id": "u12_m2_l16",
+              "title": "Question 16 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l16_c1",
+                  "title": "Final Exam — Question 16",
+                  "body": "This is question 16 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is a 'vulnerability' in cybersecurity terms?",
+                "options": [
+                  "A tool used to attack a system",
+                  "A weakness or flaw in a system that can be exploited",
+                  "A type of firewall",
+                  "An encrypted password"
+                ],
+                "correct_index": 1,
+                "explanation": "A vulnerability is a flaw or weakness — like outdated software or a weak password — that an attacker can exploit."
+              }
+            },
+            {
+              "id": "u12_m2_l17",
+              "title": "Question 17 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l17_c1",
+                  "title": "Final Exam — Question 17",
+                  "body": "This is question 17 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which Google Dork operator restricts search results to a specific website domain?",
+                "options": [
+                  "filetype:",
+                  "site:",
+                  "inurl:",
+                  "cache:"
+                ],
+                "correct_index": 1,
+                "explanation": "The 'site:' operator limits search results to a single specified domain."
+              }
+            },
+            {
+              "id": "u12_m2_l18",
+              "title": "Question 18 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l18_c1",
+                  "title": "Final Exam — Question 18",
+                  "body": "This is question 18 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does 'Enumeration' involve in the reconnaissance/scanning process?",
+                "options": [
+                  "Deleting collected data",
+                  "Collecting detailed information like usernames, shared folders, and software versions",
+                  "Encrypting the target's files",
+                  "Sending phishing emails"
+                ],
+                "correct_index": 1,
+                "explanation": "Enumeration is an active info-gathering step that pulls specific, detailed data about a target system."
+              }
+            },
+            {
+              "id": "u12_m2_l19",
+              "title": "Question 19 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l19_c1",
+                  "title": "Final Exam — Question 19",
+                  "body": "This is question 19 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the single most important output of a professional penetration test?",
+                "options": [
+                  "Stolen data as proof",
+                  "A detailed report with findings and remediation steps",
+                  "The fastest possible exploitation",
+                  "Access to the most systems possible"
+                ],
+                "correct_index": 1,
+                "explanation": "The report — documenting what was found and how to fix it — is the actual deliverable clients pay for, not the exploitation itself."
+              }
+            },
+            {
+              "id": "u12_m2_l20",
+              "title": "Question 20 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l20_c1",
+                  "title": "Final Exam — Question 20",
+                  "body": "This is question 20 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which Nmap flag performs a stealthy 'half-open' SYN scan?",
+                "options": [
+                  "-sT",
+                  "-sU",
+                  "-sS",
+                  "-sn"
+                ],
+                "correct_index": 2,
+                "explanation": "-sS sends a SYN packet without completing the handshake, making it faster and less likely to be logged than a full connect scan."
+              }
+            },
+            {
+              "id": "u12_m2_l21",
+              "title": "Question 21 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l21_c1",
+                  "title": "Final Exam — Question 21",
+                  "body": "This is question 21 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does the 'Filtered' port state in Nmap output usually indicate?",
+                "options": [
+                  "A service is actively listening",
+                  "The port is definitely open",
+                  "A firewall is blocking Nmap from determining the true state",
+                  "The scan completely failed"
+                ],
+                "correct_index": 2,
+                "explanation": "Filtered means a firewall or packet filter is interfering, preventing Nmap from confirming whether the port is open or closed."
+              }
+            },
+            {
+              "id": "u12_m2_l22",
+              "title": "Question 22 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l22_c1",
+                  "title": "Final Exam — Question 22",
+                  "body": "This is question 22 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which Nmap flag scans all 65,535 ports on a target?",
+                "options": [
+                  "-F",
+                  "-p-",
+                  "-sn",
+                  "-6"
+                ],
+                "correct_index": 1,
+                "explanation": "-p- is shorthand for -p 1-65535, telling Nmap to check every possible port rather than the default top 1000."
+              }
+            },
+            {
+              "id": "u12_m2_l23",
+              "title": "Question 23 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l23_c1",
+                  "title": "Final Exam — Question 23",
+                  "body": "This is question 23 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the purpose of the Nmap Scripting Engine (NSE)?",
+                "options": [
+                  "To replace Wireshark entirely",
+                  "To extend Nmap with automated deeper checks like vulnerability detection",
+                  "To only add color to the terminal",
+                  "To create new DNS records"
+                ],
+                "correct_index": 1,
+                "explanation": "NSE runs Lua scripts for tasks beyond basic scanning, such as detecting known vulnerabilities or testing default credentials."
+              }
+            },
+            {
+              "id": "u12_m2_l24",
+              "title": "Question 24 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l24_c1",
+                  "title": "Final Exam — Question 24",
+                  "body": "This is question 24 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which type of network spans an entire country or the globe?",
+                "options": [
+                  "LAN",
+                  "MAN",
+                  "WAN",
+                  "PAN"
+                ],
+                "correct_index": 2,
+                "explanation": "A Wide Area Network (WAN) covers the largest geographical scale — the Internet itself is the biggest example."
+              }
+            },
+            {
+              "id": "u12_m2_l25",
+              "title": "Question 25 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l25_c1",
+                  "title": "Final Exam — Question 25",
+                  "body": "This is question 25 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between a Switch and a Hub?",
+                "options": [
+                  "A Switch sends data only to the intended device; a Hub broadcasts to all ports",
+                  "A Hub is faster than a Switch",
+                  "They are exactly the same device",
+                  "A Switch only works wirelessly"
+                ],
+                "correct_index": 0,
+                "explanation": "A Switch intelligently directs traffic only to its intended recipient, while a Hub broadcasts to every connected device."
+              }
+            },
+            {
+              "id": "u12_m2_l26",
+              "title": "Question 26 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l26_c1",
+                  "title": "Final Exam — Question 26",
+                  "body": "This is question 26 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does DNS primarily do?",
+                "options": [
+                  "Assigns IP addresses automatically",
+                  "Translates domain names into numeric IP addresses",
+                  "Encrypts Wi-Fi traffic",
+                  "Blocks malicious websites"
+                ],
+                "correct_index": 1,
+                "explanation": "DNS acts as the internet's phonebook, converting human-readable names into the IP addresses computers actually use."
+              }
+            },
+            {
+              "id": "u12_m2_l27",
+              "title": "Question 27 of 50",
+              "cards": [
+                {
+                  "id": "u12_m2_l27_c1",
+                  "title": "Final Exam — Question 27",
+                  "body": "This is question 27 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main security benefit of using a VPN?",
+                "options": [
+                  "Faster internet speed",
+                  "Creates an encrypted tunnel and hides your real IP address",
+                  "Automatically removes viruses",
+                  "Replaces the need for any password"
+                ],
+                "correct_index": 1,
+                "explanation": "A VPN encrypts traffic through a secure tunnel and masks the user's real IP, protecting data especially on untrusted networks."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u12_m3",
+          "title": "Section 3: Lab Setup & Scanning Toolkit",
+          "description": "Covers Units 7-8: building a lab and the OSINT/OpenVAS/Wireshark/Burp Suite toolkit.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u12_m3_l28",
+              "title": "Question 28 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l28_c1",
+                  "title": "Final Exam — Question 28",
+                  "body": "This is question 28 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the 'Golden Rule' of practicing in a cyber security lab?",
+                "options": [
+                  "Always use the fastest scan settings",
+                  "Never test tools or attacks on networks you don't own or have written permission for",
+                  "Always disable your firewall first",
+                  "Only practice at night"
+                ],
+                "correct_index": 1,
+                "explanation": "Practicing only within your own authorized lab environment is both an ethical and legal requirement."
+              }
+            },
+            {
+              "id": "u12_m3_l29",
+              "title": "Question 29 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l29_c1",
+                  "title": "Final Exam — Question 29",
+                  "body": "This is question 29 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "In Bridged networking mode, where does a VM get its IP address from?",
+                "options": [
+                  "It never gets an IP address",
+                  "The same DHCP server as your physical host machine",
+                  "Only from the hypervisor software",
+                  "It always uses 127.0.0.1"
+                ],
+                "correct_index": 1,
+                "explanation": "A bridged VM behaves like a separate physical device on the LAN, requesting an IP from the same DHCP server as the host."
+              }
+            },
+            {
+              "id": "u12_m3_l30",
+              "title": "Question 30 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l30_c1",
+                  "title": "Final Exam — Question 30",
+                  "body": "This is question 30 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why should you never run 'apt update' on Metasploitable2?",
+                "options": [
+                  "It uses too much bandwidth",
+                  "It would remove the intentional vulnerabilities the machine is designed to have",
+                  "It requires a different package manager",
+                  "It has no internet access at all"
+                ],
+                "correct_index": 1,
+                "explanation": "Metasploitable2 is deliberately kept vulnerable for training — patching it would defeat its entire purpose."
+              }
+            },
+            {
+              "id": "u12_m3_l31",
+              "title": "Question 31 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l31_c1",
+                  "title": "Final Exam — Question 31",
+                  "body": "This is question 31 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What must be running before Metasploit's database features (like db_nmap) will work?",
+                "options": [
+                  "A web browser",
+                  "The PostgreSQL service",
+                  "A VPN connection",
+                  "Windows Defender"
+                ],
+                "correct_index": 1,
+                "explanation": "Metasploit stores scan results and sessions in a PostgreSQL database, which must be started before use."
+              }
+            },
+            {
+              "id": "u12_m3_l32",
+              "title": "Question 32 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l32_c1",
+                  "title": "Final Exam — Question 32",
+                  "body": "This is question 32 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "In Maltego, what is a 'Transform'?",
+                "options": [
+                  "A visual theme",
+                  "A query that expands an entity to reveal new connected data",
+                  "A type of malware",
+                  "An encryption method"
+                ],
+                "correct_index": 1,
+                "explanation": "Transforms are the core mechanism in Maltego — running one pulls in new related data about an entity."
+              }
+            },
+            {
+              "id": "u12_m3_l33",
+              "title": "Question 33 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l33_c1",
+                  "title": "Final Exam — Question 33",
+                  "body": "This is question 33 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "How does OpenVAS differ from Nmap?",
+                "options": [
+                  "They are identical tools",
+                  "Nmap discovers hosts/ports; OpenVAS checks those services against known vulnerabilities",
+                  "OpenVAS only works on web applications",
+                  "Nmap finds vulnerabilities; OpenVAS finds open ports"
+                ],
+                "correct_index": 1,
+                "explanation": "Nmap answers 'what's open?' while OpenVAS answers 'given what's open, what's actually vulnerable?'"
+              }
+            },
+            {
+              "id": "u12_m3_l34",
+              "title": "Question 34 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l34_c1",
+                  "title": "Final Exam — Question 34",
+                  "body": "This is question 34 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between a Capture Filter and a Display Filter in Wireshark?",
+                "options": [
+                  "There is no difference",
+                  "Capture filters decide what gets recorded; display filters narrow what's shown from already-captured data",
+                  "Display filters only work on saved files",
+                  "Capture filters only work on HTTP traffic"
+                ],
+                "correct_index": 1,
+                "explanation": "Capture filters apply before packets are saved; display filters narrow the view of already-captured data."
+              }
+            },
+            {
+              "id": "u12_m3_l35",
+              "title": "Question 35 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l35_c1",
+                  "title": "Final Exam — Question 35",
+                  "body": "This is question 35 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Which Burp Suite Intruder attack type tests every combination of two payload sets?",
+                "options": [
+                  "Sniper",
+                  "Battering Ram",
+                  "Pitchfork",
+                  "Cluster Bomb"
+                ],
+                "correct_index": 3,
+                "explanation": "Cluster Bomb tests every combination of multiple payload sets, ideal for brute-forcing every username against every password."
+              }
+            },
+            {
+              "id": "u12_m3_l36",
+              "title": "Question 36 of 50",
+              "cards": [
+                {
+                  "id": "u12_m3_l36_c1",
+                  "title": "Final Exam — Question 36",
+                  "body": "This is question 36 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why does Burp Suite need its CA certificate installed in the browser's trust store?",
+                "options": [
+                  "To speed up browsing",
+                  "To let Burp intercept and read encrypted HTTPS traffic without warnings",
+                  "It's required just to open Burp",
+                  "To block ads"
+                ],
+                "correct_index": 1,
+                "explanation": "Trusting Burp's CA certificate allows it to decrypt and inspect HTTPS traffic during a proxied testing session."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u12_m4",
+          "title": "Section 4: The Full Attack Lifecycle",
+          "description": "Covers Unit 9: gaining access, maintaining access, covering tracks, and social engineering.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u12_m4_l37",
+              "title": "Question 37 of 50",
+              "cards": [
+                {
+                  "id": "u12_m4_l37_c1",
+                  "title": "Final Exam — Question 37",
+                  "body": "This is question 37 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why are offline password attacks generally faster than online attacks?",
+                "options": [
+                  "They use less electricity",
+                  "They are limited only by computing power, not network speed or lockout policies",
+                  "Online attacks always use stronger encryption",
+                  "There's no actual speed difference"
+                ],
+                "correct_index": 1,
+                "explanation": "Offline attacks work against a captured hash file locally, unaffected by network latency or account lockout protections."
+              }
+            },
+            {
+              "id": "u12_m4_l38",
+              "title": "Question 38 of 50",
+              "cards": [
+                {
+                  "id": "u12_m4_l38_c1",
+                  "title": "Final Exam — Question 38",
+                  "body": "This is question 38 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why is Meterpreter considered harder to detect than a traditional payload?",
+                "options": [
+                  "It uses a different color scheme",
+                  "It runs entirely in memory rather than being written to disk",
+                  "It doesn't communicate with the attacker",
+                  "It only works on Linux"
+                ],
+                "correct_index": 1,
+                "explanation": "Running in-memory rather than writing to disk means Meterpreter leaves fewer traditional forensic traces."
+              }
+            },
+            {
+              "id": "u12_m4_l39",
+              "title": "Question 39 of 50",
+              "cards": [
+                {
+                  "id": "u12_m4_l39_c1",
+                  "title": "Final Exam — Question 39",
+                  "body": "This is question 39 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main purpose of a Command & Control (C2) channel?",
+                "options": [
+                  "To encrypt files for ransom",
+                  "To let an attacker remotely direct a compromised system after it 'calls home'",
+                  "To scan for open ports",
+                  "To perform a WHOIS lookup"
+                ],
+                "correct_index": 1,
+                "explanation": "A C2 channel is the attacker's remote control mechanism for directing compromised machines that periodically check in."
+              }
+            },
+            {
+              "id": "u12_m4_l40",
+              "title": "Question 40 of 50",
+              "cards": [
+                {
+                  "id": "u12_m4_l40_c1",
+                  "title": "Final Exam — Question 40",
+                  "body": "This is question 40 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why is a completely empty log file often MORE suspicious to investigators than a normal one?",
+                "options": [
+                  "Empty logs indicate good security",
+                  "A total absence of expected entries is itself a red flag indicating deliberate tampering",
+                  "Investigators never check logs",
+                  "Empty logs mean the system was never used"
+                ],
+                "correct_index": 1,
+                "explanation": "Because logs are expected to contain routine activity, a total gap stands out as unusual and prompts closer investigation."
+              }
+            },
+            {
+              "id": "u12_m4_l41",
+              "title": "Question 41 of 50",
+              "cards": [
+                {
+                  "id": "u12_m4_l41_c1",
+                  "title": "Final Exam — Question 41",
+                  "body": "This is question 41 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What makes Spear Phishing more dangerous than generic Mass Phishing?",
+                "options": [
+                  "It's sent to more people at once",
+                  "It's highly personalized using researched details, making it far more credible",
+                  "It never contains any links",
+                  "It only targets computers, not people"
+                ],
+                "correct_index": 1,
+                "explanation": "Spear phishing uses researched personal details (often via OSINT) to make the message far more believable and effective."
+              }
+            }
+          ]
+        },
+        {
+          "id": "u12_m5",
+          "title": "Section 5: CEH Toolkit, Kali Install & Cyber Law",
+          "description": "Covers Units 10-11: Nikto, Nessus, Hydra, SQLmap, Aircrack-ng, Kali installation, and cyber law.",
+          "is_pro": false,
+          "lessons": [
+            {
+              "id": "u12_m5_l42",
+              "title": "Question 42 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l42_c1",
+                  "title": "Final Exam — Question 42",
+                  "body": "This is question 42 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is Nikto primarily designed to scan for?",
+                "options": [
+                  "Wireless network passwords",
+                  "Outdated web server software, dangerous files, and known misconfigurations",
+                  "Windows registry entries",
+                  "Email phishing content"
+                ],
+                "correct_index": 1,
+                "explanation": "Nikto specializes in web server vulnerability scanning for outdated software and dangerous default files."
+              }
+            },
+            {
+              "id": "u12_m5_l43",
+              "title": "Question 43 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l43_c1",
+                  "title": "Final Exam — Question 43",
+                  "body": "This is question 43 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the main difference between Nessus Essentials and Nessus Professional?",
+                "options": [
+                  "Essentials only scans Windows machines",
+                  "Essentials is free but limited to 16 IPs; Professional is paid and unlimited",
+                  "There is no difference",
+                  "Professional cannot run on Kali Linux"
+                ],
+                "correct_index": 1,
+                "explanation": "Nessus Essentials is a free, IP-capped edition for learning; Professional removes the cap for enterprise use."
+              }
+            },
+            {
+              "id": "u12_m5_l44",
+              "title": "Question 44 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l44_c1",
+                  "title": "Final Exam — Question 44",
+                  "body": "This is question 44 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is the key difference between Hydra and an offline cracker like John the Ripper?",
+                "options": [
+                  "Hydra only works on Windows",
+                  "Hydra attacks a live network login service directly; offline crackers work against a captured hash file",
+                  "There is no difference",
+                  "John the Ripper is always faster"
+                ],
+                "correct_index": 1,
+                "explanation": "Hydra performs online brute-forcing over the network, while offline tools crack an already-captured hash file."
+              }
+            },
+            {
+              "id": "u12_m5_l45",
+              "title": "Question 45 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l45_c1",
+                  "title": "Final Exam — Question 45",
+                  "body": "This is question 45 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What does increasing SQLmap's '--risk' level control?",
+                "options": [
+                  "How fast the scan runs",
+                  "How aggressive/potentially destructive the tested payloads are",
+                  "The output file format",
+                  "The target's IP range"
+                ],
+                "correct_index": 1,
+                "explanation": "Higher risk levels include payloads more likely to alter data, requiring greater caution and authorization."
+              }
+            },
+            {
+              "id": "u12_m5_l46",
+              "title": "Question 46 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l46_c1",
+                  "title": "Final Exam — Question 46",
+                  "body": "This is question 46 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Why should WEP wireless encryption never be used today?",
+                "options": [
+                  "It's too slow for modern devices",
+                  "It has fundamental cryptographic weaknesses crackable in minutes regardless of password strength",
+                  "It's more expensive than WPA2",
+                  "It only works with 5GHz Wi-Fi"
+                ],
+                "correct_index": 1,
+                "explanation": "WEP's encryption design is fundamentally broken and can be cracked quickly using well-known techniques."
+              }
+            },
+            {
+              "id": "u12_m5_l47",
+              "title": "Question 47 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l47_c1",
+                  "title": "Final Exam — Question 47",
+                  "body": "This is question 47 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What are Kali's default login credentials on the official pre-built VM image?",
+                "options": [
+                  "root/toor",
+                  "admin/admin",
+                  "kali/kali",
+                  "user/password"
+                ],
+                "correct_index": 2,
+                "explanation": "The official pre-built Kali VM images use kali/kali by default — this must be changed immediately after first login."
+              }
+            },
+            {
+              "id": "u12_m5_l48",
+              "title": "Question 48 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l48_c1",
+                  "title": "Final Exam — Question 48",
+                  "body": "This is question 48 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Under India's IT Act, which section specifically addresses identity theft involving passwords or electronic signatures?",
+                "options": [
+                  "Section 43",
+                  "Section 66",
+                  "Section 66C",
+                  "Section 67"
+                ],
+                "correct_index": 2,
+                "explanation": "Section 66C specifically criminalizes fraudulent use of another person's electronic signature, password, or unique identifier."
+              }
+            },
+            {
+              "id": "u12_m5_l49",
+              "title": "Question 49 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l49_c1",
+                  "title": "Final Exam — Question 49",
+                  "body": "This is question 49 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "Within how many hours must a data breach be reported under GDPR?",
+                "options": [
+                  "24 hours",
+                  "72 hours",
+                  "1 week",
+                  "30 days"
+                ],
+                "correct_index": 1,
+                "explanation": "GDPR requires organizations to notify the relevant authority of a personal data breach within 72 hours of becoming aware."
+              }
+            },
+            {
+              "id": "u12_m5_l50",
+              "title": "Question 50 of 50",
+              "cards": [
+                {
+                  "id": "u12_m5_l50_c1",
+                  "title": "Final Exam — Question 50",
+                  "body": "This is question 50 of 50 in your Final Assessment. Each question is worth 1 mark. Read carefully and select the best answer."
+                }
+              ],
+              "quiz": {
+                "question": "What is 'responsible disclosure' when a vulnerability is discovered?",
+                "options": [
+                  "Immediately posting it publicly on social media",
+                  "Reporting it privately to the affected organization and giving them time to fix it first",
+                  "Selling it to the highest bidder",
+                  "Ignoring it entirely"
+                ],
+                "correct_index": 1,
+                "explanation": "Responsible disclosure protects users by giving the organization a fair chance to patch the issue before public details could be exploited."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
