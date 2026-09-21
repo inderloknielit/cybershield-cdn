@@ -1,0 +1,12 @@
+cd cybershield-cdn
+git remote -v
+git status
+
+
+cd cybershield-cdn
+git remote set-url origin https://github.com/inderloknielit/cybershield-cdn.git
+git branch -M main
+git add .
+git commit -m "Update CyberShield project"
+git pull origin main --allow-unrelated-histories
+git push -u origin main
