@@ -8,7 +8,7 @@
     "tagline": "Learn. Practice. Defend.",
     "description": "A complete cyber security and ethical hacking curriculum covering fundamentals, Linux, networking, penetration testing methodology, hands-on lab setup, the full CEH toolkit, and cyber law — developed by NIELIT Delhi."
   },
-  "version": 23,
+  "version": 26,
   "units": [
     {
       "id": "unit_01",
@@ -20,7 +20,6 @@
           "title": "Introduction to Cyber Security",
           "description": "Foundational concepts, the CIA triad, and why everyone is a target.",
           "is_pro": false,
-          "video_id": "dQw4w9WgXcQ",
           "lessons": [
             {
               "id": "u1_m1_l1",
@@ -169,7 +168,6 @@
           "title": "Types of Cyber Security",
           "description": "From networks to your pocket: the different domains of protection.",
           "is_pro": false,
-          "video_id": "UjBk60MI16w",
           "lessons": [
             {
               "id": "u1_m2_l1",
@@ -2971,7 +2969,6 @@
           "title": "Service Detection, OS Fingerprinting & NSE",
           "description": "Going beyond open ports to identify software, operating systems, and vulnerabilities.",
           "is_pro": false,
-          "video_id": "gKzHDZrCAC0",
           "lessons": [
             {
               "id": "u5_m4_l1",
@@ -5728,42 +5725,6 @@
       "id": "unit_12",
       "title": "Unit 12: Final Assessment — Cyber Security & Ethical Hacking",
       "description": "A comprehensive 50-question, 50-mark exam covering every unit of the curriculum. Complete all 5 sections to test your overall mastery — your final score and grade are shown on completion.",
-      "is_final_assessment": true,
-      "total_marks": 50,
-      "marks_per_question": 1,
-      "passing_marks": 30,
-      "passing_percentage": 60,
-      "time_limit_minutes": 60,
-      "scoring": {
-        "display_after_completion": true,
-        "show_score": true,
-        "show_percentage": true,
-        "show_pass_fail": true,
-        "show_correct_answers_after_submit": true,
-        "grade_bands": [
-          {
-            "min_percentage": 90,
-            "grade": "A+",
-            "label": "Cyber Defender Expert"
-          },
-          {
-            "min_percentage": 75,
-            "grade": "A",
-            "label": "Cyber Defender Pro"
-          },
-          {
-            "min_percentage": 60,
-            "grade": "B",
-            "label": "Cyber Defender (Passed)"
-          },
-          {
-            "min_percentage": 0,
-            "grade": "F",
-            "label": "Not Yet Passed - Review & Retry"
-          }
-        ],
-        "completion_message_template": "You scored {score}/{total_marks} ({percentage}%) - {grade_label}"
-      },
       "modules": [
         {
           "id": "u12_m1",

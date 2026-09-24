@@ -8,7 +8,7 @@
     "tagline": "Learn. Practice. Defend.",
     "description": "A complete cyber security and ethical hacking curriculum covering fundamentals, Linux, networking, penetration testing methodology, hands-on lab setup, the full CEH toolkit, and cyber law — developed by NIELIT Delhi."
   },
-  "version": 26,
+  "version": 27,
   "units": [
     {
       "id": "unit_01",
